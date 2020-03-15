@@ -66,10 +66,11 @@ span {
   background: salmon;
   border-radius: 4px;
   border: 1px solid white;
+  outline: none;
 }
 
 .loginForm button:hover {
-  opacity: 0;
+  opacity: 0.9;
 }
 
 .loginForm button .spinner {
@@ -89,4 +90,15 @@ span {
 .status {
   color: red;
   font-size: 12px;
+}
+
+.issueCard {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  color: blue;
+}
+
+.issueCard img {
+  width: 200px;
 }

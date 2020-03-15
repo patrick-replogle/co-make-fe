@@ -13,18 +13,18 @@ const initialUser = {
   last_name: ""
 };
 
-const passwordErrText = `password must contain at least 
-1 uppercase, lowercase, character, number, and symbol`;
+const passwordErrText = `password must contain at least 1 uppercase and 
+lowercase letter, as well as 1 number and symbol`;
 
 const validationSchema = Yup.object({
   username: Yup.string()
     .required("username required")
-    .max(35)
+    .max(50)
     .min(1),
   password: Yup.string()
     .required("password required")
     .max(100)
-    .min(8)
+    .min(6)
     .matches(/[0-9]/, passwordErrText)
     .matches(/[A-Z]/, passwordErrText)
     .matches(/[a-z]/, passwordErrText)
