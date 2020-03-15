@@ -37,6 +37,23 @@
   }
 }
 
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginForm button {
+  padding: 10px 20px;
+  color: white;
+  background: blue;
+}
+
+.loginForm button .spinner {
+  stroke: white;
+}
+
 .errors {
   color: red;
 }

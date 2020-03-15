@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
 
@@ -14,7 +15,9 @@ const Login = props => {
     <Formik
       initialValues={{ username: "", password: "" }}
       validationSchema={validationSchema}
-      onSubmit={(values, { resetForm, setSubmitting }) => {
+      onSubmit={(values, { resetForm, setSubmitting, setStatus }) => {
+        setSubmitting(true);
+        setStatus(false);
         axiosWithAuth()
           .post("/auth/login", values)
           .then(res => {
@@ -22,16 +25,25 @@ const Login = props => {
             localStorage.setItem("userId", res.data.id);
             localStorage.setItem("message", res.data.message);
             resetForm({ username: "", password: "" });
+            setStatus(true);
             props.history.push("/dashboard");
           })
           .catch(err => {
             setSubmitting(false);
-            console.log("login error: ", err);
+            setStatus(err.response.data.message);
+            console.log("login error: ", err.response.data.message);
           });
       }}
     >
-      {({ handleSubmit, handleChange, values, errors, isSubmitting }) => (
-        <form onSubmit={handleSubmit}>
+      {({
+        handleSubmit,
+        handleChange,
+        values,
+        errors,
+        isSubmitting,
+        status
+      }) => (
+        <form className="loginForm" onSubmit={handleSubmit}>
           <input
             type="text"
             name="username"
@@ -49,10 +61,13 @@ const Login = props => {
           />
           {errors.password && <p className="errors">{errors.password}</p>}
           {isSubmitting ? (
-            <p>loading</p>
+            <button>
+              <CircularProgress class="spinner" size="10px" />
+            </button>
           ) : (
             <button type="submit">Submit</button>
           )}
+          {status && <p>{status}</p>}
         </form>
       )}
     </Formik>
