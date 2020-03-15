@@ -31,6 +31,18 @@ span {
   font-family: "Roboto", sans-serif;
 }
 
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2.2rem;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
 .loginContainer {
   height: 100vh;
   width: 100vw;
@@ -92,13 +104,35 @@ span {
   font-size: 12px;
 }
 
+.userDashboardContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .issueCard {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 40%;
-  color: blue;
 }
 
 .issueCard img {
-  width: 200px;
+  width: 300px;
+}
+
+.addFormContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.addFormContainer form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

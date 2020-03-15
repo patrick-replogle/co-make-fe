@@ -7,6 +7,7 @@ import Login from "./components/authentication/Login.js";
 import PrivateRoute from "./components/PrivateRoute.js";
 import Dashboard from "./components/Dashboard.js";
 import UserDashboard from "./components/UserDashboard.js";
+import AddPostForm from "./components/AddPostForm.js";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Switch>
         <PrivateRoute path="/dashboard" component={Dashboard} />
         <PrivateRoute path="/user/posts" component={UserDashboard} />
+        <PrivateRoute path="/addpost" component={AddPostForm} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
       </Switch>

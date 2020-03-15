@@ -15,12 +15,12 @@ const UserDashboard = props => {
       .catch(err => {
         console.log("Error fetching: ", err.response.datamessage);
       });
-  }, []);
+  }, [setUserPosts]);
   return (
-    <div>
+    <div className="userDashboardContainer">
       <h2>user dashboard</h2>
       {userPosts.map(post => {
-        return <IssueCard post={post} ket={post.id} />;
+        return <IssueCard post={post} key={post.id} />;
       })}
     </div>
   );
