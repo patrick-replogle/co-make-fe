@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
+import { Formik } from "formik";
+import * as Yup from "yup";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
 
@@ -10,74 +13,137 @@ const initialUser = {
   last_name: ""
 };
 
+const passwordErrText = `password must contain at least 
+1 uppercase, lowercase, character, number, and symbol`;
+
+const validationSchema = Yup.object({
+  username: Yup.string()
+    .required("username required")
+    .max(35)
+    .min(1),
+  password: Yup.string()
+    .required("password required")
+    .max(100)
+    .min(8)
+    .matches(/[0-9]/, passwordErrText)
+    .matches(/[A-Z]/, passwordErrText)
+    .matches(/[a-z]/, passwordErrText)
+    .matches(/[-+_!@#$%^&*.,?]/, passwordErrText),
+  email: Yup.string()
+    .required("email required")
+    .email(),
+  first_name: Yup.string()
+    .required("first name required")
+    .max(35)
+    .min(1),
+  last_name: Yup.string()
+    .required("last name required")
+    .max(35)
+    .min(1)
+});
+
 const Register = props => {
-  const [registerData, setRegisterData] = useState(initialUser);
-  const [isLoading, setisLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  const handleChange = e => {
-    setRegisterData({ ...registerData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    setisLoading(true);
-    setError("");
-    axiosWithAuth()
-      .post("/auth/register", registerData)
-      .then(res => {
-        setisLoading(false);
-        setRegisterData(initialUser);
-        props.history.push("/login");
-      })
-      .catch(err => {
-        setisLoading(false);
-        console.log(err);
-        setError(err.message);
-      });
-  };
-
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          onChange={handleChange}
-          placeholder="username"
-          value={registerData.username}
-        />
-        <input
-          type="password"
-          name="password"
-          onChange={handleChange}
-          placeholder="password"
-          value={registerData.password}
-        />
-        <input
-          type="email"
-          name="email"
-          onChange={handleChange}
-          placeholder="email"
-          value={registerData.email}
-        />
-        <input
-          type="text"
-          name="first_name"
-          onChange={handleChange}
-          placeholder="first_name"
-          value={registerData.first_name}
-        />
-        <input
-          type="text"
-          name="last_name"
-          onChange={handleChange}
-          placeholder="last_name"
-          value={registerData.last_name}
-        />
-        <button>Submit</button>
-        <button onClick={() => setRegisterData(initialUser)}>Reset</button>
-      </form>
+    <div className="loginContainer">
+      <Formik
+        initialValues={initialUser}
+        validationSchema={validationSchema}
+        onSubmit={(values, { resetForm, setSubmitting, setStatus }) => {
+          setSubmitting(true);
+          setStatus(false);
+          axiosWithAuth()
+            .post("/auth/register", values)
+            .then(res => {
+              localStorage.setItem("token", res.data.token);
+              resetForm(initialUser);
+              props.history.push("/login");
+            })
+            .catch(err => {
+              setSubmitting(false);
+              setStatus(err.response.data.message);
+              console.log("login error: ", err.response.data.message);
+            });
+        }}
+      >
+        {({
+          touched,
+          handleSubmit,
+          handleChange,
+          values,
+          errors,
+          isSubmitting,
+          status
+        }) => (
+          <>
+            <h1>Register Below:</h1>
+            <form className="loginForm" onSubmit={handleSubmit}>
+              {status && <p className="status">{status}</p>}
+              <input
+                type="text"
+                name="username"
+                onChange={handleChange}
+                value={values.username}
+                placeholder="username"
+              />
+              {touched.username && errors.username && (
+                <p className="errors">{errors.username}</p>
+              )}
+
+              <input
+                type="password"
+                name="password"
+                onChange={handleChange}
+                value={values.password}
+                placeholder="password"
+              />
+              {touched.password && errors.password && (
+                <p className="errors">{errors.password}</p>
+              )}
+
+              <input
+                type="email"
+                name="email"
+                onChange={handleChange}
+                value={values.email}
+                placeholder="email"
+              />
+              {touched.email && errors.email && (
+                <p className="errors">{errors.email}</p>
+              )}
+
+              <input
+                type="text"
+                name="first_name"
+                onChange={handleChange}
+                value={values.first_name}
+                placeholder="first name"
+              />
+              {touched.first_name && errors.first_name && (
+                <p className="errors">{errors.first_name}</p>
+              )}
+
+              <input
+                type="text"
+                name="last_name"
+                onChange={handleChange}
+                value={values.last_name}
+                placeholder="last name"
+              />
+              {touched.last_name && errors.last_name && (
+                <p className="errors">{errors.last_name}</p>
+              )}
+
+              {isSubmitting ? (
+                <button>
+                  <CircularProgress color="primary" size="20px" />
+                </button>
+              ) : (
+                <button type="submit">Submit</button>
+              )}
+            </form>
+          </>
+        )}
+      </Formik>
     </div>
   );
 };

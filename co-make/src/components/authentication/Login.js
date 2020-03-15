@@ -10,11 +10,17 @@ const validationSchema = Yup.object({
   password: Yup.string().required("password required")
 });
 
+const initialLoginState = {
+  username: "",
+  password: ""
+};
+
 const Login = props => {
   return (
     <div className="loginContainer">
+      <h1>Login Below:</h1>
       <Formik
-        initialValues={{ username: "", password: "" }}
+        initialValues={initialLoginState}
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm, setSubmitting, setStatus }) => {
           setSubmitting(true);
@@ -25,7 +31,7 @@ const Login = props => {
               localStorage.setItem("token", res.data.token);
               localStorage.setItem("userId", res.data.id);
               localStorage.setItem("message", res.data.message);
-              resetForm({ username: "", password: "" });
+              resetForm(initialLoginState);
               props.history.push("/dashboard");
             })
             .catch(err => {
@@ -36,6 +42,7 @@ const Login = props => {
         }}
       >
         {({
+          touched,
           handleSubmit,
           handleChange,
           values,
@@ -52,9 +59,10 @@ const Login = props => {
               value={values.username}
               placeholder="username"
             />
-            <div className="errorContainer">
-              {errors.username && <p className="errors">{errors.username}</p>}
-            </div>
+            {touched.username && errors.username && (
+              <p className="errors">{errors.username}</p>
+            )}
+
             <input
               type="password"
               name="password"
@@ -62,12 +70,13 @@ const Login = props => {
               value={values.password}
               placeholder="password"
             />
-            <div className="errorContainer">
-              {errors.password && <p className="errors">{errors.password}</p>}
-            </div>
+            {touched.password && errors.password && (
+              <p className="errors">{errors.password}</p>
+            )}
+
             {isSubmitting ? (
               <button>
-                <CircularProgress color="primary" size="10px" />
+                <CircularProgress color="primary" size="20px" />
               </button>
             ) : (
               <button type="submit">Submit</button>
