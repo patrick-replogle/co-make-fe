@@ -12,65 +12,70 @@ const validationSchema = Yup.object({
 
 const Login = props => {
   return (
-    <Formik
-      initialValues={{ username: "", password: "" }}
-      validationSchema={validationSchema}
-      onSubmit={(values, { resetForm, setSubmitting, setStatus }) => {
-        setSubmitting(true);
-        setStatus(false);
-        axiosWithAuth()
-          .post("/auth/login", values)
-          .then(res => {
-            localStorage.setItem("token", res.data.token);
-            localStorage.setItem("userId", res.data.id);
-            localStorage.setItem("message", res.data.message);
-            resetForm({ username: "", password: "" });
-            setStatus(true);
-            props.history.push("/dashboard");
-          })
-          .catch(err => {
-            setSubmitting(false);
-            setStatus(err.response.data.message);
-            console.log("login error: ", err.response.data.message);
-          });
-      }}
-    >
-      {({
-        handleSubmit,
-        handleChange,
-        values,
-        errors,
-        isSubmitting,
-        status
-      }) => (
-        <form className="loginForm" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="username"
-            onChange={handleChange}
-            value={values.username}
-            placeholder="username"
-          />
-          {errors.username && <p className="errors">{errors.username}</p>}
-          <input
-            type="password"
-            name="password"
-            onChange={handleChange}
-            value={values.password}
-            placeholder="password"
-          />
-          {errors.password && <p className="errors">{errors.password}</p>}
-          {isSubmitting ? (
-            <button>
-              <CircularProgress class="spinner" size="10px" />
-            </button>
-          ) : (
-            <button type="submit">Submit</button>
-          )}
-          {status && <p>{status}</p>}
-        </form>
-      )}
-    </Formik>
+    <div className="loginContainer">
+      <Formik
+        initialValues={{ username: "", password: "" }}
+        validationSchema={validationSchema}
+        onSubmit={(values, { resetForm, setSubmitting, setStatus }) => {
+          setSubmitting(true);
+          setStatus(false);
+          axiosWithAuth()
+            .post("/auth/login", values)
+            .then(res => {
+              localStorage.setItem("token", res.data.token);
+              localStorage.setItem("userId", res.data.id);
+              localStorage.setItem("message", res.data.message);
+              resetForm({ username: "", password: "" });
+              props.history.push("/dashboard");
+            })
+            .catch(err => {
+              setSubmitting(false);
+              setStatus(err.response.data.message);
+              console.log("login error: ", err.response.data.message);
+            });
+        }}
+      >
+        {({
+          handleSubmit,
+          handleChange,
+          values,
+          errors,
+          isSubmitting,
+          status
+        }) => (
+          <form className="loginForm" onSubmit={handleSubmit}>
+            {status && <p className="status">{status}</p>}
+            <input
+              type="text"
+              name="username"
+              onChange={handleChange}
+              value={values.username}
+              placeholder="username"
+            />
+            <div className="errorContainer">
+              {errors.username && <p className="errors">{errors.username}</p>}
+            </div>
+            <input
+              type="password"
+              name="password"
+              onChange={handleChange}
+              value={values.password}
+              placeholder="password"
+            />
+            <div className="errorContainer">
+              {errors.password && <p className="errors">{errors.password}</p>}
+            </div>
+            {isSubmitting ? (
+              <button>
+                <CircularProgress color="primary" size="10px" />
+              </button>
+            ) : (
+              <button type="submit">Submit</button>
+            )}
+          </form>
+        )}
+      </Formik>
+    </div>
   );
 };
 

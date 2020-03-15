@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
@@ -37,6 +41,14 @@
   }
 }
 
+.loginContainer {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .loginForm {
   display: flex;
   flex-direction: column;
@@ -44,16 +56,39 @@
   justify-content: center;
 }
 
+.loginForm input {
+  width: 380px;
+  margin-bottom: 10px;
+  padding: 12px 20px;
+  outline: none;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .loginForm button {
-  padding: 10px 20px;
+  padding: 12px 20px;
+  width: 380px;
   color: white;
-  background: blue;
+  background: salmon;
+  border-radius: 4px;
 }
 
 .loginForm button .spinner {
   stroke: white;
 }
 
+.errorContainer {
+  margin-top: 5px;
+  display: block;
+}
+
 .errors {
   color: red;
+  font-size: 12px;
+}
+
+.status {
+  color: red;
+  font-size: 12px;
 }
