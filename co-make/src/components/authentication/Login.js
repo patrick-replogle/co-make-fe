@@ -1,71 +1,12 @@
 import React, { useState } from "react";
-import { Form, Field, ErrorMessage, Formik } from "formik";
+import { Formik } from "formik";
 import * as Yup from "yup";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
 
-// const initialLoginState = {
-//   username: "",
-//   password: ""
-// };
-
-// const Login = props => {
-//   const [signInData, setSignInData] = useState(initialLoginState);
-//   const [isLoading, setIsLoading] = useState(false);
-//   const [error, setError] = useState("");
-
-//   const handleChange = e => {
-//     e.preventDefault();
-//     setSignInData({ ...signInData, [e.target.name]: e.target.value });
-//   };
-
-//   const handleSubmit = e => {
-//     e.preventDefault();
-//     setIsLoading(true);
-//     setError("");
-//     axiosWithAuth()
-//       .post("/auth/login", signInData)
-//       .then(res => {
-//         localStorage.setItem("token", res.data.token);
-//         localStorage.setItem("userId", res.data.id);
-//         localStorage.setItem("message", res.data.message);
-//         setIsLoading(false);
-//         setSignInData(initialLoginState);
-//         props.history.push("/dashboard");
-//       })
-//       .catch(err => {
-//         setIsLoading(false);
-//         console.log("error loggin in: ", err);
-//         setError(err.message);
-//       });
-//   };
-
-//   return (
-//     <div>
-//       <form onSubmit={handleSubmit}>
-//         <input
-//           type="text"
-//           name="username"
-//           onChange={handleChange}
-//           placeholder="username"
-//           value={signInData.username}
-//         />
-//         <input
-//           type="password"
-//           name="password"
-//           onChange={handleChange}
-//           placeholder="password"
-//           value={signInData.password}
-//         />
-//         <button>Submit</button>
-//       </form>
-//     </div>
-//   );
-// };
-
 const validationSchema = Yup.object({
-  username: Yup.string().required("Username required"),
-  password: Yup.string().required("Password required")
+  username: Yup.string().required("username required"),
+  password: Yup.string().required("password required")
 });
 
 const Login = props => {
@@ -73,21 +14,23 @@ const Login = props => {
     <Formik
       initialValues={{ username: "", password: "" }}
       validationSchema={validationSchema}
-      onSubmit={values => {
+      onSubmit={(values, { resetForm, setSubmitting }) => {
         axiosWithAuth()
           .post("/auth/login", values)
           .then(res => {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("userId", res.data.id);
             localStorage.setItem("message", res.data.message);
+            resetForm({ username: "", password: "" });
             props.history.push("/dashboard");
           })
           .catch(err => {
-            console.log("error loggin in: ", err);
+            setSubmitting(false);
+            console.log("login error: ", err);
           });
       }}
     >
-      {({ handleSubmit, handleChange, values, errors }) => (
+      {({ handleSubmit, handleChange, values, errors, isSubmitting }) => (
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -105,7 +48,11 @@ const Login = props => {
             placeholder="password"
           />
           {errors.password && <p className="errors">{errors.password}</p>}
-          <button type="submit">Submit</button>
+          {isSubmitting ? (
+            <p>loading</p>
+          ) : (
+            <button type="submit">Submit</button>
+          )}
         </form>
       )}
     </Formik>
