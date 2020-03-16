@@ -121,7 +121,7 @@ const AddPostForm = props => {
             <CircularProgress color="primary" size="20px" />
           </button>
         ) : (
-          <button type="submit">Submit</button>
+          <button>Submit</button>
         )}
         <button onClick={() => setPostData(initialFormState)}>Reset</button>
         <button

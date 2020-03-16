@@ -182,3 +182,51 @@ p {
   align-items: center;
   justify-content: center;
 }
+
+.profileForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.profileForm form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileForm form input {
+  width: 380px;
+  margin-bottom: 10px;
+  padding: 12px 20px;
+  outline: none;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.profileForm form button {
+  padding: 12px 20px;
+  font-size: 20px;
+  width: 380px;
+  color: white;
+  margin-bottom: 15px;
+  background: lightskyblue;
+  border-radius: 4px;
+  border: 1px solid white;
+  outline: none;
+}
+
+.loading {
+  position: fixed;
+  width: 500px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -250px;
+}

@@ -1,26 +1,48 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth.js";
+import { userContext } from "../contexts/userContext.js";
+
+const initialUserState = {
+  username: "",
+  email: "",
+  first_name: "",
+  last_name: "",
+  profile_image_url: ""
+};
 
 const UserForm = props => {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState(initialUserState);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errMessage, setErrMessage] = useState("");
+
+  const { user, setUser } = useContext(userContext);
+
   useEffect(() => {
+    setIsLoading(true);
     axiosWithAuth()
       .get(`/users/${localStorage.getItem("userId")}`)
       .then(res => {
-        const user = res.data;
-        setFormData({
-          username: user.username,
-          email: user.email,
-          first_name: user.first_name,
-          last_name: user.last_name,
-          profile_image_url: user.profile_image_url
-        });
+        setIsLoading(false);
+        setUser(res.data);
       })
       .catch(err => {
-        console.log("error fetching user: ", err.response.data.message);
+        setIsLoading(false);
+        console.log("error updating: ", err.response.data.message);
       });
-  }, [setFormData]);
+  }, [setUser]);
+
+  useEffect(() => {
+    setFormData({
+      username: user.username,
+      email: user.email,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      profile_image_url: user.profile_image_url
+    });
+  }, [user, setFormData]);
 
   const handleChange = e => {
     setFormData({
@@ -30,57 +52,92 @@ const UserForm = props => {
   };
 
   const handleSubmit = e => {
+    setIsSubmitting(true);
     e.preventDefault();
+    axiosWithAuth()
+      .put(`/users/${localStorage.getItem("userId")}`, formData)
+      .then(res => {
+        setIsSubmitting(false);
+        setUser(res.data);
+        props.history.push("/user/posts");
+      })
+      .catch(err => {
+        setIsSubmitting(false);
+        console.log("user form error: ", err.response.data.message);
+      });
   };
 
-  return (
-    <div>
-      <form>
-        <input
-          type="text"
-          name="username"
-          onChange={handleChange}
-          value={formData.username}
-          placeholder="username"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          onChange={handleChange}
-          value={formData.email}
-          placeholder="email"
-          required
-        />
-        <input
-          type="text"
-          name="first_name"
-          onChange={handleChange}
-          value={formData.first_name}
-          placeholder="first name"
-          required
-        />
-        <input
-          type="text"
-          name="last_name"
-          onChange={handleChange}
-          value={formData.last_name}
-          placeholder="last name"
-          required
-        />
+  if (isLoading) {
+    return (
+      <div className="loading">
+        <CircularProgress color="primary" size="100px" />
+      </div>
+    );
+  } else {
+    return (
+      <div className="profileForm">
+        {errMessage && <p>{errMessage}</p>}
+        <h1>Update Profile</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="username"
+            onChange={handleChange}
+            value={formData.username}
+            placeholder="username"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            onChange={handleChange}
+            value={formData.email}
+            placeholder="email"
+            required
+          />
+          <input
+            type="text"
+            name="first_name"
+            onChange={handleChange}
+            value={formData.first_name}
+            placeholder="first name"
+            required
+          />
+          <input
+            type="text"
+            name="last_name"
+            onChange={handleChange}
+            value={formData.last_name}
+            placeholder="last name"
+            required
+          />
 
-        <input
-          type="text"
-          name="profile_image_url"
-          onChange={handleChange}
-          value={formData.profile_image_url}
-          placeholder="profile image url"
-          required
-        />
-        <button>Submit</button>
-      </form>
-    </div>
-  );
+          <input
+            type="text"
+            name="profile_image_url"
+            onChange={handleChange}
+            value={formData.profile_image_url}
+            placeholder="profile image url"
+          />
+          {isSubmitting ? (
+            <button>
+              <CircularProgress color="primary" size="20px" />
+            </button>
+          ) : (
+            <button>Submit</button>
+          )}
+          <button
+            onClick={() => {
+              setFormData({});
+              props.history.push("/user/posts");
+            }}
+          >
+            Cancel
+          </button>
+        </form>
+      </div>
+    );
+  }
 };
 
 export default UserForm;
