@@ -1,13 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
 
+import { withRouter } from "react-router-dom";
+import { postContext } from "../contexts/postContext.js";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const IssueCard = props => {
+  const { setIsEditing, setPostToEdit } = useContext(postContext);
+
+  const fetchPosts = () => {
+    axiosWithAuth()
+      .get("/posts/by/user")
+      .then(res => {
+        console.log(res.data);
+        props.setUserPosts(res.data);
+      })
+      .catch(err => {
+        console.log("error fetching: ", err.response.data.message);
+      });
+  };
+
+  const handleEdit = post => {
+    setPostToEdit(post);
+    setIsEditing(true);
+    props.history.push("/addpost");
+  };
+
   const deletePost = id => {
     axiosWithAuth()
       .delete(`/posts/${id}`)
-      .then(res => {
-        console.log(res);
+      .then(() => {
+        fetchPosts();
       })
       .catch(err => {
         console.log("Error deleting post: ", err.response.data.message);
@@ -24,10 +46,11 @@ const IssueCard = props => {
       <div>
         Votes:
         <button>{props.post.votes}</button>
+        <button onClick={() => handleEdit(props.post)}>Edit</button>
         <button onClick={() => deletePost(props.post.id)}>Delete</button>
       </div>
     </div>
   );
 };
 
-export default IssueCard;
+export default withRouter(IssueCard);

@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { withRouter } from "react-router-dom";
+
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { postContext } from "../contexts/postContext.js";
 
 const initialFormState = {
   title: "",
@@ -11,6 +14,17 @@ const initialFormState = {
 
 const AddPostForm = props => {
   const [postData, setPostData] = useState(initialFormState);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const { isEditing, setIsEditing, postToEdit, setPostToEdit } = useContext(
+    postContext
+  );
+
+  useEffect(() => {
+    if (isEditing) {
+      setPostData({ ...postToEdit });
+    }
+  }, [isEditing, postToEdit]);
 
   const handleChange = e => {
     setPostData({
@@ -21,16 +35,38 @@ const AddPostForm = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axiosWithAuth()
-      .post("/posts", postData)
-      .then(res => {
-        console.log(res);
-        setPostData(initialFormState);
-        props.history.push("/user/posts");
-      })
-      .catch(err => {
-        console.log("Error posting: ", err.response.data.message);
-      });
+    setIsLoading(true);
+    setError("");
+
+    if (isEditing) {
+      axiosWithAuth()
+        .put(`/posts/${postToEdit.id}`, postData)
+        .then(() => {
+          setIsEditing(false);
+          setPostToEdit({});
+          setPostData(initialFormState);
+          setIsLoading(false);
+          props.history.push(`/user/posts`);
+        })
+        .catch(err => {
+          setIsLoading(false);
+          setError(err.response.data.message);
+          console.log("Put request error: ", err);
+        });
+    } else {
+      axiosWithAuth()
+        .post("/posts", postData)
+        .then(() => {
+          setIsLoading(false);
+          setPostData(initialFormState);
+          props.history.push("/user/posts");
+        })
+        .catch(err => {
+          setIsLoading(false);
+          setError(err.response.data.message);
+          console.log("Add form post error: ", err);
+        });
+    }
   };
   return (
     <div className="addFormContainer">
@@ -77,9 +113,18 @@ const AddPostForm = props => {
         />
         <button>Submit</button>
         <button onClick={() => setPostData(initialFormState)}>Reset</button>
+        <button
+          onClick={() => {
+            setPostData(initialFormState);
+            setIsEditing(false);
+            setPostToEdit({});
+          }}
+        >
+          Cancel
+        </button>
       </form>
     </div>
   );
 };
 
-export default AddPostForm;
+export default withRouter(AddPostForm);

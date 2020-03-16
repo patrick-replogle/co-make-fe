@@ -5,6 +5,7 @@ import IssueCard from "./IssueCard.js";
 
 const UserDashboard = props => {
   const [userPosts, setUserPosts] = useState([]);
+
   useEffect(() => {
     axiosWithAuth()
       .get("/posts/by/user")
@@ -20,7 +21,9 @@ const UserDashboard = props => {
     <div className="userDashboardContainer">
       <h2>user dashboard</h2>
       {userPosts.map(post => {
-        return <IssueCard post={post} key={post.id} />;
+        return (
+          <IssueCard post={post} key={post.id} setUserPosts={setUserPosts} />
+        );
       })}
     </div>
   );
