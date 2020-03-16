@@ -107,6 +107,16 @@ p {
 .userDashboardContainer {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.postList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   width: 100%;
 }
 
@@ -115,10 +125,12 @@ p {
   flex-direction: column;
   align-items: center;
   width: 40%;
+  border: 1px solid black;
+  border-radius: 6px;
 }
 
 .issueCard img {
-  width: 300px;
+  width: 100%;
 }
 
 .addFormContainer {

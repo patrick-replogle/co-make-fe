@@ -20,11 +20,13 @@ const UserDashboard = props => {
   return (
     <div className="userDashboardContainer">
       <h2>user dashboard</h2>
-      {userPosts.map(post => {
-        return (
-          <IssueCard post={post} key={post.id} setUserPosts={setUserPosts} />
-        );
-      })}
+      <div className="postList">
+        {userPosts.map(post => {
+          return (
+            <IssueCard post={post} key={post.id} setUserPosts={setUserPosts} />
+          );
+        })}
+      </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { withRouter } from "react-router-dom";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { postContext } from "../contexts/postContext.js";
@@ -51,7 +52,7 @@ const AddPostForm = props => {
         .catch(err => {
           setIsLoading(false);
           setError(err.response.data.message);
-          console.log("Put request error: ", err);
+          console.log("Put request error: ", err.response.data.message);
         });
     } else {
       axiosWithAuth()
@@ -64,13 +65,17 @@ const AddPostForm = props => {
         .catch(err => {
           setIsLoading(false);
           setError(err.response.data.message);
-          console.log("Add form post error: ", err);
+          console.log("Add form post error: ", err.response.data.message);
         });
     }
   };
   return (
     <div className="addFormContainer">
-      <h1>Add a Post</h1>
+      {isEditing ? (
+        <h2>Edit a Passport Entry</h2>
+      ) : (
+        <h2>Add a Passport Entry</h2>
+      )}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -111,13 +116,20 @@ const AddPostForm = props => {
           value={postData.post_image_url}
           placeholder="image url"
         />
-        <button>Submit</button>
+        {isLoading ? (
+          <button>
+            <CircularProgress color="primary" size="20px" />
+          </button>
+        ) : (
+          <button type="submit">Submit</button>
+        )}
         <button onClick={() => setPostData(initialFormState)}>Reset</button>
         <button
           onClick={() => {
             setPostData(initialFormState);
             setIsEditing(false);
             setPostToEdit({});
+            props.history.push("/user/posts");
           }}
         >
           Cancel

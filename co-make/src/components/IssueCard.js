@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { withRouter } from "react-router-dom";
 import { postContext } from "../contexts/postContext.js";
@@ -6,6 +7,11 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const IssueCard = props => {
   const { setIsEditing, setPostToEdit } = useContext(postContext);
+
+  if (props.post.post_image_url === "") {
+    props.post.post_image_url =
+      "https://pngimage.net/wp-content/uploads/2018/05/default-png-6.png";
+  }
 
   const fetchPosts = () => {
     axiosWithAuth()
@@ -42,7 +48,7 @@ const IssueCard = props => {
       <p>Description: {props.post.description}</p>
       <p>City: {props.post.city}</p>
       <p>Zip-Code: {props.post.zip_code}</p>
-      <p>Author: {props.post.author_username}</p>
+      <p>Author: {props.post.authorUsername}</p>
       <div>
         Votes:
         <button>{props.post.votes}</button>
