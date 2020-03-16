@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { withRouter } from "react-router-dom";
 import { postContext } from "../contexts/postContext.js";
@@ -18,7 +17,7 @@ const IssueCard = props => {
       .get("/posts/by/user")
       .then(res => {
         console.log(res.data);
-        props.setUserPosts(res.data);
+        props.setUserPosts(res.data.sort((a, b) => b.votes - a.votes));
       })
       .catch(err => {
         console.log("error fetching: ", err.response.data.message);
@@ -41,6 +40,18 @@ const IssueCard = props => {
         console.log("Error deleting post: ", err.response.data.message);
       });
   };
+
+  const upVotePost = id => {
+    axiosWithAuth()
+      .post(`/posts/${id}/increment/votes`)
+      .then(() => {
+        fetchPosts();
+      })
+      .catch(err => {
+        console.log("upvote err: ", err.response.data.message);
+      });
+  };
+
   return (
     <div className="issueCard">
       <img src={props.post.post_image_url} alt="user pic" />
@@ -51,7 +62,9 @@ const IssueCard = props => {
       <p>Author: {props.post.authorUsername}</p>
       <div>
         Votes:
-        <button>{props.post.votes}</button>
+        <button onClick={() => upVotePost(props.post.id)}>
+          {props.post.votes}
+        </button>
         <button onClick={() => handleEdit(props.post)}>Edit</button>
         <button onClick={() => deletePost(props.post.id)}>Delete</button>
       </div>
