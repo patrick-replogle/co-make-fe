@@ -1,4 +1,7 @@
 import React, { useContext } from "react";
+import Button from "@material-ui/core/Button";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 
 import { withRouter } from "react-router-dom";
 import { postContext } from "../contexts/postContext.js";
@@ -62,11 +65,31 @@ const IssueCard = props => {
       <p>Author: {props.post.authorUsername}</p>
       <div>
         Votes:
-        <button onClick={() => upVotePost(props.post.id)}>
+        <Button
+          size="large"
+          variant="contained"
+          onClick={() => upVotePost(props.post.id)}
+        >
           {props.post.votes}
-        </button>
-        <button onClick={() => handleEdit(props.post)}>Edit</button>
-        <button onClick={() => deletePost(props.post.id)}>Delete</button>
+        </Button>
+        <div>
+          <Button
+            size="large"
+            variant="contained"
+            startIcon={<EditIcon />}
+            onClick={() => handleEdit(props.post)}
+          >
+            Edit
+          </Button>
+          <Button
+            size="large"
+            variant="contained"
+            startIcon={<DeleteIcon />}
+            onClick={() => deletePost(props.post.id)}
+          >
+            Delete
+          </Button>
+        </div>
       </div>
     </div>
   );

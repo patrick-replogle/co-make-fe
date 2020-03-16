@@ -3,18 +3,17 @@ import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth.js";
 import IssueCard from "./IssueCard.js";
 
-const UserDashboard = props => {
+const UserDashboard = () => {
   const [userPosts, setUserPosts] = useState([]);
 
   useEffect(() => {
     axiosWithAuth()
       .get("/posts/by/user")
       .then(res => {
-        console.log(res.data);
-        setUserPosts(res.data);
+        setUserPosts(res.data.sort((a, b) => b.votes - a.votes));
       })
       .catch(err => {
-        console.log("Error fetching: ", err.response.datamessage);
+        console.log("Error fetching: ", err.response.data.message);
       });
   }, [setUserPosts]);
   return (

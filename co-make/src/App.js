@@ -11,20 +11,28 @@ import AddPostForm from "./components/AddPostForm.js";
 import { postContext } from "./contexts/postContext.js";
 
 function App() {
+  const [posts, setPosts] = useState([]);
   const [postToEdit, setPostToEdit] = useState({});
   const [isEditing, setIsEditing] = useState(false);
 
   return (
     <div className="App">
       <postContext.Provider
-        value={{ postToEdit, setPostToEdit, isEditing, setIsEditing }}
+        value={{
+          posts,
+          setPosts,
+          postToEdit,
+          setPostToEdit,
+          isEditing,
+          setIsEditing
+        }}
       >
         <Switch>
-          <PrivateRoute path="/dashboard" component={Dashboard} />
-          <PrivateRoute path="/user/posts" component={UserDashboard} />
-          <PrivateRoute path="/addpost" component={AddPostForm} />
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute exact path="/user/posts" component={UserDashboard} />
+          <PrivateRoute exact path="/addpost" component={AddPostForm} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
         </Switch>
       </postContext.Provider>
     </div>

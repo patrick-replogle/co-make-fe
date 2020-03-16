@@ -128,10 +128,22 @@ p {
   border: 1px solid black;
   border-radius: 6px;
   margin: 10px 10px;
+  background: #517b96;
+  color: white;
 }
 
 .issueCard img {
   width: 100%;
+}
+
+.issueCard button {
+  margin: 10px 10px;
+  color: white;
+  background: lightskyblue;
+}
+
+.issueCard button:hover {
+  opacity: 0.9;
 }
 
 .addFormContainer {
