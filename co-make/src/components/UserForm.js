@@ -6,6 +6,7 @@ import { userContext } from "../contexts/userContext.js";
 
 const initialUserState = {
   username: "",
+  password: "",
   email: "",
   first_name: "",
   last_name: "",
@@ -13,12 +14,11 @@ const initialUserState = {
 };
 
 const UserForm = props => {
+  const { user, setUser } = useContext(userContext);
   const [formData, setFormData] = useState(initialUserState);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errMessage, setErrMessage] = useState("");
-
-  const { user, setUser } = useContext(userContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -37,6 +37,7 @@ const UserForm = props => {
   useEffect(() => {
     setFormData({
       username: user.username,
+      password: "",
       email: user.email,
       first_name: user.first_name,
       last_name: user.last_name,
@@ -55,7 +56,7 @@ const UserForm = props => {
     setIsSubmitting(true);
     e.preventDefault();
     axiosWithAuth()
-      .put(`/users/${localStorage.getItem("userId")}`, formData)
+      .put(`/users/${user.id}`, formData)
       .then(res => {
         setIsSubmitting(false);
         setUser(res.data);
@@ -63,6 +64,7 @@ const UserForm = props => {
       })
       .catch(err => {
         setIsSubmitting(false);
+        setErrMessage(err.response.data.message);
         console.log("user form error: ", err.response.data.message);
       });
   };
@@ -85,6 +87,14 @@ const UserForm = props => {
             onChange={handleChange}
             value={formData.username}
             placeholder="username"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            onChange={handleChange}
+            value={formData.password}
+            placeholder="password"
             required
           />
           <input
@@ -139,5 +149,75 @@ const UserForm = props => {
     );
   }
 };
+
+//   const handleChange = e => {
+//     setFormData({
+//       ...formData,
+//       [e.target.name]: e.target.value
+//     });
+//   };
+
+//   const handleSubmit = e => {
+//     e.preventDefault();
+//     axiosWithAuth()
+//       .put("/users/1", formData)
+//       .then(res => {
+//         console.log(res.data);
+//       })
+//       .catch(err => {
+//         console.log("error updated user: ", err.response.data.message);
+//       });
+//   };
+
+//   return (
+//     <div>
+//       <form onSubmit={handleSubmit}>
+//         <input
+//           type="text"
+//           name="username"
+//           onChange={handleChange}
+//           value={formData.username}
+//           placeholder="username"
+//         />
+//         <input
+//           type="password"
+//           name="password"
+//           onChange={handleChange}
+//           value={formData.password}
+//           placeholder="password"
+//         />
+//         <input
+//           type="text"
+//           name="email"
+//           onChange={handleChange}
+//           value={formData.email}
+//           placeholder="email"
+//         />
+//         <input
+//           type="text"
+//           name="first_name"
+//           onChange={handleChange}
+//           value={formData.first_name}
+//           placeholder="first name"
+//         />
+//         <input
+//           type="text"
+//           name="last_name"
+//           onChange={handleChange}
+//           value={formData.last_name}
+//           placeholder="last name"
+//         />
+//         <input
+//           type="text"
+//           name="profile_image_url"
+//           onChange={handleChange}
+//           value={formData.profile_image_url}
+//           placeholder="profile image url"
+//         />
+//         <button>Submit</button>
+//       </form>
+//     </div>
+//   );
+// };
 
 export default UserForm;

@@ -24,7 +24,7 @@ const Dashboard = props => {
       <DashboardHeader />
       <h1>all posts</h1>
       {posts.map(post => {
-        return <IssueLink post={post} setPosts={setPosts} />;
+        return <IssueLink post={post} setPosts={setPosts} key={post.id} />;
       })}
     </div>
   );

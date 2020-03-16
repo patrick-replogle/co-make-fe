@@ -76,6 +76,7 @@ const AddPostForm = props => {
       ) : (
         <h2>Add a Passport Entry</h2>
       )}
+      {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
