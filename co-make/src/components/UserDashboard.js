@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth.js";
+import ProfileHeader from "./headers/ProfileHeader.js";
 import IssueCard from "./IssueCard.js";
 
 const UserDashboard = () => {
@@ -18,6 +19,7 @@ const UserDashboard = () => {
   }, [setUserPosts]);
   return (
     <div className="userDashboardContainer">
+      <ProfileHeader />
       <h2>user dashboard</h2>
       <div className="postList">
         {userPosts.map(post => {

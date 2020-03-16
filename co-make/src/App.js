@@ -8,6 +8,7 @@ import PrivateRoute from "./components/PrivateRoute.js";
 import Dashboard from "./components/Dashboard.js";
 import UserDashboard from "./components/UserDashboard.js";
 import AddPostForm from "./components/AddPostForm.js";
+import UserForm from "./components/UserForm.js";
 import { userContext } from "./contexts/userContext.js";
 import { postContext } from "./contexts/postContext.js";
 
@@ -34,6 +35,7 @@ function App() {
             <PrivateRoute path="/dashboard" component={Dashboard} />
             <PrivateRoute path="/user/posts" component={UserDashboard} />
             <PrivateRoute path="/addpost" component={AddPostForm} />
+            <PrivateRoute path="/profile_form" component={UserForm} />
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
           </Switch>
