@@ -43,6 +43,27 @@ p {
   font-size: 1.6rem;
 }
 
+.dashboardHeader {
+  align-items: center;
+  color: #fff;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+  padding: 0 3%;
+  width: 100vw;
+  margin-bottom: 20px;
+  -webkit-box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
+  -moz-box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
+  box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
+}
+
+.dashboardHeader a {
+  font-size: 1.6rem;
+  color: black;
+  text-decoration: none;
+}
+
 .loginContainer {
   height: 100vh;
   width: 100vw;

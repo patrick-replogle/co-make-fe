@@ -13,7 +13,7 @@ const IssueLink = props => {
 
   const fetchPosts = () => {
     axiosWithAuth()
-      .get("/posts/by/user")
+      .get("/posts")
       .then(res => {
         console.log(res.data);
         props.setPosts(res.data.sort((a, b) => b.votes - a.votes));
@@ -37,11 +37,12 @@ const IssueLink = props => {
   return (
     <div className="issueCard">
       <img src={props.post.post_image_url} alt="user pic" />
-      <h2>Title: {props.post.title}</h2>
-      <p>City: {props.post.city}</p>
-      <p>Zip-Code: {props.post.zip_code}</p>
-      <p>Author: {props.post.authorUsername}</p>
-      <Link to={`/post/${props.post.id}`}>See More</Link>
+      <Link to={`/post/${props.post.id}`}>
+        <h2>Title: {props.post.title}</h2>
+        <p>City: {props.post.city}</p>
+        <p>Zip-Code: {props.post.zip_code}</p>
+        <p>Author: {props.post.authorUsername}</p>
+      </Link>
       <div>
         Votes:
         <Button

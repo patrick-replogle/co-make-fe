@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 
 import { postContext } from "../contexts/postContext.js";
 import { axiosWithAuth } from "../utils/axiosWithAuth.js";
 import IssueLink from "./IssueLink.js";
+import DashboardHeader from "./headers/DashboardHeader.js";
 
 const Dashboard = props => {
   const { posts, setPosts } = useContext(postContext);
@@ -20,6 +21,7 @@ const Dashboard = props => {
 
   return (
     <div>
+      <DashboardHeader />
       <h1>all posts</h1>
       {posts.map(post => {
         return <IssueLink post={post} setPosts={setPosts} />;
