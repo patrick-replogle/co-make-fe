@@ -4,8 +4,8 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 
 import { withRouter } from "react-router-dom";
-import { postContext } from "../contexts/postContext.js";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { postContext } from "../../contexts/postContext.js";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 const IssueCard = props => {
   const { setIsEditing, setPostToEdit } = useContext(postContext);

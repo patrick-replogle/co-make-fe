@@ -3,7 +3,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth.js";
 import ProfileHeader from "./headers/ProfileHeader.js";
-import IssueCard from "./IssueCard.js";
+import IssueCard from "./issues/IssueCard.js";
 import { userContext } from "../contexts/userContext.js";
 
 const UserDashboard = () => {
