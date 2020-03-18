@@ -4,6 +4,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { postContext } from "../contexts/postContext.js";
+import DashboardHeader from "./headers/DashboardHeader.js";
 
 const initialFormState = {
   title: "",
@@ -70,73 +71,76 @@ const AddPostForm = props => {
     }
   };
   return (
-    <div className="addFormContainer">
-      {isEditing ? (
-        <h2>Edit a Passport Entry</h2>
-      ) : (
-        <h2>Add a Passport Entry</h2>
-      )}
-      {error && <p>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="title"
-          onChange={handleChange}
-          value={postData.title}
-          placeholder="title"
-          required
-        />
-        <input
-          type="textarea"
-          name="description"
-          onChange={handleChange}
-          value={postData.description}
-          placeholder="description"
-          required
-        />
-        <input
-          type="text"
-          name="city"
-          onChange={handleChange}
-          value={postData.city}
-          placeholder="city"
-          required
-        />
-        <input
-          type="text"
-          name="zip_code"
-          onChange={handleChange}
-          value={postData.zip_code}
-          placeholder="zip code"
-          required
-        />
-        <input
-          type="text"
-          name="post_image_url"
-          onChange={handleChange}
-          value={postData.post_image_url}
-          placeholder="image url"
-        />
-        {isLoading ? (
-          <button>
-            <CircularProgress color="primary" size="20px" />
-          </button>
+    <>
+      <DashboardHeader />
+      <div className="addFormContainer">
+        {isEditing ? (
+          <h2>Edit a Passport Entry</h2>
         ) : (
-          <button>Submit</button>
+          <h2>Add a Passport Entry</h2>
         )}
-        <button onClick={() => setPostData(initialFormState)}>Reset</button>
-        <button
-          onClick={() => {
-            setPostData(initialFormState);
-            setIsEditing(false);
-            setPostToEdit({});
-            props.history.push("/user/posts");
-          }}
-        >
-          Cancel
-        </button>
-      </form>
-    </div>
+        {error && <p>{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="title"
+            onChange={handleChange}
+            value={postData.title}
+            placeholder="title"
+            required
+          />
+          <input
+            type="textarea"
+            name="description"
+            onChange={handleChange}
+            value={postData.description}
+            placeholder="description"
+            required
+          />
+          <input
+            type="text"
+            name="city"
+            onChange={handleChange}
+            value={postData.city}
+            placeholder="city"
+            required
+          />
+          <input
+            type="text"
+            name="zip_code"
+            onChange={handleChange}
+            value={postData.zip_code}
+            placeholder="zip code"
+            required
+          />
+          <input
+            type="text"
+            name="post_image_url"
+            onChange={handleChange}
+            value={postData.post_image_url}
+            placeholder="image url"
+          />
+          {isLoading ? (
+            <button>
+              <CircularProgress color="primary" size="20px" />
+            </button>
+          ) : (
+            <button>Submit</button>
+          )}
+          <button onClick={() => setPostData(initialFormState)}>Reset</button>
+          <button
+            onClick={() => {
+              setPostData(initialFormState);
+              setIsEditing(false);
+              setPostToEdit({});
+              props.history.push("/user/posts");
+            }}
+          >
+            Cancel
+          </button>
+        </form>
+      </div>
+    </>
   );
 };
 

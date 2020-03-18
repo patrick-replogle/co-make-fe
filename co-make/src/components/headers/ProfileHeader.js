@@ -1,21 +1,57 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import HomeIcon from "@material-ui/icons/Home";
+import Fab from "@material-ui/core/Fab";
+import EditIcon from "@material-ui/icons/Edit";
+import AddIcon from "@material-ui/icons/Add";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const ProfileHeader = props => {
   return (
     <div className="profileHeader">
       <h3>Co-Make</h3>
-      <Link to="/dashboard">Home</Link>
-      <Link to="/addpost">New Post</Link>
-      <Link to="/profile_form">Edit Profile</Link>
-      <button
-        onClick={() => {
-          localStorage.clear();
-          props.history.push("/login");
-        }}
-      >
-        Sign Out
-      </button>
+      <div className="navBarRight">
+        <Fab
+          size="medium"
+          // className="backButtonMargin"
+          style={{ backgroundColor: "white", border: "none" }}
+          onClick={() => {
+            props.history.push("/dashboard");
+          }}
+        >
+          <HomeIcon style={{ color: "black" }} />
+        </Fab>
+        <Fab
+          size="medium"
+          // className="backButtonMargin"
+          style={{ backgroundColor: "white", border: "none" }}
+          onClick={() => {
+            props.history.push("/addpost");
+          }}
+        >
+          <AddIcon style={{ color: "black" }} />
+        </Fab>
+        <Fab
+          size="medium"
+          // className="backButtonMargin"
+          style={{ backgroundColor: "white", border: "none" }}
+          onClick={() => {
+            props.history.push("/profile_form");
+          }}
+        >
+          <EditIcon style={{ color: "black" }} />
+        </Fab>
+        <Fab
+          size="medium"
+          // className="backButtonMargin"
+          style={{ backgroundColor: "white", border: "none" }}
+          onClick={() => {
+            props.history.push("/login");
+          }}
+        >
+          <ExitToAppIcon style={{ color: "black" }} />
+        </Fab>
+      </div>
     </div>
   );
 };

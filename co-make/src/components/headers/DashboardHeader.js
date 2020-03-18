@@ -1,19 +1,46 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import PersonIcon from "@material-ui/icons/Person";
 
 const DashboardHeader = props => {
   return (
-    <div className="dashboardHeader">
-      <Link to="/user/posts">Profile</Link>
-      <Link to="/addpost">New Post</Link>
-      <button
-        onClick={() => {
-          //localStorage.clear();
-          props.history.push("/login");
-        }}
-      >
-        Sign Out
-      </button>
+    <div className="profileHeader">
+      <h3>Co-Make</h3>
+      <div className="navBarRight">
+        <Fab
+          size="medium"
+          // className="backButtonMargin"
+          style={{ backgroundColor: "white", border: "none" }}
+          onClick={() => {
+            props.history.push("/addpost");
+          }}
+        >
+          <AddIcon style={{ color: "black" }} />
+        </Fab>
+        <Fab
+          size="medium"
+          // className="backButtonMargin"
+          style={{ backgroundColor: "white", border: "none" }}
+          onClick={() => {
+            props.history.push("/user/posts");
+          }}
+        >
+          <PersonIcon style={{ color: "black" }} />
+        </Fab>
+        <Fab
+          size="medium"
+          // className="backButtonMargin"
+          style={{ backgroundColor: "white", border: "none" }}
+          onClick={() => {
+            props.history.push("/login");
+          }}
+        >
+          <ExitToAppIcon style={{ color: "black" }} />
+        </Fab>
+      </div>
     </div>
   );
 };

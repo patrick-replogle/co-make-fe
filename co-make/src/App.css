@@ -73,7 +73,6 @@ p {
 
 .profileHeader {
   align-items: center;
-  color: #fff;
   border-bottom: 1px solid rgb(221, 221, 221);
   display: flex;
   height: 70px;
@@ -85,15 +84,10 @@ p {
   box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
 }
 
-.profileHeader h3 {
-  font-size: 1.6rem;
-  color: black;
-}
-
-.profileHeader a {
-  font-size: 1.6rem;
-  color: black;
-  text-decoration: none;
+.navBarRight {
+  display: flex;
+  width: 30%;
+  justify-content: space-evenly;
 }
 
 .loginContainer {
@@ -199,6 +193,7 @@ p {
   opacity: 0.9;
 }
 
+/* add form style */
 .addFormContainer {
   display: flex;
   flex-direction: column;
@@ -214,6 +209,37 @@ p {
   align-items: center;
   justify-content: center;
 }
+
+.addFormContainer form input {
+  width: 380px;
+  margin-bottom: 10px;
+  padding: 12px 20px;
+  outline: none;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.addFormContainer form button {
+  padding: 8px 20px;
+  font-size: 20px;
+  width: 380px;
+  color: white;
+  background: salmon;
+  border-radius: 4px;
+  border: 1px solid white;
+  outline: none;
+}
+
+.addFormContainer form button:hover {
+  opacity: 0.9;
+}
+
+.addFormContainer form button .spinner {
+  stroke: white;
+}
+
+/* profile form styles */
 
 .profileForm {
   display: flex;
