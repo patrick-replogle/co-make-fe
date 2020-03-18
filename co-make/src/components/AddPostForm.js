@@ -4,7 +4,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { postContext } from "../contexts/postContext.js";
-import DashboardHeader from "./headers/DashboardHeader.js";
+import AddPostHeader from "./headers/AddPostHeader.js";
 
 const initialFormState = {
   title: "",
@@ -72,7 +72,7 @@ const AddPostForm = props => {
   };
   return (
     <>
-      <DashboardHeader />
+      <AddPostHeader />
       <div className="addFormContainer">
         {isEditing ? (
           <h2>Edit a Passport Entry</h2>
@@ -89,7 +89,7 @@ const AddPostForm = props => {
             placeholder="title"
             required
           />
-          <input
+          <textarea
             type="textarea"
             name="description"
             onChange={handleChange}
