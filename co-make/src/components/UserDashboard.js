@@ -4,6 +4,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { axiosWithAuth } from "../utils/axiosWithAuth.js";
 import ProfileHeader from "./headers/ProfileHeader.js";
 import IssueCard from "./issues/IssueCard.js";
+import ProfileIssueCard from "./issues/ProfileIssueCard.js";
 import { userContext } from "../contexts/userContext.js";
 
 const UserDashboard = () => {
@@ -62,11 +63,13 @@ const UserDashboard = () => {
             <h3>{userPosts.length} Active Posts</h3>
           </div>
           <div className="profileRight">
-            <h2>Your Posts</h2>
             <div className="postList">
+              {userPosts.length < 1 && (
+                <p>You currently have no active posts</p>
+              )}
               {userPosts.map(post => {
                 return (
-                  <IssueCard
+                  <ProfileIssueCard
                     post={post}
                     key={post.id}
                     setUserPosts={setUserPosts}

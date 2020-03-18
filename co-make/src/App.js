@@ -4,7 +4,7 @@ import "./App.css";
 
 import Register from "./components/authentication/Register.js";
 import Login from "./components/authentication/Login.js";
-import PrivateRoute from "./components/PrivateRoute.js";
+import PrivateRoute from "./utils/PrivateRoute.js";
 import Dashboard from "./components/Dashboard.js";
 import UserDashboard from "./components/UserDashboard.js";
 import AddPostForm from "./components/AddPostForm.js";
