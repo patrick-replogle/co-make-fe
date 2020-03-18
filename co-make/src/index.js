@@ -5,10 +5,17 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
 
+import PostsProvider from "./components/providers/PostsProvider.js";
+import UserProvider from "./components/providers/UserProvider.js";
+
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <UserProvider>
+    <PostsProvider>
+      <Router>
+        <App />
+      </Router>
+    </PostsProvider>
+  </UserProvider>,
   document.getElementById("root")
 );
 

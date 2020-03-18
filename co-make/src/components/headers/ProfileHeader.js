@@ -1,9 +1,10 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 
-const DashboardHeader = props => {
+const ProfileHeader = props => {
   return (
-    <div className="dashboardHeader">
+    <div className="profileHeader">
+      <h3>Co-Make</h3>
       <Link to="/dashboard">Home</Link>
       <Link to="/addpost">New Post</Link>
       <Link to="/profile_form">Edit Profile</Link>
@@ -19,4 +20,4 @@ const DashboardHeader = props => {
   );
 };
 
-export default withRouter(DashboardHeader);
+export default withRouter(ProfileHeader);

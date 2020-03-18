@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
 
@@ -9,38 +9,18 @@ import Dashboard from "./components/Dashboard.js";
 import UserDashboard from "./components/UserDashboard.js";
 import AddPostForm from "./components/AddPostForm.js";
 import UserForm from "./components/UserForm.js";
-import { userContext } from "./contexts/userContext.js";
-import { postContext } from "./contexts/postContext.js";
 
 function App() {
-  const [user, setUser] = useState({});
-  const [posts, setPosts] = useState([]);
-  const [postToEdit, setPostToEdit] = useState({});
-  const [isEditing, setIsEditing] = useState(false);
-
   return (
     <div className="App">
-      <userContext.Provider value={{ user, setUser }}>
-        <postContext.Provider
-          value={{
-            posts,
-            setPosts,
-            postToEdit,
-            setPostToEdit,
-            isEditing,
-            setIsEditing
-          }}
-        >
-          <Switch>
-            <PrivateRoute path="/dashboard" component={Dashboard} />
-            <PrivateRoute path="/user/posts" component={UserDashboard} />
-            <PrivateRoute path="/addpost" component={AddPostForm} />
-            <PrivateRoute path="/profile_form" component={UserForm} />
-            <Route path="/register" component={Register} />
-            <Route path="/login" component={Login} />
-          </Switch>
-        </postContext.Provider>
-      </userContext.Provider>
+      <Switch>
+        <PrivateRoute path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/user/posts" component={UserDashboard} />
+        <PrivateRoute path="/addpost" component={AddPostForm} />
+        <PrivateRoute path="/profile_form" component={UserForm} />
+        <Route path="/register" component={Register} />
+        <Route path="/login" component={Login} />
+      </Switch>
     </div>
   );
 }

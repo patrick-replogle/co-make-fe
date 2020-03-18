@@ -1,9 +1,12 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans&display=swap");
+
 * {
   box-sizing: border-box;
 }
 
 html {
   font-size: 62.5%;
+  font-family: "PT Sans", sans-serif;
 }
 
 .App {
@@ -39,6 +42,10 @@ h2 {
   font-size: 2.2rem;
 }
 
+h3 {
+  font-size: 2rem;
+}
+
 p {
   font-size: 1.6rem;
 }
@@ -59,6 +66,31 @@ p {
 }
 
 .dashboardHeader a {
+  font-size: 1.6rem;
+  color: black;
+  text-decoration: none;
+}
+
+.profileHeader {
+  align-items: center;
+  color: #fff;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+  padding: 0 3%;
+  width: 100vw;
+  -webkit-box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
+  -moz-box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
+  box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
+}
+
+.profileHeader h3 {
+  font-size: 1.6rem;
+  color: black;
+}
+
+.profileHeader a {
   font-size: 1.6rem;
   color: black;
   text-decoration: none;
@@ -229,4 +261,27 @@ p {
   left: 50%;
   margin-top: -100px;
   margin-left: -250px;
+}
+
+.userDashRow {
+  display: flex;
+}
+
+.profileLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 40%;
+}
+
+.profileLeft h2 {
+  margin-left: 30px;
+}
+
+.profileLeft h3 {
+  margin-left: 30px;
+}
+
+.profileRight {
+  background: #f5f5f5;
 }
