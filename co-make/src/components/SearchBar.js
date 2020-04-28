@@ -28,9 +28,12 @@ const SearchBar = props => {
         .post("/posts/city", searchCity)
         .then(res => {
           setPosts(res.data);
+          props.setSearchErr("")
         })
         .catch(err => {
           props.setSearchErr(err.response.data.message);
+          setPosts([])
+
           console.log("error searching: ", err.response.data.message);
         });
     } else {
@@ -38,16 +41,18 @@ const SearchBar = props => {
         .post("/posts/zipcode", searchZip)
         .then(res => {
           setPosts(res.data);
+          props.setSearchErr("")
         })
         .catch(err => {
           props.setSearchErr(err.response.data.message);
+          setPosts([])
           console.log("error searching: ", err.response.data.message);
         });
     }
   };
   return (
     <div className="searchBarContainer">
-      <label htmlFor="searchBy">Search Posts By</label>
+      <label htmlFor="searchBy">Search By</label>
       <select
         type="select"
         id="searchBy"

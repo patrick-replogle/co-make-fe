@@ -1,7 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 
+import WelcomePage from "./components/WelcomePage.js"
 import Register from './components/authentication/Register.js';
 import Login from './components/authentication/Login.js';
 import PrivateRoute from './utils/PrivateRoute.js';
@@ -22,6 +23,7 @@ function App() {
         <PrivateRoute path="/profile_form" component={UserForm} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
+        <Route exact path="/" component={WelcomePage} />
       </Switch>
     </div>
   );

@@ -53,12 +53,13 @@ const ProfileIssueCard = (props) => {
 
   return (
     <div className="profileIssueCard">
-      <p>{props.post.title}</p>
-      <p>{dateString}</p>
-      <p>{props.post.votes} votes</p>
       <div>
+        <p>{props.post.title}</p>
+      </div>
+      <div>
+        <p>Posted on {dateString}</p>
         <Button
-          size="large"
+          size="small"
           variant="contained"
           startIcon={<EditIcon />}
           onClick={() => handleEdit(props.post)}
@@ -66,7 +67,7 @@ const ProfileIssueCard = (props) => {
           Edit
         </Button>
         <Button
-          size="large"
+          size="small"
           variant="contained"
           startIcon={<DeleteIcon />}
           onClick={() => deletePost(props.post.id)}

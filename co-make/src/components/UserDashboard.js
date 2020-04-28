@@ -50,7 +50,7 @@ const UserDashboard = (props) => {
       <div className="userDashboardContainer">
         <ProfileHeader />
         <div className="userDashRow">
-          <div className="profileLeft">
+          <div className="sideNav">
             <h2>Welcome {user.username}</h2>
             <h3>
               {user.first_name} {user.last_name}
@@ -58,21 +58,19 @@ const UserDashboard = (props) => {
             <h3>{user.email}</h3>
             <h3>{userPosts.length} Active Posts</h3>
           </div>
-          <div className="profileRight">
-            <div className="postList">
-              {userPosts.length < 1 && (
-                <p>You currently have no active posts</p>
-              )}
-              {userPosts.map((post) => {
-                return (
-                  <ProfileIssueCard
-                    post={post}
-                    key={post.id}
-                    setUserPosts={setUserPosts}
-                  />
-                );
-              })}
-            </div>
+          <div className="postList">
+            {userPosts.length < 1 && (
+              <p>You currently have no active posts</p>
+            )}
+            {userPosts.map((post) => {
+              return (
+                <ProfileIssueCard
+                  post={post}
+                  key={post.id}
+                  setUserPosts={setUserPosts}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

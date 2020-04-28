@@ -35,10 +35,10 @@ const IssueLink = (props) => {
   };
 
   return (
-    <div className="issueCard">
+    <div className="issueLink">
       <Link to={`/post/${props.post.id}`}>
         <img src={props.post.post_image_url} alt="user pic" />
-        <h2>Title: {props.post.title}</h2>
+        <h2>{props.post.title}</h2>
         <p>City: {props.post.city}</p>
         <p>Zip-Code: {props.post.zip_code}</p>
         <p>Author: {props.post.authorUsername}</p>

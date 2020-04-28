@@ -51,20 +51,14 @@ const IssueCard = (props) => {
       <div className="issueCardContainer">
         <div className="card">
           <img src={issue.post_image_url} alt="user pic" />
-          <h2>Title: {issue.title}</h2>
-          <p>Description: {issue.description}</p>
+          <h2>{issue.title}</h2>
+          <p>{issue.description}</p>
           <p>City: {issue.city}</p>
-          <p>Zip-Code: {issue.zip_code}</p>
-          <p>Author: {issue.authorUsername}</p>
+          <p>Zip code: {issue.zip_code}</p>
+          <p>Posted by {issue.authorUsername}</p>
           <div>
-            Votes:
-            <Button
-              size="large"
-              variant="contained"
-              onClick={() => upVotePost(issue.id)}
-            >
-              {issue.votes}
-            </Button>
+            votes
+            <button onClick={() => upVotePost(issue.id)}>{issue.votes}</button>
           </div>
         </div>
       </div>
