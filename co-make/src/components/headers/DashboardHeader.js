@@ -8,37 +8,38 @@ import PersonIcon from "@material-ui/icons/Person";
 const DashboardHeader = props => {
   return (
     <div className="profileHeader">
-      <h3>Co-Make</h3>
+
+      <h3>CoMake</h3>
       <div className="navBarRight">
         <Fab
           size="medium"
           // className="backButtonMargin"
-          style={{ backgroundColor: "white", border: "none" }}
+          style={{ backgroundColor: "#424242", border: "none" }}
           onClick={() => {
             props.history.push("/addpost");
           }}
         >
-          <AddIcon style={{ color: "black" }} />
+          <AddIcon style={{ color: "white" }} />
         </Fab>
         <Fab
           size="medium"
           // className="backButtonMargin"
-          style={{ backgroundColor: "white", border: "none" }}
+          style={{ backgroundColor: "#424242", border: "none" }}
           onClick={() => {
             props.history.push("/user/posts");
           }}
         >
-          <PersonIcon style={{ color: "black" }} />
+          <PersonIcon style={{ color: "white" }} />
         </Fab>
         <Fab
           size="medium"
           // className="backButtonMargin"
-          style={{ backgroundColor: "white", border: "none" }}
+          style={{ backgroundColor: "#424242", border: "none" }}
           onClick={() => {
             props.history.push("/login");
           }}
         >
-          <ExitToAppIcon style={{ color: "black" }} />
+          <ExitToAppIcon style={{ color: "white" }} />
         </Fab>
       </div>
     </div>

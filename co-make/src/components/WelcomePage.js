@@ -4,8 +4,8 @@ const WelcomePage = (props) => {
     return (
         <div className="welcomePageMain">
             <div className="welcomePageContainer">
-                <h1>Co-Make</h1>
-                <h3>Solve local problems</h3>
+                <h1>CoMake</h1>
+                <h3>stuff</h3>
                 <button
                     className="welcomePageBtn"
                     onClick={() => props.history.push("/register")}

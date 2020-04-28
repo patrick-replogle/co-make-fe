@@ -21,6 +21,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
+  background: #f2f2f2;
 }
 
 h1,
@@ -54,12 +55,12 @@ p {
 /* errors */
 
 .errors {
-  color: red;
+  color: #B00020;
   font-size: 12px;
 }
 
 .status {
-  color: red;
+  color: #B00020;
   font-size: 12px;
 }
 
@@ -164,6 +165,8 @@ p {
   border-bottom: 1px solid rgb(221, 221, 221);
   display: flex;
   height: 70px;
+  background: #212121;
+  color: white;
   justify-content: space-between;
   padding: 0 3%;
   width: 100vw;
@@ -172,7 +175,7 @@ p {
   box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
 
   a {
-    color: black;
+    color: white;
     text-decoration: none;
     font-size: 2rem;
     margin-right: 20px;
@@ -187,6 +190,8 @@ p {
   display: flex;
   height: 70px;
   justify-content: space-between;
+  background: #212121;
+  color: white;
   padding: 0 3%;
   width: 100vw;
   -webkit-box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
@@ -288,13 +293,13 @@ p {
   flex-direction: column;
   align-items: center;
   width: 30%;
-  border: 1px solid black;
-  border-radius: 6px;
+  background: white;
+  border-radius: 3px;
   margin: 10px 10px;
   color: black;
 
    a {
-    color: black;
+    color: #565656;
     text-decoration: none;
   }
   img {
@@ -305,7 +310,7 @@ p {
    button {
     margin: 10px 10px;
     color: white;
-    background: lightskyblue;
+    background: #03DAC6;
 
     &:hover {
       opacity: 0.9;
