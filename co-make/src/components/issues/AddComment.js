@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import { postContext } from "../../contexts/postContext.js";
 
 const AddComment = ({ id, setComments }) => {
   const [input, setInput] = useState({ text: "" });
+  const {
+    isEditing,
+    setIsEditing,
+    commentToEdit,
+    setCommentToEdit,
+  } = useContext(postContext);
+
+  useEffect(() => {
+    if (isEditing) {
+      setInput({ text: commentToEdit.text });
+    }
+  }, [isEditing, setInput, commentToEdit]);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -23,13 +36,27 @@ const AddComment = ({ id, setComments }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axiosWithAuth()
-      .post(`/posts/${id}/comments`, input)
-      .then(() => {
-        fetchComments();
-        setInput({ text: "" });
-      })
-      .catch((err) => console.log(err));
+    if (isEditing) {
+      axiosWithAuth()
+        .put(`/comments/${commentToEdit.id}`, input)
+        .then(() => {
+          fetchComments();
+          setIsEditing(false);
+          setCommentToEdit({});
+          setInput({ text: "" });
+        })
+        .catch((err) => {
+          console.log("error updating comment: ", err);
+        });
+    } else {
+      axiosWithAuth()
+        .post(`/posts/${id}/comments`, input)
+        .then(() => {
+          fetchComments();
+          setInput({ text: "" });
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   return (

@@ -1,11 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import CreateIcon from "@material-ui/icons/Create";
+import DeleteIcon from "@material-ui/icons/Delete";
 import jwt from "jwt-decode";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import { postContext } from "../../contexts/postContext.js";
 
 const CardComments = ({ id, comments, setComments }) => {
   const token = localStorage.getItem("coMakeToken");
   const decodedToken = jwt(token);
+  const { setIsEditing, setCommentToEdit } = useContext(postContext);
 
   useEffect(() => {
     fetchComments();
@@ -42,12 +46,19 @@ const CardComments = ({ id, comments, setComments }) => {
                   <p>{comment.text}</p>
                 </div>
                 {decodedToken.id === comment.user_id && (
-                  <>
-                    <button onClick={() => deleteComment(comment.id)}>
-                      delete
-                    </button>
-                    <button>edit</button>
-                  </>
+                  <div style={{ display: "flex" }}>
+                    <DeleteIcon
+                      style={{ fontSize: "22px", cursor: "pointer" }}
+                      onClick={() => deleteComment(comment.id)}
+                    />
+                    <CreateIcon
+                      style={{ fontSize: "22px", cursor: "pointer" }}
+                      onClick={() => {
+                        setCommentToEdit(comment);
+                        setIsEditing(true);
+                      }}
+                    />
+                  </div>
                 )}
               </div>
             );

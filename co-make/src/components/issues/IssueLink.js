@@ -4,12 +4,9 @@ import Button from "@material-ui/core/Button";
 
 import { withRouter } from "react-router-dom";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import noImage from "../../img/noImage.png";
 
 const IssueLink = ({ post, setPosts }) => {
-  if (!post.post_image_url) {
-    post.post_image_url = "";
-  }
-
   const fetchPosts = () => {
     axiosWithAuth()
       .get("/posts")
@@ -36,7 +33,10 @@ const IssueLink = ({ post, setPosts }) => {
   return (
     <div className="issueLink">
       <Link to={`/post/${post.id}`}>
-        <img src={post.post_image_url} alt="user pic" />
+        <img
+          src={post.post_image_url !== "" ? post.post_image_url : noImage}
+          alt="user pic"
+        />
         <h2>
           {post.title.length > 30
             ? post.title.slice(0, 30) + "..."

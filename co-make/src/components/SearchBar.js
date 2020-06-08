@@ -80,10 +80,12 @@ const SearchBar = (props) => {
                 : "search by zip code"
             }
           />
-          <SearchIcon color="disabled" style={{ fontSize: "22px" }} />
+          <SearchIcon
+            color="disabled"
+            style={{ fontSize: "22px", cursor: "pointer" }}
+            onClick={handleSubmit}
+          />
         </div>
-
-        <Button>Submit</Button>
       </form>
     </div>
   );

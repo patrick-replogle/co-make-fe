@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import IssueCardHeader from "../headers/IssueCardHeader.js";
 import { withRouter } from "react-router-dom";
@@ -9,20 +10,26 @@ import AddComment from "./AddComment.js";
 const IssueCard = (props) => {
   const [issue, setIssue] = useState({});
   const [comments, setComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const postId = props.match.params.id;
 
-  const id = props.match.params.id;
   useEffect(() => {
+    setIsLoading(true);
     axiosWithAuth()
-      .get(`/posts/${id}`)
+      .get(`/posts/${postId}`)
       .then((res) => {
         setIssue(res.data);
+        setIsLoading(false);
       })
-      .catch((err) => console.log(err));
-  }, [id]);
+      .catch((err) => {
+        setIsLoading(false);
+        console.log(err);
+      });
+  }, [postId]);
 
   const fetchPosts = () => {
     axiosWithAuth()
-      .get(`/posts/${id}`)
+      .get(`/posts/${postId}`)
       .then((res) => {
         setIssue(res.data);
       })
@@ -46,31 +53,48 @@ const IssueCard = (props) => {
     issue.post_image_url =
       "https://pngimage.net/wp-content/uploads/2018/05/default-png-6.png";
   }
-
-  return (
-    <>
-      <IssueCardHeader />
-      <div className="issueCardContainer">
-        <div className="card">
-          <img src={issue.post_image_url} alt="user pic" />
-          <h2>{issue.title}</h2>
-          <p>{issue.description}</p>
-          <p>
-            Location: {issue.city}, {issue.zip_code}
-          </p>
-          <p>Created by {issue.authorUsername}</p>
-          <div>
-            votes
-            <button onClick={() => upVotePost(issue.id)}>{issue.votes}</button>
+  if (isLoading) {
+    return (
+      <div className="loading">
+        <CircularProgress color="primary" size="100px" />
+      </div>
+    );
+  } else {
+    return (
+      <>
+        <IssueCardHeader />
+        <div className="issueCardContainer">
+          <div className="card">
+            <img src={issue.post_image_url} alt="user pic" />
+            <h2>{issue.title}</h2>
+            <p>{issue.description}</p>
+            <p>
+              Location: {issue.city}, {issue.zip_code}
+            </p>
+            <p>Created by {issue.authorUsername}</p>
+            <div>
+              votes
+              <button onClick={() => upVotePost(issue.id)}>
+                {issue.votes}
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="commentsContainer">
-        <AddComment id={id} comments={comments} setComments={setComments} />
-        <IssueComments id={id} comments={comments} setComments={setComments} />
-      </div>
-    </>
-  );
+        <div className="commentsContainer">
+          <AddComment
+            id={postId}
+            comments={comments}
+            setComments={setComments}
+          />
+          <IssueComments
+            id={postId}
+            comments={comments}
+            setComments={setComments}
+          />
+        </div>
+      </>
+    );
+  }
 };
 
 export default withRouter(IssueCard);
