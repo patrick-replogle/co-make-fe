@@ -6,6 +6,8 @@ const PostProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
   const [postToEdit, setPostToEdit] = useState({});
   const [isEditing, setIsEditing] = useState(false);
+  const [commentToEdit, setCommentToEdit] = useState({});
+
   return (
     <postContext.Provider
       value={{
@@ -14,7 +16,9 @@ const PostProvider = ({ children }) => {
         postToEdit,
         setPostToEdit,
         isEditing,
-        setIsEditing
+        setIsEditing,
+        commentToEdit,
+        setCommentToEdit,
       }}
     >
       {children}

@@ -6,50 +6,51 @@ import EditIcon from "@material-ui/icons/Edit";
 import AddIcon from "@material-ui/icons/Add";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-const ProfileHeader = props => {
+const ProfileHeader = (props) => {
   return (
     <div className="profileHeader">
-      <h3>Co-Make</h3>
+      <h3>CoMake</h3>
       <div className="navBarRight">
         <Fab
           size="medium"
           // className="backButtonMargin"
-          style={{ backgroundColor: "white", border: "none" }}
+          style={{ backgroundColor: "#424242", border: "none" }}
           onClick={() => {
             props.history.push("/dashboard");
           }}
         >
-          <HomeIcon style={{ color: "black" }} />
+          <HomeIcon style={{ color: "white" }} />
         </Fab>
         <Fab
           size="medium"
           // className="backButtonMargin"
-          style={{ backgroundColor: "white", border: "none" }}
+          style={{ backgroundColor: "#424242", border: "none" }}
           onClick={() => {
             props.history.push("/addpost");
           }}
         >
-          <AddIcon style={{ color: "black" }} />
+          <AddIcon style={{ color: "white" }} />
         </Fab>
         <Fab
           size="medium"
           // className="backButtonMargin"
-          style={{ backgroundColor: "white", border: "none" }}
+          style={{ backgroundColor: "#424242", border: "none" }}
           onClick={() => {
             props.history.push("/profile_form");
           }}
         >
-          <EditIcon style={{ color: "black" }} />
+          <EditIcon style={{ color: "white" }} />
         </Fab>
         <Fab
           size="medium"
           // className="backButtonMargin"
-          style={{ backgroundColor: "white", border: "none" }}
+          style={{ backgroundColor: "#424242", border: "none" }}
           onClick={() => {
+            localStorage.removeItem("coMakeToken");
             props.history.push("/login");
           }}
         >
-          <ExitToAppIcon style={{ color: "black" }} />
+          <ExitToAppIcon style={{ color: "white" }} />
         </Fab>
       </div>
     </div>

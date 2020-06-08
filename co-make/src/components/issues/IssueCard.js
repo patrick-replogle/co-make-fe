@@ -1,98 +1,100 @@
-import React, { useContext } from "react";
-import Button from "@material-ui/core/Button";
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
+import React, { useEffect, useState } from "react";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
+import IssueCardHeader from "../headers/IssueCardHeader.js";
 import { withRouter } from "react-router-dom";
-import { postContext } from "../../contexts/postContext.js";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import IssueComments from "./IssueComments.js";
+import AddComment from "./AddComment.js";
 
-const IssueCard = props => {
-  const { setIsEditing, setPostToEdit } = useContext(postContext);
+const IssueCard = (props) => {
+  const [issue, setIssue] = useState({});
+  const [comments, setComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const postId = props.match.params.id;
 
-  if (props.post.post_image_url === "") {
-    props.post.post_image_url =
-      "https://pngimage.net/wp-content/uploads/2018/05/default-png-6.png";
-  }
+  useEffect(() => {
+    setIsLoading(true);
+    axiosWithAuth()
+      .get(`/posts/${postId}`)
+      .then((res) => {
+        setIssue(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        console.log(err);
+      });
+  }, [postId]);
 
   const fetchPosts = () => {
     axiosWithAuth()
-      .get("/posts/by/user")
-      .then(res => {
-        console.log(res.data);
-        props.setUserPosts(res.data.sort((a, b) => b.votes - a.votes));
+      .get(`/posts/${postId}`)
+      .then((res) => {
+        setIssue(res.data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log("error fetching: ", err.response.data.message);
       });
   };
 
-  const handleEdit = post => {
-    setPostToEdit(post);
-    setIsEditing(true);
-    props.history.push("/addpost");
-  };
-
-  const deletePost = id => {
-    axiosWithAuth()
-      .delete(`/posts/${id}`)
-      .then(() => {
-        fetchPosts();
-      })
-      .catch(err => {
-        console.log("Error deleting post: ", err.response.data.message);
-      });
-  };
-
-  const upVotePost = id => {
+  const upVotePost = (id) => {
     axiosWithAuth()
       .post(`/posts/${id}/increment/votes`)
       .then(() => {
         fetchPosts();
       })
-      .catch(err => {
+      .catch((err) => {
         console.log("upvote err: ", err.response.data.message);
       });
   };
 
-  return (
-    <div className="issueCard">
-      <img src={props.post.post_image_url} alt="user pic" />
-      <h2>Title: {props.post.title}</h2>
-      <p>Description: {props.post.description}</p>
-      <p>City: {props.post.city}</p>
-      <p>Zip-Code: {props.post.zip_code}</p>
-      <p>Author: {props.post.authorUsername}</p>
-      <div>
-        Votes:
-        <Button
-          size="large"
-          variant="contained"
-          onClick={() => upVotePost(props.post.id)}
-        >
-          {props.post.votes}
-        </Button>
-        <div>
-          <Button
-            size="large"
-            variant="contained"
-            startIcon={<EditIcon />}
-            onClick={() => handleEdit(props.post)}
-          >
-            Edit
-          </Button>
-          <Button
-            size="large"
-            variant="contained"
-            startIcon={<DeleteIcon />}
-            onClick={() => deletePost(props.post.id)}
-          >
-            Delete
-          </Button>
-        </div>
+  if (issue.post_image_url === "") {
+    issue.post_image_url =
+      "https://pngimage.net/wp-content/uploads/2018/05/default-png-6.png";
+  }
+  if (isLoading) {
+    return (
+      <div className="loading">
+        <CircularProgress color="primary" size="100px" />
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <>
+        <IssueCardHeader />
+        <div className="issueCardContainer">
+          <div className="card">
+            <img src={issue.post_image_url} alt="user pic" />
+            <h2>{issue.title}</h2>
+            <p>{issue.description}</p>
+            <p>
+              Location: {issue.city}, {issue.zip_code}
+            </p>
+            <p>Created by {issue.authorUsername}</p>
+            <div>
+              votes
+              <button onClick={() => upVotePost(issue.id)}>
+                {issue.votes}
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="commentsContainer">
+          <AddComment
+            id={postId}
+            comments={comments}
+            setComments={setComments}
+          />
+          <IssueComments
+            id={postId}
+            comments={comments}
+            setComments={setComments}
+          />
+        </div>
+      </>
+    );
+  }
 };
 
 export default withRouter(IssueCard);

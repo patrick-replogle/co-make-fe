@@ -11,10 +11,10 @@ const initialFormState = {
   description: "",
   city: "",
   zip_code: "",
-  post_image_url: ""
+  post_image_url: "",
 };
 
-const AddPostForm = props => {
+const AddPostForm = (props) => {
   const [postData, setPostData] = useState(initialFormState);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -28,14 +28,14 @@ const AddPostForm = props => {
     }
   }, [isEditing, postToEdit]);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setPostData({
       ...postData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
     setError("");
@@ -50,7 +50,7 @@ const AddPostForm = props => {
           setIsLoading(false);
           props.history.push(`/user/posts`);
         })
-        .catch(err => {
+        .catch((err) => {
           setIsLoading(false);
           setError(err.response.data.message);
           console.log("Put request error: ", err.response.data.message);
@@ -63,7 +63,7 @@ const AddPostForm = props => {
           setPostData(initialFormState);
           props.history.push("/user/posts");
         })
-        .catch(err => {
+        .catch((err) => {
           setIsLoading(false);
           setError(err.response.data.message);
           console.log("Add form post error: ", err.response.data.message);
@@ -74,11 +74,7 @@ const AddPostForm = props => {
     <>
       <AddPostHeader />
       <div className="addFormContainer">
-        {isEditing ? (
-          <h2>Edit a Passport Entry</h2>
-        ) : (
-          <h2>Add a Passport Entry</h2>
-        )}
+        {isEditing ? <h2>Edit a Post</h2> : <h2>Add a Post</h2>}
         {error && <p>{error}</p>}
         <form onSubmit={handleSubmit}>
           <input
