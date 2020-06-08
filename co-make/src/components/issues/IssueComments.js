@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
-const CardComments = ({ id }) => {
-  const [comments, setComments] = useState([]);
+const CardComments = ({ id, comments, setComments }) => {
   useEffect(() => {
     axiosWithAuth()
       .get(`/posts/${id}/comments`)
@@ -12,13 +11,13 @@ const CardComments = ({ id }) => {
         setComments(res.data);
       })
       .catch((err) => console.log(err));
-  }, [id]);
+  }, [id, setComments]);
 
   return (
-    <div>
+    <div className="commentsContainer">
       {comments.map((comment) => {
         return (
-          <div key={comment.id}>
+          <div key={comment.id} className="comment">
             <p>{comment.text}</p>
             <p>{comment.username}</p>
           </div>

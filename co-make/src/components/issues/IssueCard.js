@@ -5,9 +5,11 @@ import IssueCardHeader from "../headers/IssueCardHeader.js";
 import { withRouter } from "react-router-dom";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import IssueComments from "./IssueComments.js";
+import AddComment from "./AddComment.js";
 
 const IssueCard = (props) => {
   const [issue, setIssue] = useState({});
+  const [comments, setComments] = useState([]);
 
   const id = props.match.params.id;
   useEffect(() => {
@@ -63,7 +65,8 @@ const IssueCard = (props) => {
           </div>
         </div>
       </div>
-      <IssueComments id={id} />
+      <AddComment id={id} comments={comments} setComments={setComments} />
+      <IssueComments id={id} comments={comments} setComments={setComments} />
     </div>
   );
 };
