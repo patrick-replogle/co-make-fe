@@ -39,7 +39,7 @@ const IssueLink = ({ post, setPosts }) => {
         <img src={post.post_image_url} alt="user pic" />
         <h2>
           {post.title.length > 30
-            ? post.title.slice(0, 30) + " " + "..."
+            ? post.title.slice(0, 30) + "..."
             : post.title}
         </h2>
         <p>

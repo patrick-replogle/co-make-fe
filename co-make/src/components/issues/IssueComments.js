@@ -9,7 +9,8 @@ const CardComments = ({ id, comments, setComments }) => {
 
   useEffect(() => {
     fetchComments();
-  }, [id, setComments]);
+    // eslint-disable-next-line
+  }, [id]);
 
   const fetchComments = () => {
     axiosWithAuth()
@@ -30,26 +31,30 @@ const CardComments = ({ id, comments, setComments }) => {
   };
 
   return (
-    <div className="commentList">
-      {comments.map((comment) => {
-        return (
-          <div key={comment.id} className="comment">
-            <p style={{ fontWeight: "bold" }}>{comment.username}&nbsp;</p>
-            <div>
-              <p>{comment.text}</p>
-            </div>
-            {decodedToken.id === comment.user_id && (
-              <>
-                <button onClick={() => deleteComment(comment.id)}>
-                  delete
-                </button>
-                <button>edit</button>
-              </>
-            )}
-          </div>
-        );
-      })}
-    </div>
+    <>
+      {comments.length > 0 && (
+        <div className="commentList">
+          {comments.map((comment) => {
+            return (
+              <div key={comment.id} className="comment">
+                <p style={{ fontWeight: "bold" }}>{comment.username}&nbsp;</p>
+                <div>
+                  <p>{comment.text}</p>
+                </div>
+                {decodedToken.id === comment.user_id && (
+                  <>
+                    <button onClick={() => deleteComment(comment.id)}>
+                      delete
+                    </button>
+                    <button>edit</button>
+                  </>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </>
   );
 };
 
