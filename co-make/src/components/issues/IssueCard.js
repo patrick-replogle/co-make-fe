@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Button from "@material-ui/core/Button";
 
 import IssueCardHeader from "../headers/IssueCardHeader.js";
 import { withRouter } from "react-router-dom";
@@ -49,25 +48,28 @@ const IssueCard = (props) => {
   }
 
   return (
-    <div>
+    <>
       <IssueCardHeader />
       <div className="issueCardContainer">
         <div className="card">
           <img src={issue.post_image_url} alt="user pic" />
           <h2>{issue.title}</h2>
           <p>{issue.description}</p>
-          <p>City: {issue.city}</p>
-          <p>Zip code: {issue.zip_code}</p>
-          <p>Posted by {issue.authorUsername}</p>
+          <p>
+            Location: {issue.city}, {issue.zip_code}
+          </p>
+          <p>Created by {issue.authorUsername}</p>
           <div>
             votes
             <button onClick={() => upVotePost(issue.id)}>{issue.votes}</button>
           </div>
         </div>
       </div>
-      <AddComment id={id} comments={comments} setComments={setComments} />
-      <IssueComments id={id} comments={comments} setComments={setComments} />
-    </div>
+      <div className="commentsContainer">
+        <AddComment id={id} comments={comments} setComments={setComments} />
+        <IssueComments id={id} comments={comments} setComments={setComments} />
+      </div>
+    </>
   );
 };
 

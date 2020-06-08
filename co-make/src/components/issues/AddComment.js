@@ -27,17 +27,19 @@ const AddComment = ({ id, setComments }) => {
       .post(`/posts/${id}/comments`, input)
       .then(() => {
         fetchComments();
+        setInput({ text: "" });
       })
       .catch((err) => console.log(err));
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="commentForm">
       <input
         type="text"
         name="text"
         value={input.text}
         onChange={handleChange}
+        placeholder="add comment"
       />
       <button>submit</button>
     </form>

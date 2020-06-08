@@ -1,17 +1,16 @@
-import React, { useState, useEffect, useContext } from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import React, { useState, useEffect, useContext } from "react";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
-import ProfileHeader from '../components/headers/ProfileHeader.js';
-import { axiosWithAuth } from '../utils/axiosWithAuth.js';
-import { userContext } from '../contexts/userContext.js';
+import ProfileHeader from "../components/headers/ProfileHeader.js";
+import { axiosWithAuth } from "../utils/axiosWithAuth.js";
+import { userContext } from "../contexts/userContext.js";
 
 const initialUserState = {
-  username: '',
-  password: '',
-  email: '',
-  first_name: '',
-  last_name: '',
-  profile_image_url: '',
+  username: "",
+  email: "",
+  first_name: "",
+  last_name: "",
+  profile_image_url: "",
 };
 
 const UserForm = (props) => {
@@ -19,26 +18,26 @@ const UserForm = (props) => {
   const [formData, setFormData] = useState(initialUserState);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [errMessage, setErrMessage] = useState('');
+  const [errMessage, setErrMessage] = useState("");
 
   useEffect(() => {
     setIsLoading(true);
     axiosWithAuth()
-      .get(`/users/${localStorage.getItem('userId')}`)
+      .get(`/users/${localStorage.getItem("userId")}`)
       .then((res) => {
         setIsLoading(false);
         setUser(res.data);
       })
       .catch((err) => {
         setIsLoading(false);
-        console.log('error updating: ', err.response.data.message);
+        console.log("error updating: ", err.response.data.message);
       });
   }, [setUser]);
 
   useEffect(() => {
     setFormData({
       username: user.username,
-      password: '',
+      password: "",
       email: user.email,
       first_name: user.first_name,
       last_name: user.last_name,
@@ -61,12 +60,12 @@ const UserForm = (props) => {
       .then((res) => {
         setIsSubmitting(false);
         setUser(res.data);
-        props.history.push('/user/posts');
+        props.history.push("/user/posts");
       })
       .catch((err) => {
         setIsSubmitting(false);
         setErrMessage(err.response.data.message);
-        console.log('user form error: ', err.response.data.message);
+        console.log("user form error: ", err.response.data.message);
       });
   };
 
@@ -81,7 +80,6 @@ const UserForm = (props) => {
       <div>
         <ProfileHeader />
         <div className="profileForm">
-          {errMessage && <p>{errMessage}</p>}
           <h1>Update Profile</h1>
           <form onSubmit={handleSubmit}>
             <input
@@ -90,14 +88,6 @@ const UserForm = (props) => {
               onChange={handleChange}
               value={formData.username}
               placeholder="username"
-              required
-            />
-            <input
-              type="password"
-              name="password"
-              onChange={handleChange}
-              value={formData.password}
-              placeholder="password"
               required
             />
             <input
@@ -132,6 +122,7 @@ const UserForm = (props) => {
               value={formData.profile_image_url}
               placeholder="profile image url"
             />
+            {errMessage && <p style={{ color: "crimson" }}>{errMessage}</p>}
             {isSubmitting ? (
               <button>
                 <CircularProgress color="primary" size="20px" />
@@ -142,7 +133,7 @@ const UserForm = (props) => {
             <button
               onClick={() => {
                 setFormData({});
-                props.history.push('/user/posts');
+                props.history.push("/user/posts");
               }}
             >
               Cancel
