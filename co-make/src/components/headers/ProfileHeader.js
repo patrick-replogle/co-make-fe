@@ -6,7 +6,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import AddIcon from "@material-ui/icons/Add";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-const ProfileHeader = props => {
+const ProfileHeader = (props) => {
   return (
     <div className="profileHeader">
       <h3>CoMake</h3>
@@ -46,6 +46,7 @@ const ProfileHeader = props => {
           // className="backButtonMargin"
           style={{ backgroundColor: "#424242", border: "none" }}
           onClick={() => {
+            localStorage.removeItem("coMakeToken");
             props.history.push("/login");
           }}
         >

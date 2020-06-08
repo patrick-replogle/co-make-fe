@@ -5,10 +5,9 @@ import AddIcon from "@material-ui/icons/Add";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import PersonIcon from "@material-ui/icons/Person";
 
-const DashboardHeader = props => {
+const DashboardHeader = (props) => {
   return (
     <div className="profileHeader">
-
       <h3>CoMake</h3>
       <div className="navBarRight">
         <Fab
@@ -36,6 +35,7 @@ const DashboardHeader = props => {
           // className="backButtonMargin"
           style={{ backgroundColor: "#424242", border: "none" }}
           onClick={() => {
+            localStorage.removeItem("coMakeToken");
             props.history.push("/login");
           }}
         >

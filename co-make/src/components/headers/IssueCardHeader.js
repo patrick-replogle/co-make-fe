@@ -1,10 +1,10 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import HomeIcon from '@material-ui/icons/Home';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import PersonIcon from '@material-ui/icons/Person';
+import React from "react";
+import { withRouter } from "react-router-dom";
+import HomeIcon from "@material-ui/icons/Home";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import PersonIcon from "@material-ui/icons/Person";
 
 const IssueCardHeader = (props) => {
   return (
@@ -46,6 +46,7 @@ const IssueCardHeader = (props) => {
           // className="backButtonMargin"
           style={{ backgroundColor: "#424242", border: "none" }}
           onClick={() => {
+            localStorage.removeItem("coMakeToken");
             props.history.push("/login");
           }}
         >

@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Hepta+Slab&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Hepta+Slab&display=swap");
 
 * {
   box-sizing: border-box;
@@ -12,7 +12,7 @@ html {
 .App {
   text-align: center;
   margin: 0 auto;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 body {
@@ -20,7 +20,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   background: #f2f2f2;
 }
 
@@ -33,7 +33,7 @@ h6,
 div,
 p,
 span {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 h1 {
@@ -55,12 +55,12 @@ p {
 /* errors */
 
 .errors {
-  color: #B00020;
+  color: #b00020;
   font-size: 12px;
 }
 
 .status {
-  color: #B00020;
+  color: #b00020;
   font-size: 12px;
 }
 
@@ -75,7 +75,7 @@ p {
   margin-left: -250px;
 }
 
-/* welcome page */ 
+/* welcome page */
 .welcomePageMain {
   display: flex;
   align-items: center;
@@ -223,28 +223,29 @@ p {
     padding: 40px 40px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
 
-     input {
+    input {
       width: 380px;
       margin-bottom: 10px;
       padding: 12px 20px;
       outline: none;
       margin-bottom: 15px;
       border-radius: 4px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-     }
-       button {
-        padding: 12px 20px;
-        font-size: 20px;
-        width: 380px;
-        color: white;
-        background: #018786;
-        border-radius: 4px;
-        border: 1px solid white;
-        outline: none;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    button {
+      padding: 12px 20px;
+      font-size: 20px;
+      width: 380px;
+      color: white;
+      background: #018786;
+      border-radius: 4px;
+      border: 1px solid white;
+      outline: none;
 
-        &:hover {
-          opacity: 0.9;
-        }
+      &:hover {
+        opacity: 0.9;
+      }
       .spinner {
         stroke: white;
       }
@@ -298,7 +299,7 @@ p {
   margin: 10px 10px;
   color: black;
 
-   a {
+  a {
     color: #565656;
     text-decoration: none;
   }
@@ -307,10 +308,10 @@ p {
     height: 200px;
     border-radius: 6px;
   }
-   button {
+  button {
     margin: 10px 10px;
     color: white;
-    background: #03DAC6;
+    background: #03dac6;
 
     &:hover {
       opacity: 0.9;
@@ -343,7 +344,8 @@ p {
       outline: none;
       margin-bottom: 15px;
       border-radius: 4px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
     textarea {
       width: 380px;
@@ -355,7 +357,8 @@ p {
       border-radius: 4px;
       border: 2px solid white;
       word-wrap: nowrap;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
     button {
       padding: 8px 20px;
@@ -400,7 +403,8 @@ p {
       outline: none;
       margin-bottom: 15px;
       border-radius: 4px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
     button {
       padding: 12px 20px;
@@ -444,18 +448,62 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 
-  label {
-    margin-right: 5px;
-    font-size: 1.2rem;
-  }
-  input {
-    width: 250px;
-    padding: 10px 5px;
-    outline: none;
-    border-radius: 4px;
-    margin: 10px 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+
+    label {
+      margin-right: 5px;
+      font-size: 1.2rem;
+    }
+    .searchSelect {
+      display: flex;
+      align-items: center;
+      margin: 10px 5px;
+      opacity: 0.75;
+      border-radius: 5px;
+      color: black;
+      border: none;
+      border-bottom: none;
+      font-size: 1.6rem;
+      background: white;
+      font-size: 1.6rem;
+      width: 8%;
+      padding: 4px 0;
+      background: white;
+    }
+
+    .searchInputDiv {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 2px solid #f0f0f0;
+      border-radius: 15px;
+      padding: 4px 15px;
+      background: white;
+      width: 26%;
+      margin: 0 1%;
+
+      input {
+        height: 35px;
+        border: none;
+        border-radius: 15px;
+        outline: none;
+        font-size: 1.6rem;
+        width: 90%;
+      }
+    }
+
+    button {
+      background: #bb86fc;
+      color: white;
+      font-size: 1.6rem;
+      padding: 5px 10px;
+    }
   }
 }
 
@@ -463,7 +511,7 @@ p {
 .profileIssueCard {
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   border-radius: 6px;
   border: 1px solid gray;
   margin: 20px 0;
@@ -477,7 +525,6 @@ p {
     background: #018786;
     color: white;
   }
-
 }
 
 /* main dashboard */
@@ -512,10 +559,10 @@ p {
     img {
       width: 100%;
     }
-     h2 {
+    h2 {
       margin-left: 20px;
     }
-     p {
+    p {
       margin-left: 20px;
     }
     div {
@@ -524,7 +571,7 @@ p {
       justify-content: center;
       margin-bottom: 30px;
     }
-     button {
+    button {
       padding: 15px 25px;
       border-radius: 6px;
       color: white;
@@ -539,14 +586,3 @@ p {
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-

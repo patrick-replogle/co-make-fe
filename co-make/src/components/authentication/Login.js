@@ -4,19 +4,19 @@ import * as Yup from "yup";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
-import AuthHeader from "../headers/AuthHeader.js"
+import AuthHeader from "../headers/AuthHeader.js";
 
 const validationSchema = Yup.object({
   username: Yup.string().required("username required"),
-  password: Yup.string().required("password required")
+  password: Yup.string().required("password required"),
 });
 
 const initialLoginState = {
   username: "",
-  password: ""
+  password: "",
 };
 
-const Login = props => {
+const Login = (props) => {
   return (
     <div>
       <AuthHeader />
@@ -30,14 +30,14 @@ const Login = props => {
             setStatus(false);
             axiosWithAuth()
               .post("/auth/login", values)
-              .then(res => {
-                localStorage.setItem("token", res.data.token);
+              .then((res) => {
+                localStorage.setItem("coMakeToken", res.data.token);
                 localStorage.setItem("userId", res.data.id);
                 localStorage.setItem("message", res.data.message);
                 resetForm(initialLoginState);
                 props.history.push("/dashboard");
               })
-              .catch(err => {
+              .catch((err) => {
                 setSubmitting(false);
                 setStatus(err.response.data.message);
                 console.log("login error: ", err.response.data.message);
@@ -51,41 +51,41 @@ const Login = props => {
             values,
             errors,
             isSubmitting,
-            status
+            status,
           }) => (
-              <form onSubmit={handleSubmit}>
-                {status && <p className="status">{status}</p>}
-                <input
-                  type="text"
-                  name="username"
-                  onChange={handleChange}
-                  value={values.username}
-                  placeholder="username"
-                />
-                {touched.username && errors.username && (
-                  <p className="errors">{errors.username}</p>
-                )}
+            <form onSubmit={handleSubmit}>
+              {status && <p className="status">{status}</p>}
+              <input
+                type="text"
+                name="username"
+                onChange={handleChange}
+                value={values.username}
+                placeholder="username"
+              />
+              {touched.username && errors.username && (
+                <p className="errors">{errors.username}</p>
+              )}
 
-                <input
-                  type="password"
-                  name="password"
-                  onChange={handleChange}
-                  value={values.password}
-                  placeholder="password"
-                />
-                {touched.password && errors.password && (
-                  <p className="errors">{errors.password}</p>
-                )}
+              <input
+                type="password"
+                name="password"
+                onChange={handleChange}
+                value={values.password}
+                placeholder="password"
+              />
+              {touched.password && errors.password && (
+                <p className="errors">{errors.password}</p>
+              )}
 
-                {isSubmitting ? (
-                  <button>
-                    <CircularProgress color="primary" size="20px" />
-                  </button>
-                ) : (
-                    <button type="submit">Submit</button>
-                  )}
-              </form>
-            )}
+              {isSubmitting ? (
+                <button>
+                  <CircularProgress color="primary" size="20px" />
+                </button>
+              ) : (
+                <button type="submit">Submit</button>
+              )}
+            </form>
+          )}
         </Formik>
       </div>
     </div>

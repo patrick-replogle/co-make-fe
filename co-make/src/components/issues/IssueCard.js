@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import Button from '@material-ui/core/Button';
+import React, { useEffect, useState } from "react";
+import Button from "@material-ui/core/Button";
 
-import IssueCardHeader from '../headers/IssueCardHeader.js';
-import { withRouter } from 'react-router-dom';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import IssueCardHeader from "../headers/IssueCardHeader.js";
+import { withRouter } from "react-router-dom";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import IssueComments from "./IssueComments.js";
 
 const IssueCard = (props) => {
   const [issue, setIssue] = useState({});
@@ -25,7 +26,7 @@ const IssueCard = (props) => {
         setIssue(res.data);
       })
       .catch((err) => {
-        console.log('error fetching: ', err.response.data.message);
+        console.log("error fetching: ", err.response.data.message);
       });
   };
 
@@ -36,13 +37,13 @@ const IssueCard = (props) => {
         fetchPosts();
       })
       .catch((err) => {
-        console.log('upvote err: ', err.response.data.message);
+        console.log("upvote err: ", err.response.data.message);
       });
   };
 
-  if (issue.post_image_url === '') {
+  if (issue.post_image_url === "") {
     issue.post_image_url =
-      'https://pngimage.net/wp-content/uploads/2018/05/default-png-6.png';
+      "https://pngimage.net/wp-content/uploads/2018/05/default-png-6.png";
   }
 
   return (
@@ -62,6 +63,7 @@ const IssueCard = (props) => {
           </div>
         </div>
       </div>
+      <IssueComments id={id} />
     </div>
   );
 };
