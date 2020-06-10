@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
-import Button from "@material-ui/core/Button";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth.js";
 import { postContext } from "../contexts/postContext";
@@ -54,6 +53,7 @@ const SearchBar = (props) => {
         });
     }
   };
+
   return (
     <div className="searchBarContainer">
       <form onSubmit={handleSubmit}>

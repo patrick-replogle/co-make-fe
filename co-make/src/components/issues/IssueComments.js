@@ -1,24 +1,17 @@
-import React, { useEffect, useContext } from "react";
-import CreateIcon from "@material-ui/icons/Create";
-import DeleteIcon from "@material-ui/icons/Delete";
-import jwt from "jwt-decode";
+import React, { useEffect } from "react";
 
+import Comment from "./Comment";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
-import { postContext } from "../../contexts/postContext.js";
 
-const CardComments = ({ id, comments, setComments }) => {
-  const token = localStorage.getItem("coMakeToken");
-  const decodedToken = jwt(token);
-  const { setIsEditing, setCommentToEdit } = useContext(postContext);
-
+const IssueComments = ({ postId, comments, setComments }) => {
   useEffect(() => {
     fetchComments();
     // eslint-disable-next-line
-  }, [id]);
+  }, [postId]);
 
   const fetchComments = () => {
     axiosWithAuth()
-      .get(`/posts/${id}/comments`)
+      .get(`/posts/${postId}/comments`)
       .then((res) => {
         setComments(res.data);
       })
@@ -40,27 +33,12 @@ const CardComments = ({ id, comments, setComments }) => {
         <div className="commentList">
           {comments.map((comment) => {
             return (
-              <div key={comment.id} className="comment">
-                <p style={{ fontWeight: "bold" }}>{comment.username}&nbsp;</p>
-                <div>
-                  <p>{comment.text}</p>
-                </div>
-                {decodedToken.id === comment.user_id && (
-                  <div style={{ display: "flex" }}>
-                    <DeleteIcon
-                      style={{ fontSize: "22px", cursor: "pointer" }}
-                      onClick={() => deleteComment(comment.id)}
-                    />
-                    <CreateIcon
-                      style={{ fontSize: "22px", cursor: "pointer" }}
-                      onClick={() => {
-                        setCommentToEdit(comment);
-                        setIsEditing(true);
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
+              <Comment
+                key={comment.id}
+                comment={comment}
+                postId={postId}
+                deleteComment={deleteComment}
+              />
             );
           })}
         </div>
@@ -69,4 +47,4 @@ const CardComments = ({ id, comments, setComments }) => {
   );
 };
 
-export default CardComments;
+export default IssueComments;
