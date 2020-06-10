@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import IssueCardHeader from "../headers/IssueCardHeader.js";
+import ProfileHeader from "../headers/ProfileHeader.js";
 import { withRouter } from "react-router-dom";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import IssueComments from "./IssueComments.js";
@@ -49,10 +49,6 @@ const IssueCard = (props) => {
       });
   };
 
-  if (issue.post_image_url === "") {
-    issue.post_image_url =
-      "https://pngimage.net/wp-content/uploads/2018/05/default-png-6.png";
-  }
   if (isLoading) {
     return (
       <div className="loading">
@@ -62,10 +58,17 @@ const IssueCard = (props) => {
   } else {
     return (
       <>
-        <IssueCardHeader />
+        <ProfileHeader />
         <div className="issueCardContainer">
           <div className="card">
-            <img src={issue.post_image_url} alt="user pic" />
+            <img
+              src={
+                issue.post_image_url
+                  ? issue.post_image_url
+                  : "https://pngimage.net/wp-content/uploads/2018/05/default-png-6.png"
+              }
+              alt="user pic"
+            />
             <h2>{issue.title}</h2>
             <p>{issue.description}</p>
             <p>
@@ -73,7 +76,7 @@ const IssueCard = (props) => {
             </p>
             <p>Created by {issue.authorUsername}</p>
             <div>
-              votes
+              <p>Votes</p>
               <button onClick={() => upVotePost(issue.id)}>
                 {issue.votes}
               </button>

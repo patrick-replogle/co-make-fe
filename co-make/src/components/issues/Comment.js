@@ -4,31 +4,13 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import jwt from "jwt-decode";
 import moment from "moment";
 
-import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
 import { postContext } from "../../contexts/postContext.js";
 
-const Comment = ({ comment, setComments, postId }) => {
+const Comment = ({ comment, setComments, postId, deleteComment }) => {
   const { setIsEditing, setCommentToEdit } = useContext(postContext);
   const token = localStorage.getItem("coMakeToken");
   const decodedToken = jwt(token);
 
-  const fetchComments = () => {
-    axiosWithAuth()
-      .get(`/posts/${postId}/comments`)
-      .then((res) => {
-        setComments(res.data);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const deleteComment = (commentId) => {
-    axiosWithAuth()
-      .delete(`/comments/${commentId}`)
-      .then(() => {
-        fetchComments();
-      })
-      .catch((err) => console.log(err));
-  };
   return (
     <div key={comment.id} className="commentCard">
       <div

@@ -68,7 +68,7 @@ const AddComment = ({ postId, setComments }) => {
         onChange={handleChange}
         placeholder="add a comment"
       />
-      <button>submit</button>
+      <button>Submit</button>
     </form>
   );
 };

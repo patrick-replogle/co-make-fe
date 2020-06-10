@@ -82,13 +82,17 @@ p {
   justify-content: center;
   margin: 0 auto;
   height: 100vh;
+  background: url("img/backgroundImage.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 
   .welcomePageContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: black;
+    color: white;
 
     h1 {
       text-align: center;
@@ -539,7 +543,7 @@ p {
 
   button {
     margin-left: 20px;
-    background: #018786;
+    background: #e01f3d;
     color: white;
   }
 }
@@ -593,7 +597,7 @@ p {
       padding: 15px 25px;
       border-radius: 6px;
       color: white;
-      background: #c41200;
+      background: #e01f3d;
       margin-left: 20px;
       border: 2px solid white;
       font-size: 1.6rem;
@@ -636,7 +640,7 @@ p {
     padding: 12px 15px;
     font-size: 20px;
     color: white;
-    background: lightskyblue;
+    background: #e01f3d;
     border-radius: 4px;
     outline: none;
 
