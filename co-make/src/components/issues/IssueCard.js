@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import ProfileHeader from "../headers/ProfileHeader.js";
+import AddPostHeader from "../headers/AddPostHeader.js";
 import { withRouter } from "react-router-dom";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import IssueComments from "./IssueComments.js";
@@ -58,7 +58,7 @@ const IssueCard = (props) => {
   } else {
     return (
       <>
-        <ProfileHeader />
+        <AddPostHeader />
         <div className="issueCardContainer">
           <div className="card">
             <img

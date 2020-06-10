@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
+import moment from "moment";
 
 import { withRouter } from "react-router-dom";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
@@ -45,17 +45,20 @@ const IssueLink = ({ post, setPosts }) => {
         <p>
           {post.city}, {post.zip_code}{" "}
         </p>
-        <p>Created by {post.authorUsername}</p>
+        <p>
+          Created by {post.authorUsername}{" "}
+          {moment(post.created_at).startOf("day").fromNow()}
+        </p>
       </Link>
-      <div>
-        Votes:
-        <Button
+      <div style={{ display: "flex", alignItems: "center", color: "#565656" }}>
+        <p>Votes</p>
+        <button
           size="large"
           variant="contained"
           onClick={() => upVotePost(post.id)}
         >
           {post.votes}
-        </Button>
+        </button>
       </div>
     </div>
   );

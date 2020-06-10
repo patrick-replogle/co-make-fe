@@ -3,7 +3,6 @@ import { withRouter, Link } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
 import EditIcon from "@material-ui/icons/Edit";
 import AddIcon from "@material-ui/icons/Add";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const ProfileHeader = (props) => {
   return (

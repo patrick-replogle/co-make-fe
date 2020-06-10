@@ -67,7 +67,7 @@ const Register = (props) => {
             status,
           }) => (
             <>
-              <h1>Register Below:</h1>
+              <h1 style={{ color: "#e01f3d" }}>Register a New Account</h1>
               <form onSubmit={handleSubmit}>
                 {status && <p className="status">{status}</p>}
                 <input
