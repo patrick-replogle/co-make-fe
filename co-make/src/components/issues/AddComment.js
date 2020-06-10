@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { postContext } from "../../contexts/postContext.js";
 
-const AddComment = ({ id, setComments }) => {
+const AddComment = ({ postId, setComments }) => {
   const [input, setInput] = useState({ text: "" });
   const {
     isEditing,
@@ -25,7 +25,7 @@ const AddComment = ({ id, setComments }) => {
 
   const fetchComments = () => {
     axiosWithAuth()
-      .get(`/posts/${id}/comments`)
+      .get(`/posts/${postId}/comments`)
       .then((res) => {
         setComments(res.data);
       })
@@ -50,7 +50,7 @@ const AddComment = ({ id, setComments }) => {
         });
     } else {
       axiosWithAuth()
-        .post(`/posts/${id}/comments`, input)
+        .post(`/posts/${postId}/comments`, input)
         .then(() => {
           fetchComments();
           setInput({ text: "" });
@@ -62,11 +62,11 @@ const AddComment = ({ id, setComments }) => {
   return (
     <form onSubmit={handleSubmit} className="commentForm">
       <input
-        type="text"
+        type="textarea"
         name="text"
         value={input.text}
         onChange={handleChange}
-        placeholder="add comment"
+        placeholder="add a comment"
       />
       <button>submit</button>
     </form>

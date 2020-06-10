@@ -1,9 +1,6 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
-import Fab from "@material-ui/core/Fab";
+import { withRouter, Link } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
-
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import PersonIcon from "@material-ui/icons/Person";
 
 const AddPostHeader = (props) => {
@@ -11,37 +8,23 @@ const AddPostHeader = (props) => {
     <div className="profileHeader">
       <h3>CoMake</h3>
       <div className="navBarRight">
-        <Fab
-          size="medium"
-          // className="backButtonMargin"
-          style={{ backgroundColor: "#424242", border: "none" }}
-          onClick={() => {
-            props.history.push("/dashboard");
-          }}
-        >
-          <HomeIcon style={{ color: "white" }} />
-        </Fab>
-        <Fab
-          size="medium"
-          // className="backButtonMargin"
-          style={{ backgroundColor: "#424242", border: "none" }}
-          onClick={() => {
-            props.history.push("/user/posts");
-          }}
-        >
-          <PersonIcon style={{ color: "white" }} />
-        </Fab>
-        <Fab
-          size="medium"
-          // className="backButtonMargin"
-          style={{ backgroundColor: "#424242", border: "none" }}
+        <HomeIcon
+          onClick={() => props.history.push("/dashboard")}
+          style={{ color: "white", fontSize: "2.5rem", cursor: "pointer" }}
+        />
+        <PersonIcon
+          onClick={() => props.history.push("/user/posts")}
+          style={{ color: "white", fontSize: "2.5rem", cursor: "pointer" }}
+        />
+        <Link
           onClick={() => {
             localStorage.removeItem("coMakeToken");
             props.history.push("/login");
           }}
+          style={{ color: "white", fontSize: "1.6rem", cursor: "pointer" }}
         >
-          <ExitToAppIcon style={{ color: "white" }} />
-        </Fab>
+          Logout
+        </Link>
       </div>
     </div>
   );

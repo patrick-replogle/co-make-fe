@@ -40,7 +40,7 @@ const IssueCard = (props) => {
 
   const upVotePost = (id) => {
     axiosWithAuth()
-      .post(`/posts/${id}/increment/votes`)
+      .post(`/posts/${postId}/increment/votes`)
       .then(() => {
         fetchPosts();
       })
@@ -82,12 +82,12 @@ const IssueCard = (props) => {
         </div>
         <div className="commentsContainer">
           <AddComment
-            id={postId}
+            postId={postId}
             comments={comments}
             setComments={setComments}
           />
           <IssueComments
-            id={postId}
+            postId={postId}
             comments={comments}
             setComments={setComments}
           />

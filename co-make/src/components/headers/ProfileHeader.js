@@ -1,7 +1,6 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
-import Fab from "@material-ui/core/Fab";
 import EditIcon from "@material-ui/icons/Edit";
 import AddIcon from "@material-ui/icons/Add";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
@@ -11,47 +10,28 @@ const ProfileHeader = (props) => {
     <div className="profileHeader">
       <h3>CoMake</h3>
       <div className="navBarRight">
-        <Fab
-          size="medium"
-          // className="backButtonMargin"
-          style={{ backgroundColor: "#424242", border: "none" }}
-          onClick={() => {
-            props.history.push("/dashboard");
-          }}
-        >
-          <HomeIcon style={{ color: "white" }} />
-        </Fab>
-        <Fab
-          size="medium"
-          // className="backButtonMargin"
-          style={{ backgroundColor: "#424242", border: "none" }}
-          onClick={() => {
-            props.history.push("/addpost");
-          }}
-        >
-          <AddIcon style={{ color: "white" }} />
-        </Fab>
-        <Fab
-          size="medium"
-          // className="backButtonMargin"
-          style={{ backgroundColor: "#424242", border: "none" }}
-          onClick={() => {
-            props.history.push("/profile_form");
-          }}
-        >
-          <EditIcon style={{ color: "white" }} />
-        </Fab>
-        <Fab
-          size="medium"
-          // className="backButtonMargin"
-          style={{ backgroundColor: "#424242", border: "none" }}
+        <HomeIcon
+          onClick={() => props.history.push("/dashboard")}
+          style={{ color: "white", fontSize: "2.5rem", cursor: "pointer" }}
+        />
+        <AddIcon
+          onClick={() => props.history.push("/addpost")}
+          style={{ color: "white", fontSize: "2.5rem", cursor: "pointer" }}
+        />
+        <EditIcon
+          onClick={() => props.history.push("/profile_form")}
+          style={{ color: "white", fontSize: "2.5rem", cursor: "pointer" }}
+        />
+
+        <Link
           onClick={() => {
             localStorage.removeItem("coMakeToken");
             props.history.push("/login");
           }}
+          style={{ color: "white", fontSize: "1.6rem", cursor: "pointer" }}
         >
-          <ExitToAppIcon style={{ color: "white" }} />
-        </Fab>
+          Logout
+        </Link>
       </div>
     </div>
   );
