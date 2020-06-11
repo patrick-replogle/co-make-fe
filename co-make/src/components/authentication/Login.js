@@ -55,23 +55,26 @@ const Login = (props) => {
           }) => (
             <form onSubmit={handleSubmit}>
               {status && <p className="status">{status}</p>}
+
+              <label htmlFor="username">Username</label>
               <input
                 type="text"
                 name="username"
                 onChange={handleChange}
                 value={values.username}
-                placeholder="username"
+                id="username"
               />
               {touched.username && errors.username && (
                 <p className="errors">{errors.username}</p>
               )}
 
+              <label htmlFor="password">Password</label>
               <input
                 type="password"
                 name="password"
                 onChange={handleChange}
                 value={values.password}
-                placeholder="password"
+                id="password"
               />
               {touched.password && errors.password && (
                 <p className="errors">{errors.password}</p>

@@ -234,11 +234,17 @@ p {
   form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     border-radius: 6px;
     padding: 40px 40px;
     background: white;
+
+    label {
+      text-align: left;
+      font-weight: bold;
+      margin-bottom: 3px;
+      font-size: 1.6rem;
+      display: block;
+    }
 
     input {
       width: 380px;
@@ -247,6 +253,22 @@ p {
       outline: none;
       margin-bottom: 15px;
       border-radius: 4px;
+      font-size: 1.6rem;
+    }
+
+    .termsOfServiceDiv {
+      width: 380px;
+
+      @media (max-width: 580px) {
+        width: 300px;
+      }
+
+      a {
+        color: black;
+        text-decoration: none;
+        font-size: 1.6rem;
+        margin-bottom: px;
+      }
     }
 
     button {
@@ -358,11 +380,17 @@ p {
   form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     border-radius: 6px;
     padding: 40px 40px;
     background: white;
+
+    label {
+      text-align: left;
+      font-weight: bold;
+      margin-bottom: 3px;
+      font-size: 1.6rem;
+      display: block;
+    }
 
     input {
       width: 380px;
@@ -371,9 +399,9 @@ p {
       outline: none;
       margin-bottom: 15px;
       border-radius: 4px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      font-size: 1.6rem;
     }
+
     textarea {
       width: 380px;
       height: 300px;
@@ -382,11 +410,11 @@ p {
       outline: none;
       margin-bottom: 15px;
       border-radius: 4px;
-      border: 2px solid white;
+      border: 2px solid gray;
       word-wrap: nowrap;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      font-size: 1.6rem;
     }
+
     button {
       padding: 8px 20px;
       font-size: 20px;
@@ -420,8 +448,16 @@ p {
   form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 40px 40px;
+    background: white;
+
+    label {
+      text-align: left;
+      font-weight: bold;
+      margin-bottom: 3px;
+      font-size: 1.6rem;
+      display: block;
+    }
 
     input {
       width: 380px;
@@ -430,19 +466,22 @@ p {
       outline: none;
       margin-bottom: 15px;
       border-radius: 4px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      font-size: 1.6rem;
     }
+
     button {
       padding: 12px 20px;
       font-size: 20px;
       width: 380px;
       color: white;
       margin-bottom: 15px;
-      background: lightskyblue;
+      background: #e01f3d;
       border-radius: 4px;
-      border: 1px solid white;
       outline: none;
+
+      &:hover {
+        opacity: 0.7;
+      }
     }
   }
 }
@@ -545,6 +584,10 @@ p {
     margin-left: 20px;
     background: #e01f3d;
     color: white;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 }
 

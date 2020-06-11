@@ -70,60 +70,84 @@ const Register = (props) => {
               <h1 style={{ color: "#e01f3d" }}>Register a New Account</h1>
               <form onSubmit={handleSubmit}>
                 {status && <p className="status">{status}</p>}
+
+                <label htmlFor="username">Username</label>
                 <input
                   type="text"
                   name="username"
                   onChange={handleChange}
                   value={values.username}
-                  placeholder="username"
+                  id="username"
                 />
                 {touched.username && errors.username && (
                   <p className="errors">{errors.username}</p>
                 )}
 
+                <label htmlFor="password">Password</label>
                 <input
                   type="password"
                   name="password"
                   onChange={handleChange}
                   value={values.password}
-                  placeholder="password"
+                  id="password"
                 />
                 {touched.password && errors.password && (
                   <p className="errors">{errors.password}</p>
                 )}
 
+                <label htmlFor="email">Email</label>
                 <input
                   type="email"
                   name="email"
                   onChange={handleChange}
                   value={values.email}
-                  placeholder="email"
+                  id="email"
                 />
                 {touched.email && errors.email && (
                   <p className="errors">{errors.email}</p>
                 )}
 
+                <label htmlFor="first_name">First Name</label>
                 <input
                   type="text"
                   name="first_name"
                   onChange={handleChange}
                   value={values.first_name}
-                  placeholder="first name"
+                  id="first_name"
                 />
                 {touched.first_name && errors.first_name && (
                   <p className="errors">{errors.first_name}</p>
                 )}
 
+                <label htmlFor="last_name">Last Name</label>
                 <input
                   type="text"
                   name="last_name"
                   onChange={handleChange}
                   value={values.last_name}
-                  placeholder="last name"
+                  id="last_name"
                 />
                 {touched.last_name && errors.last_name && (
                   <p className="errors">{errors.last_name}</p>
                 )}
+
+                <div className="termsOfServiceDiv">
+                  <p>
+                    <span>
+                      By signing up, you agree to CoMake's{" "}
+                      <a href="##" target="_blank">
+                        Terms of Service
+                      </a>
+                      ,{" "}
+                      <a href="##" target="_blank">
+                        Privacy Policy
+                      </a>{" "}
+                      <a href="##" target="_blank">
+                        Cookie Policy
+                      </a>
+                    </span>
+                  </p>
+                </div>
 
                 {isSubmitting ? (
                   <button>

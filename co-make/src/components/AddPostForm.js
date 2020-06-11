@@ -77,45 +77,55 @@ const AddPostForm = (props) => {
         {isEditing ? <h2>Edit a Post</h2> : <h2>Add a Post</h2>}
         {error && <p>{error}</p>}
         <form onSubmit={handleSubmit}>
+          <label htmlFor="title">Title</label>
           <input
             type="text"
             name="title"
             onChange={handleChange}
             value={postData.title}
-            placeholder="title"
+            id="title"
             required
           />
+
+          <label htmlFor="description">Description</label>
           <textarea
             type="textarea"
             name="description"
             onChange={handleChange}
             value={postData.description}
-            placeholder="description"
+            id="description"
             required
           />
+
+          <label htmlFor="city">City</label>
           <input
             type="text"
             name="city"
             onChange={handleChange}
             value={postData.city}
-            placeholder="city"
+            id="city"
             required
           />
+
+          <label htmlFor="zip_code">Zip Code</label>
           <input
             type="text"
             name="zip_code"
             onChange={handleChange}
             value={postData.zip_code}
-            placeholder="zip code"
+            id="zip code"
             required
           />
+
+          <label htmlFor="post_image_url">Post Image URL</label>
           <input
             type="text"
             name="post_image_url"
             onChange={handleChange}
             value={postData.post_image_url}
-            placeholder="image url"
+            id="image url"
           />
+
           {isLoading ? (
             <button>
               <CircularProgress color="primary" size="20px" />
