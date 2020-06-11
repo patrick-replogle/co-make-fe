@@ -5,6 +5,8 @@ import ProfileHeader from "../components/headers/ProfileHeader.js";
 import { axiosWithAuth } from "../utils/axiosWithAuth.js";
 import { userContext } from "../contexts/userContext.js";
 
+import { updatedUser } from "../utils/functions";
+
 const initialUserState = {
   username: "",
   email: "",
@@ -37,7 +39,6 @@ const UserForm = (props) => {
   useEffect(() => {
     setFormData({
       username: user.username,
-      password: "",
       email: user.email,
       first_name: user.first_name,
       last_name: user.last_name,
@@ -55,8 +56,10 @@ const UserForm = (props) => {
   const handleSubmit = (e) => {
     setIsSubmitting(true);
     e.preventDefault();
+    const values = updatedUser(user, formData);
+
     axiosWithAuth()
-      .put(`/users/${user.id}`, formData)
+      .put(`/users/${user.id}`, values)
       .then((res) => {
         setIsSubmitting(false);
         setUser(res.data);
