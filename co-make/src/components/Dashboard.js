@@ -10,6 +10,7 @@ import SearchBar from "./SearchBar.js";
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchErr, setSearchErr] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
   const { posts, setPosts } = useContext(postContext);
 
   // need to change the backend so that user has a location in their profile and autofills local posts from their location on logging in
@@ -36,8 +37,11 @@ const Dashboard = () => {
   } else {
     return (
       <div>
-        <DashboardHeader />
-        <SearchBar setSearchErr={setSearchErr} />
+        <DashboardHeader
+          showSearch={showSearch}
+          setShowSearch={setShowSearch}
+        />
+        {showSearch && <SearchBar setSearchErr={setSearchErr} />}
         {searchErr && <p style={{ color: "crimson" }}>{searchErr}</p>}
         <div className="dashboardPostContainer">
           {posts.map((post) => {

@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
-
+import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import { withRouter } from "react-router-dom";
+
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import noImage from "../../img/noImage.png";
 
@@ -50,15 +51,32 @@ const IssueLink = ({ post, setPosts }) => {
           {moment(post.created_at).startOf("day").fromNow()}
         </p>
       </Link>
-      <div style={{ display: "flex", alignItems: "center", color: "#565656" }}>
-        <p>Votes</p>
-        <button
-          size="large"
-          variant="contained"
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          color: "#565656",
+          width: "100%",
+          marginLeft: "5%",
+        }}
+      >
+        <ThumbUpIcon
           onClick={() => upVotePost(post.id)}
+          style={{
+            color: "#e01f3d",
+            fontSize: "2.5rem",
+            cursor: "pointer",
+          }}
+        />
+        <p
+          style={{
+            fontSize: "1.6rem",
+            marginLeft: "3%",
+          }}
         >
           {post.votes}
-        </button>
+        </p>
       </div>
     </div>
   );

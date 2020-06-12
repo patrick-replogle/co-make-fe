@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import ProfileHeader from "../components/headers/ProfileHeader.js";
+import DashboardHeader from "../components/headers/DashboardHeader.js";
 import { axiosWithAuth } from "../utils/axiosWithAuth.js";
 import { userContext } from "../contexts/userContext.js";
 
@@ -81,7 +81,7 @@ const UserForm = (props) => {
   } else {
     return (
       <div>
-        <ProfileHeader />
+        <DashboardHeader />
         <div className="profileForm">
           <h1>Update Profile</h1>
           <form onSubmit={handleSubmit}>
