@@ -1,22 +1,22 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
-import AddIcon from "@material-ui/icons/Add";
+import { withRouter } from "react-router-dom";
+import HomeIcon from "@material-ui/icons/Home";
 import PersonIcon from "@material-ui/icons/Person";
 
-const DashboardHeader = (props) => {
+const AddPostHeader = (props) => {
   return (
     <div className="profileHeader">
       <h3>CoMake</h3>
       <div className="navBarRight">
-        <AddIcon
-          onClick={() => props.history.push("/addpost")}
+        <HomeIcon
+          onClick={() => props.history.push("/dashboard")}
           style={{ color: "white", fontSize: "2.5rem", cursor: "pointer" }}
         />
         <PersonIcon
           onClick={() => props.history.push("/user/posts")}
           style={{ color: "white", fontSize: "2.5rem", cursor: "pointer" }}
         />
-        <Link
+        <p
           onClick={() => {
             localStorage.removeItem("coMakeToken");
             props.history.push("/login");
@@ -24,10 +24,10 @@ const DashboardHeader = (props) => {
           style={{ color: "white", fontSize: "1.6rem", cursor: "pointer" }}
         >
           Logout
-        </Link>
+        </p>
       </div>
     </div>
   );
 };
 
-export default withRouter(DashboardHeader);
+export default withRouter(AddPostHeader);

@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import ProfileHeader from "../components/headers/ProfileHeader.js";
-import { axiosWithAuth } from "../utils/axiosWithAuth.js";
-import { userContext } from "../contexts/userContext.js";
+import UserFormHeader from "./UserFormHeader.js";
+import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
+import { userContext } from "../../contexts/userContext.js";
+
+import { updatedUser } from "../../utils/functions";
 
 const initialUserState = {
   username: "",
@@ -37,7 +39,6 @@ const UserForm = (props) => {
   useEffect(() => {
     setFormData({
       username: user.username,
-      password: "",
       email: user.email,
       first_name: user.first_name,
       last_name: user.last_name,
@@ -55,8 +56,10 @@ const UserForm = (props) => {
   const handleSubmit = (e) => {
     setIsSubmitting(true);
     e.preventDefault();
+    const values = updatedUser(user, formData);
+
     axiosWithAuth()
-      .put(`/users/${user.id}`, formData)
+      .put(`/users/${user.id}`, values)
       .then((res) => {
         setIsSubmitting(false);
         setUser(res.data);
@@ -78,51 +81,64 @@ const UserForm = (props) => {
   } else {
     return (
       <div>
-        <ProfileHeader />
+        <UserFormHeader />
         <div className="profileForm">
-          <h1>Update Profile</h1>
+          <h1 style={{ color: "#e01f3d" }}>Update Profile</h1>
           <form onSubmit={handleSubmit}>
+            <label htmlFor="username">Username</label>
             <input
               type="text"
               name="username"
               onChange={handleChange}
               value={formData.username}
-              placeholder="username"
+              id="username"
               required
             />
+
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               name="email"
               onChange={handleChange}
               value={formData.email}
-              placeholder="email"
+              id="email"
               required
             />
+
+            <label htmlFor="first_name">First Name</label>
             <input
               type="text"
               name="first_name"
               onChange={handleChange}
               value={formData.first_name}
-              placeholder="first name"
+              id="first_name"
               required
             />
+
+            <label htmlFor="last_name">Last Name</label>
             <input
               type="text"
               name="last_name"
               onChange={handleChange}
               value={formData.last_name}
-              placeholder="last name"
+              id="last_name"
               required
             />
 
+            <label htmlFor="profile_image_url">Profile Image URL</label>
             <input
               type="text"
               name="profile_image_url"
               onChange={handleChange}
               value={formData.profile_image_url}
-              placeholder="profile image url"
+              id="profile_image_url"
             />
-            {errMessage && <p style={{ color: "crimson" }}>{errMessage}</p>}
+
+            {errMessage && (
+              <p style={{ color: "crimson", maxWidth: "380px" }}>
+                {errMessage}
+              </p>
+            )}
             {isSubmitting ? (
               <button>
                 <CircularProgress color="primary" size="20px" />

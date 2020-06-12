@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { postContext } from "../contexts/postContext.js";
-import AddPostHeader from "./headers/AddPostHeader.js";
+import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
+import { postContext } from "../../contexts/postContext.js";
+import AddPostHeader from "./AddPostHeader.js";
 
 const initialFormState = {
   title: "",
@@ -14,13 +14,14 @@ const initialFormState = {
   post_image_url: "",
 };
 
-const AddPostForm = (props) => {
+const AddPostForm = ({ history }) => {
   const [postData, setPostData] = useState(initialFormState);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const { isEditing, setIsEditing, postToEdit, setPostToEdit } = useContext(
     postContext
   );
+  const { push } = useHistory();
 
   useEffect(() => {
     if (isEditing) {
@@ -48,7 +49,7 @@ const AddPostForm = (props) => {
           setPostToEdit({});
           setPostData(initialFormState);
           setIsLoading(false);
-          props.history.push(`/user/posts`);
+          push(`/user/posts`);
         })
         .catch((err) => {
           setIsLoading(false);
@@ -61,7 +62,7 @@ const AddPostForm = (props) => {
         .then(() => {
           setIsLoading(false);
           setPostData(initialFormState);
-          props.history.push("/user/posts");
+          push("/user/posts");
         })
         .catch((err) => {
           setIsLoading(false);
@@ -74,48 +75,75 @@ const AddPostForm = (props) => {
     <>
       <AddPostHeader />
       <div className="addFormContainer">
-        {isEditing ? <h2>Edit a Post</h2> : <h2>Add a Post</h2>}
-        {error && <p>{error}</p>}
+        <p
+          style={{
+            color: "#e01f3d",
+            width: "440px",
+            textAlign: "left",
+            margin: "30px 0",
+          }}
+        >
+          Want to call attention to an issue in your local community? You've
+          come to the right place. Voice your concerns, reach out for help,
+          offer to volunteer, and be part of the solution.
+        </p>
+        {/* {isEditing ? (
+          <h2 style={{ color: "#e01f3d" }}>Edit a Post</h2>
+        ) : (
+          <h2 style={{ color: "#e01f3d" }}>Add a Post</h2>
+        )} */}
+
         <form onSubmit={handleSubmit}>
+          <label htmlFor="title">Title</label>
           <input
             type="text"
             name="title"
             onChange={handleChange}
             value={postData.title}
-            placeholder="title"
+            id="title"
             required
           />
+
+          <label htmlFor="description">Description</label>
           <textarea
             type="textarea"
             name="description"
             onChange={handleChange}
             value={postData.description}
-            placeholder="description"
+            id="description"
             required
           />
+
+          <label htmlFor="city">City</label>
           <input
             type="text"
             name="city"
             onChange={handleChange}
             value={postData.city}
-            placeholder="city"
+            id="city"
             required
           />
+
+          <label htmlFor="zip_code">Zip Code</label>
           <input
             type="text"
             name="zip_code"
             onChange={handleChange}
             value={postData.zip_code}
-            placeholder="zip code"
+            id="zip code"
             required
           />
+
+          <label htmlFor="post_image_url">Post Image URL</label>
           <input
             type="text"
             name="post_image_url"
             onChange={handleChange}
             value={postData.post_image_url}
-            placeholder="image url"
+            id="image url"
           />
+
+          {error && <p>{error}</p>}
           {isLoading ? (
             <button>
               <CircularProgress color="primary" size="20px" />
@@ -129,7 +157,7 @@ const AddPostForm = (props) => {
               setPostData(initialFormState);
               setIsEditing(false);
               setPostToEdit({});
-              props.history.push("/user/posts");
+              push("/dashboard");
             }}
           >
             Cancel
@@ -140,4 +168,4 @@ const AddPostForm = (props) => {
   );
 };
 
-export default withRouter(AddPostForm);
+export default AddPostForm;

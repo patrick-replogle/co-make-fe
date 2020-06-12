@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import ProfileHeader from "../headers/ProfileHeader.js";
-import { withRouter } from "react-router-dom";
+import AddPostHeader from "../add-post-form/AddPostHeader.js";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import IssueComments from "./IssueComments.js";
 import AddComment from "./AddComment.js";
@@ -38,7 +37,7 @@ const IssueCard = (props) => {
       });
   };
 
-  const upVotePost = (id) => {
+  const upVotePost = (postId) => {
     axiosWithAuth()
       .post(`/posts/${postId}/increment/votes`)
       .then(() => {
@@ -58,7 +57,7 @@ const IssueCard = (props) => {
   } else {
     return (
       <>
-        <ProfileHeader />
+        <AddPostHeader />
         <div className="issueCardContainer">
           <div className="card">
             <img
@@ -67,7 +66,7 @@ const IssueCard = (props) => {
                   ? issue.post_image_url
                   : "https://pngimage.net/wp-content/uploads/2018/05/default-png-6.png"
               }
-              alt="user pic"
+              alt="issue avatar"
             />
             <h2>{issue.title}</h2>
             <p>{issue.description}</p>
@@ -100,4 +99,4 @@ const IssueCard = (props) => {
   }
 };
 
-export default withRouter(IssueCard);
+export default IssueCard;

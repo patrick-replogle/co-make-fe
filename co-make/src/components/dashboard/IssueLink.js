@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
+import moment from "moment";
+import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 
-import { withRouter } from "react-router-dom";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
-import noImage from "../../img/noImage.png";
+import volunteering from "../../img/volunteering.jpg";
 
 const IssueLink = ({ post, setPosts }) => {
   const fetchPosts = () => {
@@ -33,32 +33,49 @@ const IssueLink = ({ post, setPosts }) => {
   return (
     <div className="issueLink">
       <Link to={`/post/${post.id}`}>
-        <img
-          src={post.post_image_url !== "" ? post.post_image_url : noImage}
-          alt="user pic"
-        />
+        <img src={volunteering} alt="issue avatar" />
         <h2>
-          {post.title.length > 30
-            ? post.title.slice(0, 30) + "..."
+          {post.title.length > 50
+            ? post.title.slice(0, 50) + "..."
             : post.title}
         </h2>
         <p>
           {post.city}, {post.zip_code}{" "}
         </p>
-        <p>Created by {post.authorUsername}</p>
+        <p>
+          Created by {post.authorUsername}{" "}
+          {moment(post.createdAt).startOf("day").fromNow()}
+        </p>
       </Link>
-      <div>
-        Votes:
-        <Button
-          size="large"
-          variant="contained"
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          color: "#565656",
+          width: "100%",
+          marginLeft: "5%",
+        }}
+      >
+        <ThumbUpIcon
           onClick={() => upVotePost(post.id)}
+          style={{
+            color: "#e01f3d",
+            fontSize: "2.5rem",
+            cursor: "pointer",
+          }}
+        />
+        <p
+          style={{
+            fontSize: "1.6rem",
+            marginLeft: "3%",
+          }}
         >
           {post.votes}
-        </Button>
+        </p>
       </div>
     </div>
   );
 };
 
-export default withRouter(IssueLink);
+export default IssueLink;
