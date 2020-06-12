@@ -2,9 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import { withRouter } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { postContext } from "../contexts/postContext.js";
-import AddPostHeader from "./headers/AddPostHeader.js";
+import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
+import { postContext } from "../../contexts/postContext.js";
+import AddPostHeader from "./AddPostHeader.js";
 
 const initialFormState = {
   title: "",
@@ -14,7 +14,7 @@ const initialFormState = {
   post_image_url: "",
 };
 
-const AddPostForm = (props) => {
+const AddPostForm = ({ history }) => {
   const [postData, setPostData] = useState(initialFormState);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -48,7 +48,7 @@ const AddPostForm = (props) => {
           setPostToEdit({});
           setPostData(initialFormState);
           setIsLoading(false);
-          props.history.push(`/user/posts`);
+          history.push(`/user/posts`);
         })
         .catch((err) => {
           setIsLoading(false);
@@ -61,7 +61,7 @@ const AddPostForm = (props) => {
         .then(() => {
           setIsLoading(false);
           setPostData(initialFormState);
-          props.history.push("/user/posts");
+          history.push("/user/posts");
         })
         .catch((err) => {
           setIsLoading(false);
@@ -74,7 +74,11 @@ const AddPostForm = (props) => {
     <>
       <AddPostHeader />
       <div className="addFormContainer">
-        {isEditing ? <h2>Edit a Post</h2> : <h2>Add a Post</h2>}
+        {isEditing ? (
+          <h2 style={{ color: "#e01f3d" }}>Edit a Post</h2>
+        ) : (
+          <h2 style={{ color: "#e01f3d" }}>Add a Post</h2>
+        )}
         {error && <p>{error}</p>}
         <form onSubmit={handleSubmit}>
           <label htmlFor="title">Title</label>
@@ -139,7 +143,7 @@ const AddPostForm = (props) => {
               setPostData(initialFormState);
               setIsEditing(false);
               setPostToEdit({});
-              props.history.push("/user/posts");
+              history.push("/user/posts");
             }}
           >
             Cancel

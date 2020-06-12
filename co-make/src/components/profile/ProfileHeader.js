@@ -1,7 +1,6 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
-import EditIcon from "@material-ui/icons/Edit";
 import AddIcon from "@material-ui/icons/Add";
 
 const ProfileHeader = (props) => {
@@ -17,12 +16,7 @@ const ProfileHeader = (props) => {
           onClick={() => props.history.push("/addpost")}
           style={{ color: "white", fontSize: "2.5rem", cursor: "pointer" }}
         />
-        <EditIcon
-          onClick={() => props.history.push("/profile_form")}
-          style={{ color: "white", fontSize: "2.5rem", cursor: "pointer" }}
-        />
-
-        <Link
+        <p
           onClick={() => {
             localStorage.removeItem("coMakeToken");
             props.history.push("/login");
@@ -30,7 +24,7 @@ const ProfileHeader = (props) => {
           style={{ color: "white", fontSize: "1.6rem", cursor: "pointer" }}
         >
           Logout
-        </Link>
+        </p>
       </div>
     </div>
   );

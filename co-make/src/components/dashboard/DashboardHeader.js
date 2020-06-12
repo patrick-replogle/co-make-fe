@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import AddIcon from "@material-ui/icons/Add";
 import PersonIcon from "@material-ui/icons/Person";
 import SearchIcon from "@material-ui/icons/Search";
@@ -21,7 +21,7 @@ const DashboardHeader = (props) => {
           onClick={() => props.history.push("/user/posts")}
           style={{ color: "white", fontSize: "2.5rem", cursor: "pointer" }}
         />
-        <Link
+        <p
           onClick={() => {
             localStorage.removeItem("coMakeToken");
             props.history.push("/login");
@@ -29,7 +29,7 @@ const DashboardHeader = (props) => {
           style={{ color: "white", fontSize: "1.6rem", cursor: "pointer" }}
         >
           Logout
-        </Link>
+        </p>
       </div>
     </div>
   );

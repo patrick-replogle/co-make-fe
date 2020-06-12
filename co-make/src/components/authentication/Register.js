@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
-import AuthHeader from "../headers/AuthHeader.js";
+import AuthHeader from "./AuthHeader.js";
 
 const initialUser = {
   username: "",
@@ -142,6 +142,7 @@ const Register = (props) => {
                       <a href="##" target="_blank">
                         Privacy Policy
                       </a>{" "}
+                      <font>and</font>{" "}
                       <a href="##" target="_blank">
                         Cookie Policy
                       </a>

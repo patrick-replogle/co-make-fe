@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import AddPostHeader from "../headers/AddPostHeader.js";
+import AddPostHeader from "../add-post-form/AddPostHeader.js";
 import { withRouter } from "react-router-dom";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import IssueComments from "./IssueComments.js";

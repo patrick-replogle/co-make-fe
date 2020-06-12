@@ -1,10 +1,11 @@
 import React from "react";
 import { Formik } from "formik";
+import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
-import AuthHeader from "../headers/AuthHeader.js";
+import AuthHeader from "./AuthHeader.js";
 
 const validationSchema = Yup.object({
   username: Yup.string().required("username required"),
@@ -79,6 +80,13 @@ const Login = (props) => {
               {touched.password && errors.password && (
                 <p className="errors">{errors.password}</p>
               )}
+
+              <div className="termsOfServiceDiv">
+                <p>
+                  <span>Don't have an account yet?&nbsp;</span>
+                  <Link to="/register">Register here</Link>
+                </p>
+              </div>
 
               {isSubmitting ? (
                 <button>
