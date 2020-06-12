@@ -74,12 +74,24 @@ const AddPostForm = ({ history }) => {
     <>
       <AddPostHeader />
       <div className="addFormContainer">
-        {isEditing ? (
+        <p
+          style={{
+            color: "#e01f3d",
+            width: "440px",
+            textAlign: "left",
+            margin: "30px 0",
+          }}
+        >
+          Want to call attention to an issue in your local community? You've
+          come to the right place. Voice your concerns, reach out for help,
+          offer to volunteer, and be part of the solution.
+        </p>
+        {/* {isEditing ? (
           <h2 style={{ color: "#e01f3d" }}>Edit a Post</h2>
         ) : (
           <h2 style={{ color: "#e01f3d" }}>Add a Post</h2>
-        )}
-        {error && <p>{error}</p>}
+        )} */}
+
         <form onSubmit={handleSubmit}>
           <label htmlFor="title">Title</label>
           <input
@@ -130,6 +142,7 @@ const AddPostForm = ({ history }) => {
             id="image url"
           />
 
+          {error && <p>{error}</p>}
           {isLoading ? (
             <button>
               <CircularProgress color="primary" size="20px" />

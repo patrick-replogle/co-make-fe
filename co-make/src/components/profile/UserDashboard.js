@@ -7,7 +7,7 @@ import ProfileHeader from "./ProfileHeader.js";
 import { userContext } from "../../contexts/userContext.js";
 import UserPosts from "./UserPosts.js";
 
-const UserDashboard = (props) => {
+const UserDashboard = () => {
   const { user, setUser } = useContext(userContext);
   const [userPosts, setUserPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -50,8 +50,6 @@ const UserDashboard = (props) => {
     return (
       <div className="userDashboardContainer">
         <ProfileHeader />
-        <h3>My Profile</h3>
-
         <div className="profileCard">
           <div className="profileCardTopRow">
             <div className="profileAvatar">

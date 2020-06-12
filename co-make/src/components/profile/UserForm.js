@@ -83,7 +83,7 @@ const UserForm = (props) => {
       <div>
         <UserFormHeader />
         <div className="profileForm">
-          <h1>Update Profile</h1>
+          <h1 style={{ color: "#e01f3d" }}>Update Profile</h1>
           <form onSubmit={handleSubmit}>
             <label htmlFor="username">Username</label>
             <input
@@ -134,7 +134,11 @@ const UserForm = (props) => {
               id="profile_image_url"
             />
 
-            {errMessage && <p style={{ color: "crimson" }}>{errMessage}</p>}
+            {errMessage && (
+              <p style={{ color: "crimson", maxWidth: "380px" }}>
+                {errMessage}
+              </p>
+            )}
             {isSubmitting ? (
               <button>
                 <CircularProgress color="primary" size="20px" />

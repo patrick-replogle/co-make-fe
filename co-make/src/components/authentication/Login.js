@@ -83,7 +83,7 @@ const Login = (props) => {
 
               <div className="termsOfServiceDiv">
                 <p>
-                  <span>Don't have an account yet?&nbsp;</span>
+                  <span>Don't have an account?&nbsp;</span>
                   <Link to="/register">Register here</Link>
                 </p>
               </div>

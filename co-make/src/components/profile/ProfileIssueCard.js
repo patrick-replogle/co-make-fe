@@ -1,36 +1,33 @@
-import React, { useContext } from 'react';
-import Button from '@material-ui/core/Button';
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
-import { withRouter } from 'react-router-dom';
+import React, { useContext } from "react";
+import Button from "@material-ui/core/Button";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
+import { withRouter } from "react-router-dom";
 
-import { axiosWithAuth } from '../../utils/axiosWithAuth.js';
-import { postContext } from '../../contexts/postContext.js';
+import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
+import { postContext } from "../../contexts/postContext.js";
+import { formatDate } from "../../utils/functions";
 
-const ProfileIssueCard = (props) => {
+const ProfileIssueCard = ({ post, setUserPosts, history }) => {
   const { setIsEditing, setPostToEdit } = useContext(postContext);
-
-  if (props.post.post_image_url === '') {
-    props.post.post_image_url =
-      'https://pngimage.net/wp-content/uploads/2018/05/default-png-6.png';
-  }
+  const dateString = formatDate(post.createdAt);
 
   const fetchPosts = () => {
     axiosWithAuth()
-      .get('/posts/by/user')
+      .get("/posts/by/user")
       .then((res) => {
         console.log(res.data);
-        props.setUserPosts(res.data.sort((a, b) => b.votes - a.votes));
+        setUserPosts(res.data.sort((a, b) => b.votes - a.votes));
       })
       .catch((err) => {
-        console.log('error fetching: ', err.response.data.message);
+        console.log("error fetching: ", err.response.data.message);
       });
   };
 
   const handleEdit = (post) => {
     setPostToEdit(post);
     setIsEditing(true);
-    props.history.push('/addpost');
+    history.push("/addpost");
   };
 
   const deletePost = (id) => {
@@ -40,40 +37,25 @@ const ProfileIssueCard = (props) => {
         fetchPosts();
       })
       .catch((err) => {
-        console.log('Error deleting post: ', err.response.data.message);
+        console.log("Error deleting post: ", err.response.data.message);
       });
   };
-
-  function formatDate(string) {
-    var options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(string).toLocaleDateString([], options);
-  }
-
-  const dateString = formatDate(props.post.createdAt);
 
   return (
     <div className="profileIssueCard">
       <div>
-        <p>{props.post.title}</p>
+        <p>{post.title}</p>
+        <p>Created on {dateString}</p>
       </div>
-      <div>
-        <p>Posted on {dateString}</p>
-        <Button
-          size="small"
-          variant="contained"
-          startIcon={<EditIcon />}
-          onClick={() => handleEdit(props.post)}
-        >
-          Edit
-        </Button>
-        <Button
-          size="small"
-          variant="contained"
-          startIcon={<DeleteIcon />}
-          onClick={() => deletePost(props.post.id)}
-        >
-          Delete
-        </Button>
+      <div className="profileIssueCardIconContainer">
+        <EditIcon
+          style={{ fontSize: "2rem", cursor: "pointer" }}
+          onClick={() => handleEdit(post)}
+        />
+        <DeleteIcon
+          style={{ fontSize: "2rem", cursor: "pointer" }}
+          onClick={() => deletePost(post.id)}
+        />
       </div>
     </div>
   );
