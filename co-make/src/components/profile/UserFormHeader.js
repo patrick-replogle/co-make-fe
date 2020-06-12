@@ -1,30 +1,32 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
 import PersonIcon from "@material-ui/icons/Person";
 import AddIcon from "@material-ui/icons/Add";
 
-const ProfileHeader = (props) => {
+const ProfileHeader = () => {
+  const { push } = useHistory();
+
   return (
     <div className="profileHeader">
       <h3>CoMake</h3>
       <div className="navBarRight">
         <HomeIcon
-          onClick={() => props.history.push("/dashboard")}
+          onClick={() => push("/dashboard")}
           style={{ color: "white", fontSize: "2.5rem", cursor: "pointer" }}
         />
         <AddIcon
-          onClick={() => props.history.push("/addpost")}
+          onClick={() => push("/addpost")}
           style={{ color: "white", fontSize: "2.5rem", cursor: "pointer" }}
         />
         <PersonIcon
-          onClick={() => props.history.push("/user/posts")}
+          onClick={() => push("/user/posts")}
           style={{ color: "white", fontSize: "2.5rem", cursor: "pointer" }}
         />
         <p
           onClick={() => {
             localStorage.removeItem("coMakeToken");
-            props.history.push("/login");
+            push("/login");
           }}
           style={{ color: "white", fontSize: "1.6rem", cursor: "pointer" }}
         >
@@ -35,4 +37,4 @@ const ProfileHeader = (props) => {
   );
 };
 
-export default withRouter(ProfileHeader);
+export default ProfileHeader;

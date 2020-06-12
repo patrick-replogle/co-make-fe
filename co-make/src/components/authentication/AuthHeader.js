@@ -1,16 +1,18 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const AuthHeader = ({ history }) => {
+  const { push } = useHistory();
+
   return (
     <nav className="authHeader">
       <h1>CoMake</h1>
       <div className="authHeaderLinks">
-        <button onClick={() => history.push("/register")}>Register</button>
+        <button onClick={() => push("/register")}>Register</button>
         <Link to="/login">Login</Link>
       </div>
     </nav>
   );
 };
 
-export default withRouter(AuthHeader);
+export default AuthHeader;

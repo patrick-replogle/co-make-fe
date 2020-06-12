@@ -444,12 +444,17 @@ p {
   color: black;
   height: 410px;
   max-height: 550px;
+  overflow-wrap: break-word;
   word-wrap: break-word;
-  white-space: pre-line;
 
   a {
     color: #565656;
     text-decoration: none;
+
+    h2 {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
   }
 
   img {

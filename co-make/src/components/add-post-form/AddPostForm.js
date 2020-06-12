@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
@@ -21,6 +21,7 @@ const AddPostForm = ({ history }) => {
   const { isEditing, setIsEditing, postToEdit, setPostToEdit } = useContext(
     postContext
   );
+  const { push } = useHistory();
 
   useEffect(() => {
     if (isEditing) {
@@ -48,7 +49,7 @@ const AddPostForm = ({ history }) => {
           setPostToEdit({});
           setPostData(initialFormState);
           setIsLoading(false);
-          history.push(`/user/posts`);
+          push(`/user/posts`);
         })
         .catch((err) => {
           setIsLoading(false);
@@ -61,7 +62,7 @@ const AddPostForm = ({ history }) => {
         .then(() => {
           setIsLoading(false);
           setPostData(initialFormState);
-          history.push("/user/posts");
+          push("/user/posts");
         })
         .catch((err) => {
           setIsLoading(false);
@@ -156,7 +157,7 @@ const AddPostForm = ({ history }) => {
               setPostData(initialFormState);
               setIsEditing(false);
               setPostToEdit({});
-              history.push("/user/posts");
+              push("/dashboard");
             }}
           >
             Cancel
@@ -167,4 +168,4 @@ const AddPostForm = ({ history }) => {
   );
 };
 
-export default withRouter(AddPostForm);
+export default AddPostForm;

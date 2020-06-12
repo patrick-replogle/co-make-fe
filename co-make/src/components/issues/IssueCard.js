@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import AddPostHeader from "../add-post-form/AddPostHeader.js";
-import { withRouter } from "react-router-dom";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import IssueComments from "./IssueComments.js";
 import AddComment from "./AddComment.js";
@@ -100,4 +99,4 @@ const IssueCard = (props) => {
   }
 };
 
-export default withRouter(IssueCard);
+export default IssueCard;

@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
-import { withRouter } from "react-router-dom";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import volunteering from "../../img/volunteering.jpg";
@@ -36,8 +35,8 @@ const IssueLink = ({ post, setPosts }) => {
       <Link to={`/post/${post.id}`}>
         <img src={volunteering} alt="issue avatar" />
         <h2>
-          {post.title.length > 30
-            ? post.title.slice(0, 30) + "..."
+          {post.title.length > 50
+            ? post.title.slice(0, 50) + "..."
             : post.title}
         </h2>
         <p>
@@ -45,7 +44,7 @@ const IssueLink = ({ post, setPosts }) => {
         </p>
         <p>
           Created by {post.authorUsername}{" "}
-          {moment(post.created_at).startOf("day").fromNow()}
+          {moment(post.createdAt).startOf("day").fromNow()}
         </p>
       </Link>
       <div
@@ -79,4 +78,4 @@ const IssueLink = ({ post, setPosts }) => {
   );
 };
 
-export default withRouter(IssueLink);
+export default IssueLink;
