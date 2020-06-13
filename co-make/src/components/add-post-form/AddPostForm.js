@@ -14,7 +14,7 @@ const initialFormState = {
   post_image_url: "",
 };
 
-const AddPostForm = ({ history }) => {
+const AddPostForm = () => {
   const [postData, setPostData] = useState(initialFormState);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -49,7 +49,7 @@ const AddPostForm = ({ history }) => {
           setPostToEdit({});
           setPostData(initialFormState);
           setIsLoading(false);
-          push(`/user/posts`);
+          push(`/dashboard`);
         })
         .catch((err) => {
           setIsLoading(false);
@@ -62,7 +62,7 @@ const AddPostForm = ({ history }) => {
         .then(() => {
           setIsLoading(false);
           setPostData(initialFormState);
-          push("/user/posts");
+          push("/dashboard");
         })
         .catch((err) => {
           setIsLoading(false);
@@ -84,14 +84,15 @@ const AddPostForm = ({ history }) => {
           }}
         >
           Want to call attention to an issue in your local community? You've
-          come to the right place. Voice your concerns, reach out for help,
-          offer to volunteer, and be part of the solution.
+          come to the right place. Voice your concerns. Reach out for help.
+          Offer to volunteer. Be part of the solution.
         </p>
-        {/* {isEditing ? (
+
+        {isEditing ? (
           <h2 style={{ color: "#e01f3d" }}>Edit a Post</h2>
         ) : (
           <h2 style={{ color: "#e01f3d" }}>Add a Post</h2>
-        )} */}
+        )}
 
         <form onSubmit={handleSubmit}>
           <label htmlFor="title">Title</label>

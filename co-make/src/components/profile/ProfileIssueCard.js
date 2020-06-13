@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import { withRouter } from "react-router-dom";
@@ -43,20 +42,20 @@ const ProfileIssueCard = ({ post, setUserPosts, history }) => {
 
   return (
     <div className="profileIssueCard">
-      <div>
-        <p>{post.title}</p>
-        <p>Created on {dateString}</p>
+      <div className="profileIssueCardText">
+        <p>{dateString}</p>
+        <div className="profileIssueCardIconContainer">
+          <EditIcon
+            style={{ fontSize: "2rem", cursor: "pointer", marginRight: "2%" }}
+            onClick={() => handleEdit(post)}
+          />
+          <DeleteIcon
+            style={{ fontSize: "2rem", cursor: "pointer", marginRight: "2%" }}
+            onClick={() => deletePost(post.id)}
+          />
+        </div>
       </div>
-      <div className="profileIssueCardIconContainer">
-        <EditIcon
-          style={{ fontSize: "2rem", cursor: "pointer" }}
-          onClick={() => handleEdit(post)}
-        />
-        <DeleteIcon
-          style={{ fontSize: "2rem", cursor: "pointer" }}
-          onClick={() => deletePost(post.id)}
-        />
-      </div>
+      <p>{post.title}</p>
     </div>
   );
 };

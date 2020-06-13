@@ -322,6 +322,7 @@ p {
   .profileCard {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     background: white;
     width: 80%;
     margin-top: 50px;
@@ -332,7 +333,6 @@ p {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
       margin-bottom: 10px;
 
       .profileAvatar {
@@ -369,6 +369,7 @@ p {
         justify-content: flex-start;
         text-align: left;
         width: 45%;
+        margin-left: 4%;
 
         h3 {
           font-size: 2rem;
@@ -400,9 +401,11 @@ p {
   align-items: center;
   justify-content: center;
   margin-top: 40px;
+  width: 100%;
 
   .activePosts {
     display: flex;
+    flex-direction: column;
     align-items: center;
     width: 100%;
   }
@@ -415,19 +418,25 @@ p {
   align-items: center;
   border-radius: 6px;
   border: 2px solid #f2f2f2;
-  margin: 30px;
-  padding: 5px 5px;
-  width: 80%;
+  width: 100%;
 
-  p {
-    margin-left: 20px;
+  .profileIssueCardText {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
   }
-
   .profileIssueCardIconContainer {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     font-size: 2rem;
-    text-align: right;
+    width: 50%;
+  }
+
+  p {
+    text-align: left;
+    width: 90%;
   }
 }
 
@@ -605,6 +614,7 @@ p {
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin-top: 25px;
 
   form {
     display: flex;
@@ -663,6 +673,7 @@ p {
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin: 15px 0;
 }
 
 /* issue card styles */
@@ -677,17 +688,15 @@ p {
     display: flex;
     flex-direction: column;
     background: white;
-    -webkit-box-shadow: 0 8px 6px -6px black;
-    -moz-box-shadow: 0 8px 6px -6px black;
-    box-shadow: 0 8px 6px -6px black;
     border-radius: 6px;
-    border: 2px solid gray;
+    border: 2px solid #f0f0f0;
     margin: 40px 40px;
     text-align: left;
     width: 90%;
 
     img {
       width: 100%;
+      border-radius: 6px;
     }
 
     h2 {
@@ -769,16 +778,12 @@ p {
   flex-direction: column;
   align-items: center;
   background: white;
-  -webkit-box-shadow: 0 8px 6px -6px black;
-  -moz-box-shadow: 0 8px 6px -6px black;
-  box-shadow: 0 8px 6px -6px black;
   border-radius: 6px;
-  border: 2px solid gray;
+  border: 2px solid #f0f0f0;
   margin: 40px 0;
   margin-left: 5%;
   text-align: left;
   width: 90%;
-  padding: 20px 0;
 }
 
 .commentCard {
@@ -786,6 +791,6 @@ p {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  border-bottom: 1px solid gray;
   width: 100%;
+  border-bottom: 1px solid #f0f0f0;
 }

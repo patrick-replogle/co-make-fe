@@ -4,6 +4,7 @@ import moment from "moment";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import { formatDate } from "../../utils/functions";
 import volunteering from "../../img/volunteering.jpg";
 
 const IssueLink = ({ post, setPosts }) => {
@@ -42,10 +43,7 @@ const IssueLink = ({ post, setPosts }) => {
         <p>
           {post.city}, {post.zip_code}{" "}
         </p>
-        <p>
-          Created by {post.authorUsername}{" "}
-          {moment(post.createdAt).startOf("day").fromNow()}
-        </p>
+        <p>Created {formatDate(post.createdAt)}</p>
       </Link>
       <div
         style={{
@@ -54,7 +52,7 @@ const IssueLink = ({ post, setPosts }) => {
           justifyContent: "flex-start",
           color: "#565656",
           width: "100%",
-          marginLeft: "5%",
+          marginLeft: "10%",
         }}
       >
         <ThumbUpIcon
