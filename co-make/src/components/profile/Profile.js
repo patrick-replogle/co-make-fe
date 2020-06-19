@@ -3,11 +3,11 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { withRouter, Link } from "react-router-dom";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
-import ProfileHeader from "./ProfileHeader.js";
 import { userContext } from "../../contexts/userContext.js";
 import UserPosts from "./UserPosts.js";
+import ProtectedHeader from "../other/ProtectedHeader.js";
 
-const UserDashboard = () => {
+const Profile = () => {
   const { user, setUser } = useContext(userContext);
   const [userPosts, setUserPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -48,49 +48,51 @@ const UserDashboard = () => {
     );
   } else {
     return (
-      <div className="userDashboardContainer">
-        <ProfileHeader />
-        <div className="profileCard">
-          <div className="profileCardTopRow">
-            <div className="profileAvatar">
-              {String(user.first_name).charAt(0)}
-              {String(user.last_name).charAt(0)}
+      <>
+        <ProtectedHeader />
+        <div className="profileContainer">
+          <div className="profileCard">
+            <div className="profileCardTopRow">
+              <div className="profileAvatar">
+                {String(user.first_name).charAt(0)}
+                {String(user.last_name).charAt(0)}
+              </div>
+              <Link to="/profile_form">Update Profile</Link>
             </div>
-            <Link to="/profile_form">Update Profile</Link>
-          </div>
 
-          <div className="profileFieldContainer">
-            <div className="profileFieldDiv">
-              <h3>Username</h3>
-              <div className="profileField">
-                <p>{user.username}</p>
+            <div className="profileFieldContainer">
+              <div className="profileFieldDiv">
+                <h3>Username</h3>
+                <div className="profileField">
+                  <p>{user.username}</p>
+                </div>
+              </div>
+              <div className="profileFieldDiv">
+                <h3>Email</h3>
+                <div className="profileField">
+                  <p>{user.email}</p>
+                </div>
+              </div>
+              <div className="profileFieldDiv">
+                <h3>First Name</h3>
+                <div className="profileField">
+                  <p>{user.first_name}</p>
+                </div>
+              </div>
+              <div className="profileFieldDiv">
+                <h3>Last Name</h3>
+                <div className="profileField">
+                  <p>{user.last_name}</p>
+                </div>
               </div>
             </div>
-            <div className="profileFieldDiv">
-              <h3>Email</h3>
-              <div className="profileField">
-                <p>{user.email}</p>
-              </div>
-            </div>
-            <div className="profileFieldDiv">
-              <h3>First Name</h3>
-              <div className="profileField">
-                <p>{user.first_name}</p>
-              </div>
-            </div>
-            <div className="profileFieldDiv">
-              <h3>Last Name</h3>
-              <div className="profileField">
-                <p>{user.last_name}</p>
-              </div>
-            </div>
-          </div>
 
-          <UserPosts userPosts={userPosts} setUserPosts={setUserPosts} />
+            <UserPosts userPosts={userPosts} setUserPosts={setUserPosts} />
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 };
 
-export default withRouter(UserDashboard);
+export default withRouter(Profile);

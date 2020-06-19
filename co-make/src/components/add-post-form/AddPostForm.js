@@ -4,7 +4,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
 import { postContext } from "../../contexts/postContext.js";
-import AddPostHeader from "./AddPostHeader.js";
+import ProtectedHeader from "../other/ProtectedHeader.js";
 
 const initialFormState = {
   title: "",
@@ -14,7 +14,7 @@ const initialFormState = {
   post_image_url: "",
 };
 
-const AddPostForm = ({ history }) => {
+const AddPostForm = () => {
   const [postData, setPostData] = useState(initialFormState);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -49,7 +49,7 @@ const AddPostForm = ({ history }) => {
           setPostToEdit({});
           setPostData(initialFormState);
           setIsLoading(false);
-          push(`/user/posts`);
+          push(`/dashboard`);
         })
         .catch((err) => {
           setIsLoading(false);
@@ -62,7 +62,7 @@ const AddPostForm = ({ history }) => {
         .then(() => {
           setIsLoading(false);
           setPostData(initialFormState);
-          push("/user/posts");
+          push("/dashboard");
         })
         .catch((err) => {
           setIsLoading(false);
@@ -73,25 +73,13 @@ const AddPostForm = ({ history }) => {
   };
   return (
     <>
-      <AddPostHeader />
+      <ProtectedHeader />
       <div className="addFormContainer">
-        <p
-          style={{
-            color: "#e01f3d",
-            width: "440px",
-            textAlign: "left",
-            margin: "30px 0",
-          }}
-        >
-          Want to call attention to an issue in your local community? You've
-          come to the right place. Voice your concerns, reach out for help,
-          offer to volunteer, and be part of the solution.
-        </p>
-        {/* {isEditing ? (
-          <h2 style={{ color: "#e01f3d" }}>Edit a Post</h2>
+        {isEditing ? (
+          <h2 style={{ color: "#e01f3d" }}>Edit Your Post</h2>
         ) : (
-          <h2 style={{ color: "#e01f3d" }}>Add a Post</h2>
-        )} */}
+          <h2 style={{ color: "#e01f3d" }}>Add a New Post</h2>
+        )}
 
         <form onSubmit={handleSubmit}>
           <label htmlFor="title">Title</label>

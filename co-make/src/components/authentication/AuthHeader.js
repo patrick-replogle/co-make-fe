@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 
-const AuthHeader = ({ history }) => {
+const AuthHeader = () => {
   const { push } = useHistory();
 
   return (

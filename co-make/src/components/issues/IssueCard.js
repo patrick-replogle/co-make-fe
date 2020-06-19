@@ -3,6 +3,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 import AddPostHeader from "../add-post-form/AddPostHeader.js";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import { formatDate } from "../../utils/functions";
 import IssueComments from "./IssueComments.js";
 import AddComment from "./AddComment.js";
 
@@ -73,7 +74,9 @@ const IssueCard = (props) => {
             <p>
               Location: {issue.city}, {issue.zip_code}
             </p>
-            <p>Created by {issue.authorUsername}</p>
+            <p>
+              Created by {issue.authorUsername} on {formatDate(issue.createdAt)}
+            </p>
             <div>
               <p>Votes</p>
               <button onClick={() => upVotePost(issue.id)}>

@@ -6,7 +6,7 @@ import moment from "moment";
 
 import { postContext } from "../../contexts/postContext.js";
 
-const Comment = ({ comment, setComments, postId, deleteComment }) => {
+const Comment = ({ comment, deleteComment }) => {
   const { setIsEditing, setCommentToEdit } = useContext(postContext);
   const token = localStorage.getItem("coMakeToken");
   const decodedToken = jwt(token);
@@ -23,7 +23,9 @@ const Comment = ({ comment, setComments, postId, deleteComment }) => {
       >
         <div style={{ display: "flex", margin: "0 3%" }}>
           <p style={{ fontWeight: "bold" }}>{comment.username}&nbsp;</p>
-          <p>{moment(comment.created_at).startOf("day").fromNow()}</p>
+          <p>
+            {moment(comment.created_at).format("lll")} {}
+          </p>
         </div>
         {decodedToken.id === comment.user_id && (
           <div style={{ display: "flex", marginRight: "3%" }}>

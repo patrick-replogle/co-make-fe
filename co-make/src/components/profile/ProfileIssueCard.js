@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import { withRouter } from "react-router-dom";
@@ -16,7 +15,6 @@ const ProfileIssueCard = ({ post, setUserPosts, history }) => {
     axiosWithAuth()
       .get("/posts/by/user")
       .then((res) => {
-        console.log(res.data);
         setUserPosts(res.data.sort((a, b) => b.votes - a.votes));
       })
       .catch((err) => {
@@ -43,20 +41,20 @@ const ProfileIssueCard = ({ post, setUserPosts, history }) => {
 
   return (
     <div className="profileIssueCard">
-      <div>
-        <p>{post.title}</p>
-        <p>Created on {dateString}</p>
+      <div className="profileIssueCardText">
+        <p>{dateString}</p>
+        <div className="profileIssueCardIconContainer">
+          <EditIcon
+            style={{ fontSize: "2.2rem", cursor: "pointer", marginRight: "4%" }}
+            onClick={() => handleEdit(post)}
+          />
+          <DeleteIcon
+            style={{ fontSize: "2.2rem", cursor: "pointer", marginRight: "4%" }}
+            onClick={() => deletePost(post.id)}
+          />
+        </div>
       </div>
-      <div className="profileIssueCardIconContainer">
-        <EditIcon
-          style={{ fontSize: "2rem", cursor: "pointer" }}
-          onClick={() => handleEdit(post)}
-        />
-        <DeleteIcon
-          style={{ fontSize: "2rem", cursor: "pointer" }}
-          onClick={() => deletePost(post.id)}
-        />
-      </div>
+      <p>{post.title}</p>
     </div>
   );
 };
