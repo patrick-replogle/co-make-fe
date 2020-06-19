@@ -20,13 +20,13 @@ const BurgerMenu = () => {
   };
 
   return (
-    <div>
+    <div style={{ margin: "0 30%" }}>
       <Button
         aria-controls="simple-menu"
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <MenuIcon style={{ fontSize: "4rem", color: "white" }} />
+        <MenuIcon style={{ fontSize: "4.4rem", color: "white" }} />
       </Button>
 
       {pathname === "/dashboard" && (
@@ -37,13 +37,20 @@ const BurgerMenu = () => {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={() => handleClose("/addpost")}>
+          <MenuItem
+            style={{ fontSize: "1.6rem" }}
+            onClick={() => handleClose("/addpost")}
+          >
             Create Post
           </MenuItem>
-          <MenuItem onClick={() => handleClose("/user/posts")}>
+          <MenuItem
+            style={{ fontSize: "1.6rem" }}
+            onClick={() => handleClose("/user/posts")}
+          >
             View Profile
           </MenuItem>
           <MenuItem
+            style={{ fontSize: "1.6rem" }}
             onClick={() => {
               localStorage.removeItem("coMakeToken");
               handleClose("/login");
@@ -62,11 +69,20 @@ const BurgerMenu = () => {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={() => handleClose("/dashboard")}>Home</MenuItem>
-          <MenuItem onClick={() => handleClose("/user/posts")}>
+          <MenuItem
+            style={{ fontSize: "1.6rem" }}
+            onClick={() => handleClose("/dashboard")}
+          >
+            Home
+          </MenuItem>
+          <MenuItem
+            style={{ fontSize: "1.6rem" }}
+            onClick={() => handleClose("/user/posts")}
+          >
             View Profile
           </MenuItem>
           <MenuItem
+            style={{ fontSize: "1.6rem" }}
             onClick={() => {
               localStorage.removeItem("coMakeToken");
               handleClose("/login");
@@ -85,11 +101,20 @@ const BurgerMenu = () => {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={() => handleClose("/dashboard")}>Home</MenuItem>
-          <MenuItem onClick={() => handleClose("/addpost")}>
+          <MenuItem
+            style={{ fontSize: "1.6rem" }}
+            onClick={() => handleClose("/dashboard")}
+          >
+            Home
+          </MenuItem>
+          <MenuItem
+            style={{ fontSize: "1.6rem" }}
+            onClick={() => handleClose("/addpost")}
+          >
             Create Post
           </MenuItem>
           <MenuItem
+            style={{ fontSize: "1.6rem" }}
             onClick={() => {
               localStorage.removeItem("coMakeToken");
               handleClose("/login");
@@ -108,14 +133,26 @@ const BurgerMenu = () => {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={() => handleClose("/dashboard")}>Home</MenuItem>
-          <MenuItem onClick={() => handleClose("/addpost")}>
+          <MenuItem
+            style={{ fontSize: "1.6rem" }}
+            onClick={() => handleClose("/dashboard")}
+          >
+            Home
+          </MenuItem>
+          <MenuItem
+            style={{ fontSize: "1.6rem" }}
+            onClick={() => handleClose("/addpost")}
+          >
             Create Post
           </MenuItem>
-          <MenuItem onClick={() => handleClose("/user/posts")}>
+          <MenuItem
+            style={{ fontSize: "1.6rem" }}
+            onClick={() => handleClose("/user/posts")}
+          >
             View Profile
           </MenuItem>
           <MenuItem
+            style={{ fontSize: "1.6rem" }}
             onClick={() => {
               localStorage.removeItem("coMakeToken");
               handleClose("/login");

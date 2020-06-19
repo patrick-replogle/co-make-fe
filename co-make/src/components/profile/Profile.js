@@ -7,7 +7,7 @@ import { userContext } from "../../contexts/userContext.js";
 import UserPosts from "./UserPosts.js";
 import ProtectedHeader from "../other/ProtectedHeader.js";
 
-const UserDashboard = () => {
+const Profile = () => {
   const { user, setUser } = useContext(userContext);
   const [userPosts, setUserPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -95,4 +95,4 @@ const UserDashboard = () => {
   }
 };
 
-export default withRouter(UserDashboard);
+export default withRouter(Profile);
