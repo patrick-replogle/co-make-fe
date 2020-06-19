@@ -50,7 +50,7 @@ const Profile = () => {
     return (
       <>
         <ProtectedHeader />
-        <div className="userDashboardContainer">
+        <div className="profileContainer">
           <div className="profileCard">
             <div className="profileCardTopRow">
               <div className="profileAvatar">
