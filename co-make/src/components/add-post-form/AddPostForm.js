@@ -4,7 +4,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
 import { postContext } from "../../contexts/postContext.js";
-import AddPostHeader from "./AddPostHeader.js";
+import ProtectedHeader from "../other/ProtectedHeader.js";
 
 const initialFormState = {
   title: "",
@@ -73,25 +73,12 @@ const AddPostForm = () => {
   };
   return (
     <>
-      <AddPostHeader />
+      <ProtectedHeader />
       <div className="addFormContainer">
-        <p
-          style={{
-            color: "#e01f3d",
-            width: "440px",
-            textAlign: "left",
-            margin: "30px 0",
-          }}
-        >
-          Want to call attention to an issue in your local community? You've
-          come to the right place. Voice your concerns. Reach out for help.
-          Offer to volunteer. Be part of the solution.
-        </p>
-
         {isEditing ? (
-          <h2 style={{ color: "#e01f3d" }}>Edit a Post</h2>
+          <h2 style={{ color: "#e01f3d" }}>Edit Your Post</h2>
         ) : (
-          <h2 style={{ color: "#e01f3d" }}>Add a Post</h2>
+          <h2 style={{ color: "#e01f3d" }}>Add a New Post</h2>
         )}
 
         <form onSubmit={handleSubmit}>

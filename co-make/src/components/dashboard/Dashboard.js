@@ -4,8 +4,9 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { postContext } from "../../contexts/postContext.js";
 import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
 import IssueLink from "./IssueLink.js";
-import DashboardHeader from "./DashboardHeader.js";
 import SearchBar from "./SearchBar.js";
+
+import ProtectedHeader from "../other/ProtectedHeader.js";
 
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +37,7 @@ const Dashboard = () => {
   } else {
     return (
       <div>
-        <DashboardHeader
+        <ProtectedHeader
           showSearch={showSearch}
           setShowSearch={setShowSearch}
         />

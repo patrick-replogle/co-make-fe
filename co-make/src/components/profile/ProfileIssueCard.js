@@ -15,7 +15,6 @@ const ProfileIssueCard = ({ post, setUserPosts, history }) => {
     axiosWithAuth()
       .get("/posts/by/user")
       .then((res) => {
-        console.log(res.data);
         setUserPosts(res.data.sort((a, b) => b.votes - a.votes));
       })
       .catch((err) => {
@@ -46,11 +45,11 @@ const ProfileIssueCard = ({ post, setUserPosts, history }) => {
         <p>{dateString}</p>
         <div className="profileIssueCardIconContainer">
           <EditIcon
-            style={{ fontSize: "2rem", cursor: "pointer", marginRight: "2%" }}
+            style={{ fontSize: "2.2rem", cursor: "pointer", marginRight: "4%" }}
             onClick={() => handleEdit(post)}
           />
           <DeleteIcon
-            style={{ fontSize: "2rem", cursor: "pointer", marginRight: "2%" }}
+            style={{ fontSize: "2.2rem", cursor: "pointer", marginRight: "4%" }}
             onClick={() => deletePost(post.id)}
           />
         </div>
