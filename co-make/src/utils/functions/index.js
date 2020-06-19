@@ -1,5 +1,13 @@
 export const updatedUser = (user, formData) => {
-  if (user.username === formData.user) {
+  if (user.username === formData.username && user.email === formData.email) {
+    return {
+      first_name: formData.first_name,
+      last_name: formData.last_name,
+      profile_image_url: formData.profile_image_url,
+    };
+  }
+  if (user.username === formData.username && user.email !== formData.email) {
+    console.log("username");
     return {
       email: formData.email,
       first_name: formData.first_name,
@@ -7,21 +15,15 @@ export const updatedUser = (user, formData) => {
       profile_image_url: formData.profile_image_url,
     };
   }
-  if (user.email === formData.email) {
+  if (user.email === formData.email && user.username !== formData.username) {
+    console.log("email");
     return {
       username: formData.username,
       first_name: formData.first_name,
       last_name: formData.last_name,
       profile_image_url: formData.profile_image_url,
     };
-  }
-  if (user.username === formData.user && user.email === formData.email) {
-    return {
-      first_name: formData.first_name,
-      last_name: formData.last_name,
-      profile_image_url: formData.profile_image_url,
-    };
-  }
+  } else return formData;
 };
 
 export const formatDate = (string) => {

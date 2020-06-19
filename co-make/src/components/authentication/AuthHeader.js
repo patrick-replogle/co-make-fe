@@ -1,15 +1,26 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 
 const AuthHeader = () => {
   const { push } = useHistory();
+  const { pathname } = useLocation();
 
   return (
     <nav className="authHeader">
       <h1>CoMake</h1>
       <div className="authHeaderLinks">
-        <button onClick={() => push("/register")}>Register</button>
-        <Link to="/login">Login</Link>
+        {pathname === "/register" && (
+          <>
+            <Link to="/register">Register</Link>
+            <button onClick={() => push("/login")}>Login</button>
+          </>
+        )}
+        {pathname === "/login" && (
+          <>
+            <Link to="/login">Login</Link>
+            <button onClick={() => push("/register")}>Register</button>
+          </>
+        )}
       </div>
     </nav>
   );
