@@ -73,6 +73,7 @@ const SearchBar = (props) => {
           <input
             type="text"
             name="city"
+            data-testid="searchInput"
             onChange={handleChange}
             placeholder={
               searchBy.value === "city"

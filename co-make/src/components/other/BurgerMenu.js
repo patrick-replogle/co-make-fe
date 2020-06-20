@@ -5,7 +5,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { useHistory, useLocation, matchPath } from "react-router-dom";
 
-const BurgerMenu = (props) => {
+const BurgerMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const { push } = useHistory();
   const { pathname } = useLocation();

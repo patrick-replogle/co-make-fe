@@ -28,8 +28,8 @@ test("AddPostForm component renders with correct text if editing is true", () =>
           isEditing: true,
           postToEdit: {
             id: 1,
-            title: "Need help filling a pothole",
-            description: "test",
+            title: "I Need help filling a pothole",
+            description: "",
             city: "Portland",
             zip_code: "97206",
             post_image_url: "www.imageurl.com",
