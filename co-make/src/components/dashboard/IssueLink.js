@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import moment from "moment";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
@@ -12,7 +11,6 @@ const IssueLink = ({ post, setPosts }) => {
     axiosWithAuth()
       .get("/posts")
       .then((res) => {
-        console.log(res.data);
         setPosts(res.data.sort((a, b) => b.votes - a.votes));
       })
       .catch((err) => {

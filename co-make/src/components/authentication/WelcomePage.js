@@ -19,18 +19,6 @@ const WelcomePage = (props) => {
         >
           Login
         </button>
-        {/* <p
-          style={{
-            width: "380px",
-            fontWeight: "bold",
-            textAlign: "left",
-            margin: "30px 0",
-          }}
-        >
-          Want to call attention to an issue in your local community? You've
-          come to the right place. Voice your concerns. Reach out for help.
-          Offer to volunteer. Be part of the solution.
-        </p> */}
       </div>
     </div>
   );

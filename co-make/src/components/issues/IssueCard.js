@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import AddPostHeader from "../add-post-form/AddPostHeader.js";
-import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import ProtectedHeader from "../other/ProtectedHeader.js";
+import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
 import { formatDate } from "../../utils/functions";
 import IssueComments from "./IssueComments.js";
 import AddComment from "./AddComment.js";
@@ -58,7 +58,7 @@ const IssueCard = (props) => {
   } else {
     return (
       <>
-        <AddPostHeader />
+        <ProtectedHeader />
         <div className="issueCardContainer">
           <div className="card">
             <img

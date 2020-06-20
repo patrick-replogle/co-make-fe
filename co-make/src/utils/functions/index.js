@@ -7,7 +7,6 @@ export const updatedUser = (user, formData) => {
     };
   }
   if (user.username === formData.username && user.email !== formData.email) {
-    console.log("username");
     return {
       email: formData.email,
       first_name: formData.first_name,
@@ -16,7 +15,6 @@ export const updatedUser = (user, formData) => {
     };
   }
   if (user.email === formData.email && user.username !== formData.username) {
-    console.log("email");
     return {
       username: formData.username,
       first_name: formData.first_name,
