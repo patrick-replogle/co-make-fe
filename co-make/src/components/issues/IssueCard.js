@@ -20,6 +20,7 @@ const IssueCard = (props) => {
     axiosWithAuth()
       .get(`/posts/${postId}`)
       .then((res) => {
+        console.log(res.data);
         setIssue(res.data);
         setIsLoading(false);
       })
@@ -63,10 +64,12 @@ const IssueCard = (props) => {
         <ProtectedHeader />
         <div className="issueCardContainer">
           <div className="card">
-            <img
-              src={issue.photo !== "null" ? issue.photo : volunteering}
-              alt="issue avatar"
-            />
+            <div style={{ width: "100%", display: "flex" }}>
+              <img
+                src={issue.photo !== "null" ? issue.photo : volunteering}
+                alt="issue avatar"
+              />
+            </div>
             <h2>{issue.title}</h2>
             <p>{issue.description}</p>
             <p>
