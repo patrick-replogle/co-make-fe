@@ -17,6 +17,7 @@ const Profile = () => {
     axiosWithAuth()
       .get(`/users/${localStorage.getItem("userId")}`)
       .then((res) => {
+        console.log(res);
         setIsLoading(false);
         setUser(res.data);
       })
