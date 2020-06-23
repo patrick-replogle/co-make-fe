@@ -54,10 +54,15 @@ const Profile = () => {
         <div className="profileContainer">
           <div className="profileCard">
             <div className="profileCardTopRow">
-              <div className="profileAvatar">
-                {String(user.first_name).charAt(0)}
-                {String(user.last_name).charAt(0)}
-              </div>
+              {user.photo ? (
+                <img src={user.photo} />
+              ) : (
+                <div className="profileAvatar">
+                  {String(user.first_name).charAt(0)}
+                  {String(user.last_name).charAt(0)}
+                </div>
+              )}
+
               <Link to="/profile_form">Update Profile</Link>
             </div>
 
@@ -84,6 +89,19 @@ const Profile = () => {
                 <h3>Last Name</h3>
                 <div className="profileField">
                   <p>{user.last_name}</p>
+                </div>
+              </div>
+
+              <div className="profileFieldDiv">
+                <h3>City</h3>
+                <div className="profileField">
+                  <p>{user.city}</p>
+                </div>
+              </div>
+              <div className="profileFieldDiv">
+                <h3>Zip Code</h3>
+                <div className="profileField">
+                  <p>{user.zip_code}</p>
                 </div>
               </div>
             </div>
