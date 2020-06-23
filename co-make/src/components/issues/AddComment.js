@@ -62,7 +62,7 @@ const AddComment = ({ postId, setComments }) => {
   return (
     <form onSubmit={handleSubmit} className="commentForm">
       <input
-        type="textarea"
+        type="text"
         name="text"
         value={input.text}
         onChange={handleChange}

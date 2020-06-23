@@ -5,6 +5,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
 import { postContext } from "../../contexts/postContext.js";
 import ProtectedHeader from "../other/ProtectedHeader.js";
+import ImageUpload from "../other/ImageUpload.js";
 
 const initialFormState = {
   title: "",
@@ -17,6 +18,7 @@ const initialFormState = {
 const AddPostForm = () => {
   const [postData, setPostData] = useState(initialFormState);
   const [isLoading, setIsLoading] = useState(false);
+  const [photo, setPhoto] = useState(null);
   const [error, setError] = useState("");
   const { isEditing, setIsEditing, postToEdit, setPostToEdit } = useContext(
     postContext
@@ -130,6 +132,8 @@ const AddPostForm = () => {
             value={postData.post_image_url}
             id="image url"
           />
+
+          <ImageUpload photo={photo} setPhoto={setPhoto} />
 
           {error && <p>{error}</p>}
           {isLoading ? (

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
 import AuthHeader from "./AuthHeader.js";
+import ImageUpload from "../other/ImageUpload.js";
 
 const initialUser = {
   username: "",
@@ -33,6 +34,7 @@ const validationSchema = Yup.object({
 });
 
 const Register = (props) => {
+  const [photo, setPhoto] = useState(null);
   return (
     <>
       <AuthHeader />
@@ -130,6 +132,8 @@ const Register = (props) => {
                 {touched.last_name && errors.last_name && (
                   <p className="errors">{errors.last_name}</p>
                 )}
+
+                <ImageUpload photo={photo} setPhoto={setPhoto} />
 
                 <div className="termsOfServiceDiv">
                   <p>
