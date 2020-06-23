@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 
 import ProtectedHeader from "../other/ProtectedHeader.js";
 import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
 import { formatDate } from "../../utils/functions";
 import IssueComments from "./IssueComments.js";
 import AddComment from "./AddComment.js";
+import volunteering from "../../img/volunteering.jpg";
 
 const IssueCard = (props) => {
   const [issue, setIssue] = useState({});
@@ -18,6 +20,7 @@ const IssueCard = (props) => {
     axiosWithAuth()
       .get(`/posts/${postId}`)
       .then((res) => {
+        console.log(res.data);
         setIssue(res.data);
         setIsLoading(false);
       })
@@ -61,14 +64,12 @@ const IssueCard = (props) => {
         <ProtectedHeader />
         <div className="issueCardContainer">
           <div className="card">
-            <img
-              src={
-                issue.post_image_url
-                  ? issue.post_image_url
-                  : "https://pngimage.net/wp-content/uploads/2018/05/default-png-6.png"
-              }
-              alt="issue avatar"
-            />
+            <div style={{ width: "100%", display: "flex" }}>
+              <img
+                src={issue.photo !== "null" ? issue.photo : volunteering}
+                alt="issue avatar"
+              />
+            </div>
             <h2>{issue.title}</h2>
             <p>{issue.description}</p>
             <p>
@@ -77,25 +78,46 @@ const IssueCard = (props) => {
             <p>
               Created by {issue.authorUsername} on {formatDate(issue.createdAt)}
             </p>
-            <div>
-              <p>Votes</p>
-              <button onClick={() => upVotePost(issue.id)}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-start",
+                color: "#565656",
+                width: "100%",
+                marginLeft: "3%",
+              }}
+            >
+              <ThumbUpIcon
+                onClick={() => upVotePost(issue.id)}
+                style={{
+                  color: "#e01f3d",
+                  fontSize: "2.5rem",
+                  cursor: "pointer",
+                }}
+              />
+              <p
+                style={{
+                  fontSize: "1.6rem",
+                  marginLeft: "1%",
+                }}
+              >
                 {issue.votes}
-              </button>
+              </p>
             </div>
           </div>
-        </div>
-        <div className="commentsContainer">
-          <AddComment
-            postId={postId}
-            comments={comments}
-            setComments={setComments}
-          />
-          <IssueComments
-            postId={postId}
-            comments={comments}
-            setComments={setComments}
-          />
+          <div className="commentsContainer">
+            <AddComment
+              postId={postId}
+              comments={comments}
+              setComments={setComments}
+            />
+            <IssueComments
+              postId={postId}
+              comments={comments}
+              setComments={setComments}
+            />
+          </div>
         </div>
       </>
     );

@@ -13,6 +13,8 @@ const initialUser = {
   email: "",
   first_name: "",
   last_name: "",
+  city: "",
+  zip_code: "",
 };
 
 const passwordErrText = `password must contain at least 1 uppercase and 
@@ -31,6 +33,8 @@ const validationSchema = Yup.object({
   email: Yup.string().required("email required").email(),
   first_name: Yup.string().required("first name required").max(35).min(1),
   last_name: Yup.string().required("last name required").max(35).min(1),
+  city: Yup.string().required("city required").max(35).min(1),
+  zip_code: Yup.string().required("zip code required").max(35).min(1),
 });
 
 const Register = (props) => {
@@ -43,10 +47,16 @@ const Register = (props) => {
           initialValues={initialUser}
           validationSchema={validationSchema}
           onSubmit={(values, { resetForm, setSubmitting, setStatus }) => {
+            const newUser = {
+              ...values,
+              photo: photo ? photo : null,
+            };
+
+            console.log(newUser);
             setSubmitting(true);
             setStatus(false);
             axiosWithAuth()
-              .post("/auth/register", values)
+              .post("/auth/register", newUser)
               .then((res) => {
                 localStorage.setItem("token", res.data.token);
                 resetForm(initialUser);
@@ -55,7 +65,7 @@ const Register = (props) => {
               .catch((err) => {
                 setSubmitting(false);
                 setStatus(err.response.data.message);
-                console.log("login error: ", err.response.data.message);
+                console.log("register error: ", err.response.data.message);
               });
           }}
         >
@@ -71,8 +81,6 @@ const Register = (props) => {
             <>
               <h1 style={{ color: "#e01f3d" }}>Register a New Account</h1>
               <form onSubmit={handleSubmit}>
-                {status && <p className="status">{status}</p>}
-
                 <label htmlFor="username">Username</label>
                 <input
                   type="text"
@@ -133,6 +141,30 @@ const Register = (props) => {
                   <p className="errors">{errors.last_name}</p>
                 )}
 
+                <label htmlFor="city">City</label>
+                <input
+                  type="text"
+                  name="city"
+                  onChange={handleChange}
+                  value={values.city}
+                  id="city"
+                />
+                {touched.city && errors.city && (
+                  <p className="errors">{errors.city}</p>
+                )}
+
+                <label htmlFor="zip_code">Zip Code</label>
+                <input
+                  type="text"
+                  name="zip_code"
+                  onChange={handleChange}
+                  value={values.zip_code}
+                  id="zip_code"
+                />
+                {touched.zip_code && errors.zip_code && (
+                  <p className="errors">{errors.zip_code}</p>
+                )}
+
                 <ImageUpload photo={photo} setPhoto={setPhoto} />
 
                 <div className="termsOfServiceDiv">
@@ -153,6 +185,8 @@ const Register = (props) => {
                     </span>
                   </p>
                 </div>
+
+                {status && <p className="status">{status}</p>}
 
                 {isSubmitting ? (
                   <button>

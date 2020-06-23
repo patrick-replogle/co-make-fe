@@ -12,7 +12,6 @@ const initialFormState = {
   description: "",
   city: "",
   zip_code: "",
-  post_image_url: "",
 };
 
 const AddPostForm = () => {
@@ -28,6 +27,10 @@ const AddPostForm = () => {
   useEffect(() => {
     if (isEditing) {
       setPostData({ ...postToEdit });
+
+      if (postToEdit.photo) {
+        setPhoto(postToEdit.photo);
+      }
     }
   }, [isEditing, postToEdit]);
 
@@ -43,9 +46,14 @@ const AddPostForm = () => {
     setIsLoading(true);
     setError("");
 
+    const post = {
+      ...postData,
+      photo: photo ? photo : null,
+    };
+
     if (isEditing) {
       axiosWithAuth()
-        .put(`/posts/${postToEdit.id}`, postData)
+        .put(`/posts/${postToEdit.id}`, post)
         .then(() => {
           setIsEditing(false);
           setPostToEdit({});
@@ -60,7 +68,7 @@ const AddPostForm = () => {
         });
     } else {
       axiosWithAuth()
-        .post("/posts", postData)
+        .post("/posts", post)
         .then(() => {
           setIsLoading(false);
           setPostData(initialFormState);
@@ -122,15 +130,6 @@ const AddPostForm = () => {
             value={postData.zip_code}
             id="zip code"
             required
-          />
-
-          <label htmlFor="post_image_url">Post Image URL</label>
-          <input
-            type="text"
-            name="post_image_url"
-            onChange={handleChange}
-            value={postData.post_image_url}
-            id="image url"
           />
 
           <ImageUpload photo={photo} setPhoto={setPhoto} />
