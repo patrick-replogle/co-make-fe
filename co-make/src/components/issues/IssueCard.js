@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 
 import ProtectedHeader from "../other/ProtectedHeader.js";
 import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
@@ -74,25 +75,46 @@ const IssueCard = (props) => {
             <p>
               Created by {issue.authorUsername} on {formatDate(issue.createdAt)}
             </p>
-            <div>
-              <p>Votes</p>
-              <button onClick={() => upVotePost(issue.id)}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-start",
+                color: "#565656",
+                width: "100%",
+                marginLeft: "3%",
+              }}
+            >
+              <ThumbUpIcon
+                onClick={() => upVotePost(issue.id)}
+                style={{
+                  color: "#e01f3d",
+                  fontSize: "2.5rem",
+                  cursor: "pointer",
+                }}
+              />
+              <p
+                style={{
+                  fontSize: "1.6rem",
+                  marginLeft: "1%",
+                }}
+              >
                 {issue.votes}
-              </button>
+              </p>
             </div>
           </div>
-        </div>
-        <div className="commentsContainer">
-          <AddComment
-            postId={postId}
-            comments={comments}
-            setComments={setComments}
-          />
-          <IssueComments
-            postId={postId}
-            comments={comments}
-            setComments={setComments}
-          />
+          <div className="commentsContainer">
+            <AddComment
+              postId={postId}
+              comments={comments}
+              setComments={setComments}
+            />
+            <IssueComments
+              postId={postId}
+              comments={comments}
+              setComments={setComments}
+            />
+          </div>
         </div>
       </>
     );

@@ -1,6 +1,6 @@
 import React from "react";
 
-const WelcomePage = (props) => {
+const WelcomePage = ({ history }) => {
   return (
     <div className="welcomePageMain">
       <div className="welcomePageContainer">
@@ -8,14 +8,14 @@ const WelcomePage = (props) => {
         <h3>Get involved in your community</h3>
         <button
           className="welcomePageBtn"
-          onClick={() => props.history.push("/register")}
+          onClick={() => history.push("/register")}
         >
           Register
         </button>
         <p>Already Have an Account?</p>
         <button
           className="welcomePageBtn2"
-          onClick={() => props.history.push("/login")}
+          onClick={() => history.push("/login")}
         >
           Login
         </button>

@@ -17,7 +17,6 @@ const Profile = () => {
     axiosWithAuth()
       .get(`/users/${localStorage.getItem("userId")}`)
       .then((res) => {
-        console.log(res);
         setIsLoading(false);
         setUser(res.data);
       })
@@ -59,10 +58,13 @@ const Profile = () => {
                   src={user.photo}
                   alt="user avatar"
                   style={{
-                    maxWidth: "150px",
-                    height: "150px",
+                    width: "200px",
+                    height: "200px",
+                    overflow: "hidden",
                     borderRadius: "50%",
                     marginBottom: "10px",
+                    maxWidth: "100%",
+                    objectFit: "cover",
                   }}
                 />
               ) : (

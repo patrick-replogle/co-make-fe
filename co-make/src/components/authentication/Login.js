@@ -21,7 +21,7 @@ const Login = (props) => {
   return (
     <>
       <AuthHeader />
-      <div className="authContainer">
+      <div className="authContainer" style={{ marginTop: "100px" }}>
         <h1 style={{ color: "#e01f3d" }}>Login Below</h1>
         <Formik
           initialValues={initialLoginState}

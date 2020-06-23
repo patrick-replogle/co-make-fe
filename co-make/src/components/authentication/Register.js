@@ -42,7 +42,7 @@ const Register = (props) => {
   return (
     <>
       <AuthHeader />
-      <div style={{ marginTop: "150px" }} className="authContainer">
+      <div className="authContainer">
         <Formik
           initialValues={initialUser}
           validationSchema={validationSchema}
