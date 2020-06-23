@@ -463,7 +463,7 @@ p {
   overflow-wrap: break-word;
   word-wrap: break-word;
 
-  @media (max-width: 900px) {
+  @media (max-width: 1000px) {
     width: 45%;
   }
 
@@ -741,6 +741,7 @@ p {
       margin-left: 20px;
       border: 2px solid white;
       font-size: 1.6rem;
+      outline: none;
 
       &:hover {
         opacity: 0.7;
@@ -774,6 +775,10 @@ p {
     padding: 16px 2px;
     outline: none;
     font-size: 1.6rem;
+
+    @media (max-width: 600px) {
+      width: 60%;
+    }
   }
 
   button {
@@ -812,4 +817,12 @@ p {
   justify-content: center;
   width: 100%;
   border-bottom: 1px solid #f0f0f0;
+}
+
+/* imageupload component styles */
+.imageUploadContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px 0;
 }

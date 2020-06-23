@@ -5,6 +5,7 @@ import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
 import { userContext } from "../../contexts/userContext.js";
 import { updatedUser } from "../../utils/functions";
 import ProtectedHeader from "../other/ProtectedHeader.js";
+import ImageUpload from "../other/ImageUpload.js";
 
 const initialUserState = {
   username: "",
@@ -18,6 +19,7 @@ const UserForm = (props) => {
   const { user, setUser } = useContext(userContext);
   const [formData, setFormData] = useState(initialUserState);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [photo, setPhoto] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [errMessage, setErrMessage] = useState("");
 
@@ -132,6 +134,8 @@ const UserForm = (props) => {
               value={formData.profile_image_url}
               id="profile_image_url"
             />
+
+            <ImageUpload photo={photo} setPhoto={setPhoto} />
 
             {errMessage && (
               <p style={{ color: "crimson", maxWidth: "380px" }}>
