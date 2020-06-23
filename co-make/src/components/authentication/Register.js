@@ -171,17 +171,9 @@ const Register = (props) => {
                   <p>
                     <span>
                       By signing up, you agree to CoMake's{" "}
-                      <a href="##" target="_blank">
-                        Terms of Service
-                      </a>
-                      ,{" "}
-                      <a href="##" target="_blank">
-                        Privacy Policy
-                      </a>{" "}
-                      <font>and</font>{" "}
-                      <a href="##" target="_blank">
-                        Cookie Policy
-                      </a>
+                      <a href="/register">Terms of Service</a>,{" "}
+                      <a href="/register">Privacy Policy</a> <font>and</font>{" "}
+                      <a href="/register">Cookie Policy</a>
                     </span>
                   </p>
                 </div>
