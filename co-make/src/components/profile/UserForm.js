@@ -12,7 +12,8 @@ const initialUserState = {
   email: "",
   first_name: "",
   last_name: "",
-  profile_image_url: "",
+  city: "",
+  zip_code: "",
 };
 
 const UserForm = (props) => {
@@ -43,8 +44,13 @@ const UserForm = (props) => {
       email: user.email,
       first_name: user.first_name,
       last_name: user.last_name,
-      profile_image_url: user.profile_image_url,
+      city: user.city,
+      zip_code: user.zip_code,
     });
+
+    if (user.photo !== "null") {
+      setPhoto(user.photo);
+    }
   }, [user, setFormData]);
 
   const handleChange = (e) => {
@@ -57,7 +63,12 @@ const UserForm = (props) => {
   const handleSubmit = (e) => {
     setIsSubmitting(true);
     e.preventDefault();
-    const values = updatedUser(user, formData);
+
+    const updatedValues = updatedUser(user, formData);
+    const values = {
+      ...updatedValues,
+      photo: photo ? photo : null,
+    };
 
     axiosWithAuth()
       .put(`/users/${user.id}`, values)
@@ -126,13 +137,24 @@ const UserForm = (props) => {
               required
             />
 
-            <label htmlFor="profile_image_url">Profile Image URL</label>
+            <label htmlFor="city">City</label>
             <input
               type="text"
-              name="profile_image_url"
+              name="city"
               onChange={handleChange}
-              value={formData.profile_image_url}
-              id="profile_image_url"
+              value={formData.city}
+              id="city"
+              required
+            />
+
+            <label htmlFor="zip_code">Zip Code</label>
+            <input
+              type="text"
+              name="zip_code"
+              onChange={handleChange}
+              value={formData.zip_code}
+              id="zip_code"
+              required
             />
 
             <ImageUpload photo={photo} setPhoto={setPhoto} />

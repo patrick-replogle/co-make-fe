@@ -6,6 +6,7 @@ import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
 import { formatDate } from "../../utils/functions";
 import IssueComments from "./IssueComments.js";
 import AddComment from "./AddComment.js";
+import volunteering from "../../img/volunteering.jpg";
 
 const IssueCard = (props) => {
   const [issue, setIssue] = useState({});
@@ -62,11 +63,7 @@ const IssueCard = (props) => {
         <div className="issueCardContainer">
           <div className="card">
             <img
-              src={
-                issue.post_image_url
-                  ? issue.post_image_url
-                  : "https://pngimage.net/wp-content/uploads/2018/05/default-png-6.png"
-              }
+              src={issue.photo !== "null" ? issue.photo : volunteering}
               alt="issue avatar"
             />
             <h2>{issue.title}</h2>

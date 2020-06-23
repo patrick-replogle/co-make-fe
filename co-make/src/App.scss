@@ -165,9 +165,9 @@ p {
 
 /* authentication header  */
 .authHeader {
+  display: flex;
   align-items: center;
   border-bottom: 1px solid rgb(221, 221, 221);
-  display: flex;
   height: 70px;
   background: #e01f3d;
   color: white;
@@ -177,7 +177,6 @@ p {
   -webkit-box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
   -moz-box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
   box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
-  margin-bottom: 150px;
 
   .authHeaderLinks {
     display: flex;

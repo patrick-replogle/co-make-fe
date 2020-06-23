@@ -32,7 +32,10 @@ const IssueLink = ({ post, setPosts }) => {
   return (
     <div className="issueLink">
       <Link to={`/post/${post.id}`}>
-        <img src={volunteering} alt="issue avatar" />
+        <img
+          src={post.photo !== "null" ? post.photo : volunteering}
+          alt="issue avatar"
+        />
         <h2>
           {post.title.length > 50
             ? post.title.slice(0, 50) + "..."

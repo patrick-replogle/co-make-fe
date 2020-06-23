@@ -30,7 +30,7 @@ const SearchBar = (props) => {
       axiosWithAuth()
         .post("/posts/city", searchCity)
         .then((res) => {
-          setPosts(res.data);
+          setPosts(res.data.sort((a, b) => b.votes - a.votes));
           props.setSearchErr("");
         })
         .catch((err) => {
@@ -43,7 +43,7 @@ const SearchBar = (props) => {
       axiosWithAuth()
         .post("/posts/zipcode", searchZip)
         .then((res) => {
-          setPosts(res.data);
+          setPosts(res.data.sort((a, b) => b.votes - a.votes));
           props.setSearchErr("");
         })
         .catch((err) => {

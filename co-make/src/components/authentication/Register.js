@@ -42,7 +42,7 @@ const Register = (props) => {
   return (
     <>
       <AuthHeader />
-      <div className="authContainer">
+      <div style={{ marginTop: "150px" }} className="authContainer">
         <Formik
           initialValues={initialUser}
           validationSchema={validationSchema}
@@ -149,8 +149,8 @@ const Register = (props) => {
                   value={values.city}
                   id="city"
                 />
-                {touched.last_name && errors.last_name && (
-                  <p className="errors">{errors.last_name}</p>
+                {touched.city && errors.city && (
+                  <p className="errors">{errors.city}</p>
                 )}
 
                 <label htmlFor="zip_code">Zip Code</label>
@@ -161,8 +161,8 @@ const Register = (props) => {
                   value={values.zip_code}
                   id="zip_code"
                 />
-                {touched.last_name && errors.last_name && (
-                  <p className="errors">{errors.last_name}</p>
+                {touched.zip_code && errors.zip_code && (
+                  <p className="errors">{errors.zip_code}</p>
                 )}
 
                 <ImageUpload photo={photo} setPhoto={setPhoto} />
