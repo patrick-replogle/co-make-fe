@@ -28,7 +28,7 @@ const AddPostForm = () => {
     if (isEditing) {
       setPostData({ ...postToEdit });
 
-      if (postToEdit.photo) {
+      if (postToEdit.photo !== "null") {
         setPhoto(postToEdit.photo);
       }
     }

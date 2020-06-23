@@ -720,7 +720,7 @@ p {
       width: 100%;
 
       img {
-        width: 90%;
+        width: 80%;
         border-radius: 6px;
         padding-top: 10px;
 
@@ -792,6 +792,7 @@ p {
     padding: 16px 2px;
     outline: none;
     font-size: 1.6rem;
+    padding-left: 20px;
 
     @media (max-width: 600px) {
       width: 60%;
