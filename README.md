@@ -6,11 +6,17 @@ Deployed frontend app can be found at: https://co-make-silk.vercel.app
 
 ## Tech Stack
  -React 
+ 
  -Context API 
+ 
  -Sass 
+ 
  -Formik 
+ 
  -Yup 
+ 
  -Material UI
+ 
  -Zeit
 
 ## Project Overview
