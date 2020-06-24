@@ -11,6 +11,7 @@ import Profile from "./components/profile/Profile.js";
 import AddPostForm from "./components/add-post-form/AddPostForm.js";
 import UserForm from "./components/profile/UserForm.js";
 import IssueCard from "./components/issues/IssueCard.js";
+import AboutPage from "./components/authentication/AboutPage.js";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <PrivateRoute path="/profile_form" component={UserForm} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
+        <Route path="/about" component={AboutPage} />
         <Route exact path="/" component={WelcomePage} />
       </Switch>
     </div>

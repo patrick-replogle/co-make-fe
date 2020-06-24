@@ -11,12 +11,23 @@ const AuthHeader = () => {
       <div className="authHeaderLinks">
         {pathname === "/register" && (
           <>
+            <Link to="/about">About</Link>
             <Link to="/register">Register</Link>
             <button onClick={() => push("/login")}>Login</button>
           </>
         )}
+
+        {pathname === "/about" && (
+          <>
+            <Link to="/about">About</Link>
+            <Link to="/register">Register</Link>
+            <button onClick={() => push("/login")}>Login</button>
+          </>
+        )}
+
         {pathname === "/login" && (
           <>
+            <Link to="/about">About</Link>
             <Link to="/login">Login</Link>
             <button onClick={() => push("/register")}>Register</button>
           </>
