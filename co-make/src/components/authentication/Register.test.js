@@ -10,7 +10,7 @@ test("Login component renders", () => {
     </Router>
   );
 
-  expect(queryByText(/Register a New Account/i)).toBeTruthy();
+  expect(queryByText(/Register a New Account/i));
   expect(getByText(/Username/i));
   expect(getByText(/Password/i));
   expect(getByText(/Email/i));

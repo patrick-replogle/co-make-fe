@@ -4,13 +4,13 @@ import { BrowserRouter as Router } from "react-router-dom";
 import AuthHeader from "./AuthHeader";
 
 test("AuthHeader component renders", () => {
-  const { getByText, queryByText } = render(
+  const wrapper = render(
     <Router>
       <AuthHeader />
     </Router>
   );
 
-  expect(getByText(/coMake/i)).toBeDefined();
-  expect(queryByText(/login/i)).toBeDefined();
-  expect(queryByText(/register/i)).toBeDefined();
+  expect(wrapper.getByText(/coMake/i));
+  expect(wrapper.queryByText(/login/i));
+  expect(wrapper.queryByText(/register/i));
 });

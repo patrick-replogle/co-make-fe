@@ -10,7 +10,7 @@ test("Login component renders", () => {
     </Router>
   );
 
-  expect(queryByText(/coMake/i)).toBeTruthy();
+  expect(queryByText(/coMake/i));
   expect(getByText(/Get Involved/i));
   expect(getByText(/Register/i));
   expect(getByText(/Login/i));

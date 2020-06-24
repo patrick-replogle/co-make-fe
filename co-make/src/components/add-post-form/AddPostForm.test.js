@@ -14,7 +14,7 @@ test("AddPostForm component renders with correct text if editing is false", () =
     </Router>
   );
 
-  expect(queryByText(/Add a new Post/i)).toBeTruthy();
+  expect(queryByText(/Add a new Post/i));
   expect(getByText(/Title/i));
   expect(getByText(/Description/i));
   expect(getByText(/Submit/i));
@@ -41,7 +41,7 @@ test("AddPostForm component renders with correct text if editing is true", () =>
     </Router>
   );
 
-  expect(queryByText(/Edit Your Post/i)).toBeTruthy();
+  expect(queryByText(/Edit Your Post/i));
   expect(getByText(/City/i));
   expect(getByText(/Zip Code/i));
 });

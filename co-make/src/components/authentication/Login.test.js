@@ -10,7 +10,7 @@ test("Login component renders", () => {
     </Router>
   );
 
-  expect(queryByText(/login below/i)).toBeTruthy();
+  expect(queryByText(/login below/i));
   expect(getByText(/Submit/i));
   expect(getByText(/Don't have an account/i));
   expect(getByText(/Username/i));
