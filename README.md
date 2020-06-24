@@ -1,14 +1,20 @@
-# coMake
+# CoMake
 
 Backend repository url: https://github.com/patrick-replogle/co-make-be
 
-Deployed frontend app can be found at:
+Deployed frontend app can be found at: https://co-make-silk.vercel.app
 
 ## Tech Stack
-React, Context API, Sass, Formik, Yup, Styled-Components, Material UI
+ -React 
+ -Context API 
+ -Sass 
+ -Formik 
+ -Yup 
+ -Material UI
+ -Zeit
 
 ## Project Overview
-coMake is a solution oriented application geared towards bringing community members together to solve local problems. coMake provides users with a platfrom to call attention to local issues, volunteer their time or resources, or simply ask for help. 
+CoMake is a solution oriented application geared towards bringing community members together to solve local problems. CoMake provides users with a platfrom to call attention to local issues, volunteer their time or resources, or simply ask for help. 
 
 ## Contributor
 
