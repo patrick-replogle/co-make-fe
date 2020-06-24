@@ -3,7 +3,8 @@ export const updatedUser = (user, formData) => {
     return {
       first_name: formData.first_name,
       last_name: formData.last_name,
-      profile_image_url: formData.profile_image_url,
+      city: formData.city,
+      zip_code: formData.zip_code,
     };
   }
   if (user.username === formData.username && user.email !== formData.email) {
@@ -11,7 +12,8 @@ export const updatedUser = (user, formData) => {
       email: formData.email,
       first_name: formData.first_name,
       last_name: formData.last_name,
-      profile_image_url: formData.profile_image_url,
+      city: formData.city,
+      zip_code: formData.zip_code,
     };
   }
   if (user.email === formData.email && user.username !== formData.username) {
@@ -19,7 +21,8 @@ export const updatedUser = (user, formData) => {
       username: formData.username,
       first_name: formData.first_name,
       last_name: formData.last_name,
-      profile_image_url: formData.profile_image_url,
+      city: formData.city,
+      zip_code: formData.zip_code,
     };
   } else return formData;
 };

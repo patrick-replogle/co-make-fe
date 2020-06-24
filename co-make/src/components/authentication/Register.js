@@ -51,8 +51,6 @@ const Register = (props) => {
               ...values,
               photo: photo ? photo : null,
             };
-
-            console.log(newUser);
             setSubmitting(true);
             setStatus(false);
             axiosWithAuth()

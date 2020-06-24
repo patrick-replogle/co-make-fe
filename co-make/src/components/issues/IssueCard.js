@@ -20,7 +20,6 @@ const IssueCard = (props) => {
     axiosWithAuth()
       .get(`/posts/${postId}`)
       .then((res) => {
-        console.log(res.data);
         setIssue(res.data);
         setIsLoading(false);
       })
