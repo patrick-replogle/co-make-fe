@@ -11,8 +11,8 @@ test("AboutPage component renders", () => {
   );
 
   expect(wrapper).toBeDefined();
-  expect(wrapper.queryAllByText(/coMake/i));
+  expect(wrapper.queryAllByText(/CoMake/i));
   expect(wrapper.queryByText(/login/i));
   expect(wrapper.queryByText(/register/i));
-  expect(wrapper.queryByText(/what is coMake/i));
+  expect(wrapper.queryByText(/what is CoMake/i));
 });
