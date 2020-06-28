@@ -2,7 +2,7 @@
 
 Backend repository url: https://github.com/patrick-replogle/co-make-be
 
-Deployed frontend app can be found at: https://co-make-silk.vercel.app
+Deployed frontend app can be found at: https://co-make.patrickr1138.vercel.app 
 
 ## Tech Stack
  -React 
