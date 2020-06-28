@@ -87,14 +87,22 @@ const ImageUpload = ({ photo, setPhoto }) => {
           id="icon-button-file"
           type="file"
         />
-        {photo && (
-          <img
-            onClick={() => setPhoto(null)}
-            src={photo}
-            alt="Event Img Upload"
-            className="imgPreview"
-          />
-        )}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: " center",
+            alignItems: "center",
+          }}
+        >
+          {photo && (
+            <img
+              onClick={() => setPhoto(null)}
+              src={photo}
+              alt="Event Img Upload"
+              className="imgPreview"
+            />
+          )}
+        </div>
       </div>
     </div>
   );
