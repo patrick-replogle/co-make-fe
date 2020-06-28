@@ -174,7 +174,7 @@ p {
   justify-content: space-between;
   position: sticky;
   padding: 0 3%;
-  width: 100vw;
+  width: 100%;
   -webkit-box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
   -moz-box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
   box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
@@ -184,8 +184,8 @@ p {
     align-items: center;
 
     @media (max-width: 600px) {
-      width: 58%;
-      justify-content: space-between;
+      width: 70%;
+      justify-content: space-evenly;
     }
 
     a {
@@ -202,6 +202,7 @@ p {
       padding: 8px 18px;
       border-radius: 5px;
       outline: none;
+      border: none;
       margin-right: 5%;
 
       &:hover {
@@ -260,6 +261,10 @@ p {
       margin-bottom: 3px;
       font-size: 1.6rem;
       display: block;
+
+      @media (max-width: 600px) {
+        float: left;
+      }
     }
 
     input {
@@ -271,10 +276,18 @@ p {
       border-radius: 4px;
       font-size: 1.6rem;
       border: 2px solid #d3d3d3;
+
+      @media (max-width: 600px) {
+        width: 300px;
+      }
     }
 
     .termsOfServiceDiv {
       width: 380px;
+
+      @media (max-width: 600px) {
+        width: 300px;
+      }
 
       a {
         color: black;
@@ -293,6 +306,10 @@ p {
       border-radius: 4px;
       border: 1px solid white;
       outline: none;
+
+      @media (max-width: 600px) {
+        width: 300px;
+      }
 
       &:hover {
         opacity: 0.9;
@@ -538,6 +555,10 @@ p {
       border-radius: 4px;
       font-size: 1.6rem;
       border: 2px solid #d3d3d3;
+
+      @media (max-width: 600px) {
+        width: 300px;
+      }
     }
 
     textarea {
@@ -551,6 +572,10 @@ p {
       border: 2px solid #d3d3d3;
       word-wrap: nowrap;
       font-size: 1.6rem;
+
+      @media (max-width: 600px) {
+        width: 300px;
+      }
     }
 
     button {
@@ -563,6 +588,10 @@ p {
       border: 1px solid white;
       outline: none;
       margin-bottom: 10px;
+
+      @media (max-width: 600px) {
+        width: 300px;
+      }
 
       &:hover {
         opacity: 0.9;
@@ -580,8 +609,7 @@ p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
 
   form {
     display: flex;
@@ -606,6 +634,10 @@ p {
       border-radius: 4px;
       font-size: 1.6rem;
       border: 2px solid #d3d3d3;
+
+      @media (max-width: 600px) {
+        width: 300px;
+      }
     }
 
     button {
@@ -617,6 +649,11 @@ p {
       background: #e01f3d;
       border-radius: 4px;
       outline: none;
+      border: none;
+
+      @media (max-width: 600px) {
+        width: 300px;
+      }
 
       &:hover {
         opacity: 0.7;
@@ -836,7 +873,19 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 20px 0;
+  margin: 10px 0;
+}
+
+.imgPreview {
+  max-width: 370px;
+  max-height: 120px;
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+
+  @media (max-width: 600px) {
+    max-width: 290px;
+  }
 }
 
 /* about page styles */

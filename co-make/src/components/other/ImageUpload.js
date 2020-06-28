@@ -6,8 +6,8 @@ import { useLocation } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: "Column",
+    width: "90",
     "& > *": {
       margin: theme.spacing(1),
     },
@@ -92,13 +92,7 @@ const ImageUpload = ({ photo, setPhoto }) => {
             onClick={() => setPhoto(null)}
             src={photo}
             alt="Event Img Upload"
-            style={{
-              maxWidth: "40%",
-              maxHeight: "120px",
-              borderRadius: "10px",
-              border: "2px solid rgba(0,0,0,.4)",
-              cursor: "pointer",
-            }}
+            className="imgPreview"
           />
         )}
       </div>
