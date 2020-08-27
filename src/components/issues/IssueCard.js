@@ -8,6 +8,7 @@ import { formatDate } from "../../utils/functions";
 import IssueComments from "./IssueComments.js";
 import AddComment from "./AddComment.js";
 import volunteering from "../../img/volunteering.jpg";
+import Footer from "../other/Footer.js";
 
 const IssueCard = (props) => {
   const [issue, setIssue] = useState({});
@@ -118,6 +119,7 @@ const IssueCard = (props) => {
             />
           </div>
         </div>
+        <Footer />
       </>
     );
   }
