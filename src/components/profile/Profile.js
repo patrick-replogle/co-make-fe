@@ -6,6 +6,7 @@ import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
 import { userContext } from "../../contexts/userContext.js";
 import UserPosts from "./UserPosts.js";
 import ProtectedHeader from "../other/ProtectedHeader.js";
+import Footer from "../other/Footer.js";
 
 const Profile = () => {
   const { user, setUser } = useContext(userContext);
@@ -120,6 +121,7 @@ const Profile = () => {
             <UserPosts userPosts={userPosts} setUserPosts={setUserPosts} />
           </div>
         </div>
+        <Footer />
       </>
     );
   }

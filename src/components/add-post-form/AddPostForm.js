@@ -6,6 +6,7 @@ import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
 import { postContext } from "../../contexts/postContext.js";
 import ProtectedHeader from "../other/ProtectedHeader.js";
 import ImageUpload from "../other/ImageUpload.js";
+import Footer from "../other/Footer.js";
 
 const initialFormState = {
   title: "",
@@ -82,7 +83,7 @@ const AddPostForm = () => {
     }
   };
   return (
-    <>
+    <div style={{ position: "relative" }}>
       <ProtectedHeader />
       <div className="addFormContainer">
         {isEditing ? (
@@ -155,7 +156,8 @@ const AddPostForm = () => {
           </button>
         </form>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 };
 

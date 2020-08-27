@@ -7,6 +7,7 @@ import IssueLink from "./IssueLink.js";
 import SearchBar from "./SearchBar.js";
 
 import ProtectedHeader from "../other/ProtectedHeader.js";
+import Footer from "../other/Footer.js";
 
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +37,7 @@ const Dashboard = () => {
     );
   } else {
     return (
-      <div>
+      <div style={{ position: "relative", minHeight: "100vh" }}>
         <ProtectedHeader
           showSearch={showSearch}
           setShowSearch={setShowSearch}
@@ -48,6 +49,7 @@ const Dashboard = () => {
             return <IssueLink post={post} setPosts={setPosts} key={post.id} />;
           })}
         </div>
+        <Footer />
       </div>
     );
   }

@@ -6,6 +6,7 @@ import { userContext } from "../../contexts/userContext.js";
 import { updatedUser } from "../../utils/functions";
 import ProtectedHeader from "../other/ProtectedHeader.js";
 import ImageUpload from "../other/ImageUpload.js";
+import Footer from "../other/Footer.js";
 
 const initialUserState = {
   username: "",
@@ -181,6 +182,7 @@ const UserForm = (props) => {
             </button>
           </form>
         </div>
+        <Footer />
       </div>
     );
   }

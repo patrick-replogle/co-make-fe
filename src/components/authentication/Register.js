@@ -6,6 +6,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { axiosWithAuth } from "../../utils/axiosWithAuth.js";
 import AuthHeader from "./AuthHeader.js";
 import ImageUpload from "../other/ImageUpload.js";
+import Footer from "../other/Footer.js";
 
 const initialUser = {
   username: "",
@@ -190,6 +191,7 @@ const Register = (props) => {
           )}
         </Formik>
       </div>
+      <Footer />
     </>
   );
 };
