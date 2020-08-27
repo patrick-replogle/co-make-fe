@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <div className="footer" style={{ bottom: pathname === "/login" ? 0 : "" }}>
       <a
-        href="https://github.com/patrick-replogle/Conways-Game-of-Life"
+        href="https://github.com/patrick-replogle/co-make-fe"
         target="blank"
         style={{ margin: "0 3%" }}
       >
