@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { axiosWithAuth } from '../../utils/axiosWithAuth.js';
+import { scrollToTop } from '../../utils/functions';
 import { postContext } from '../../contexts/postContext.js';
 import ProtectedHeader from '../other/ProtectedHeader.js';
 import ImageUpload from '../other/ImageUpload.js';
@@ -60,6 +61,7 @@ const AddPostForm = () => {
                     setPostToEdit({});
                     setPostData(initialFormState);
                     setIsLoading(false);
+                    scrollToTop();
                     push(`/dashboard`);
                 })
                 .catch((err) => {
@@ -76,6 +78,7 @@ const AddPostForm = () => {
                 .then(() => {
                     setIsLoading(false);
                     setPostData(initialFormState);
+                    scrollToTop();
                     push('/dashboard');
                 })
                 .catch((err) => {

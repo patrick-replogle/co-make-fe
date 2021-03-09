@@ -3,9 +3,9 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { postContext } from '../../contexts/postContext.js';
 import { axiosWithAuth } from '../../utils/axiosWithAuth.js';
+
 import IssueLink from './IssueLink.js';
 import SearchBar from './SearchBar.js';
-
 import ProtectedHeader from '../other/ProtectedHeader.js';
 import Footer from '../other/Footer.js';
 
