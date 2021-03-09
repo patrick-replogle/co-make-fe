@@ -37,7 +37,7 @@ const Dashboard = () => {
         );
     } else {
         return (
-            <div style={{ position: 'relative', minHeight: '100vh' }}>
+            <div className="pageContainer">
                 <ProtectedHeader
                     showSearch={showSearch}
                     setShowSearch={setShowSearch}

@@ -41,7 +41,7 @@ const validationSchema = Yup.object({
 const Register = (props) => {
     const [photo, setPhoto] = useState(null);
     return (
-        <>
+        <div className="pageContainer">
             <AuthHeader />
             <div className="authContainer">
                 <Formik
@@ -216,7 +216,7 @@ const Register = (props) => {
                 </Formik>
             </div>
             <Footer />
-        </>
+        </div>
     );
 };
 

@@ -20,7 +20,7 @@ const initialLoginState = {
 
 const Login = (props) => {
     return (
-        <>
+        <div className="pageContainer">
             <AuthHeader />
             <div className="authContainer" style={{ marginTop: '20px' }}>
                 <h1 style={{ color: '#e01f3d' }}>Login Below</h1>
@@ -116,7 +116,7 @@ const Login = (props) => {
                 </Formik>
             </div>
             <Footer />
-        </>
+        </div>
     );
 };
 

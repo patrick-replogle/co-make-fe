@@ -49,7 +49,7 @@ const Profile = () => {
         );
     } else {
         return (
-            <>
+            <div className="pageContainer">
                 <ProtectedHeader />
                 <div className="profileContainer">
                     <div className="profileCard">
@@ -125,7 +125,7 @@ const Profile = () => {
                     </div>
                 </div>
                 <Footer />
-            </>
+            </div>
         );
     }
 };
