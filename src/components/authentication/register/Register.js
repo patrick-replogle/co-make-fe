@@ -3,10 +3,10 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import { axiosWithAuth } from '../../utils/axiosWithAuth.js';
-import AuthHeader from './AuthHeader.js';
-import ImageUpload from '../other/ImageUpload.js';
-import Footer from '../other/Footer.js';
+import { axiosWithAuth } from '../../../utils/axiosWithAuth.js';
+import AuthHeader from '../../other/auth-header/AuthHeader.js';
+import ImageUpload from '../../other/image-upload/ImageUpload.js';
+import Footer from '../../other/footer/Footer.js';
 
 const initialUser = {
     username: '',

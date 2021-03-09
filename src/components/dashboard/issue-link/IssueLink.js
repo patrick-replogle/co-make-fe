@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import { formatDate } from '../../utils/functions';
-import volunteering from '../../img/volunteering.jpg';
+import { axiosWithAuth } from '../../../utils/axiosWithAuth';
+import { formatDate } from '../../../utils/functions';
+import volunteering from '../../../img/volunteering.jpg';
 
 const IssueLink = ({ post, setPosts }) => {
     const fetchPosts = () => {

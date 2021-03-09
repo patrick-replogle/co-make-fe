@@ -4,7 +4,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import jwt from 'jwt-decode';
 import moment from 'moment';
 
-import { postContext } from '../../contexts/postContext.js';
+import { postContext } from '../../../../contexts/postContext.js';
 
 const Comment = ({ comment, deleteComment }) => {
     const { setIsEditing, setCommentToEdit } = useContext(postContext);

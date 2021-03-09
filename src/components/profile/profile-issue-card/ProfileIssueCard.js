@@ -3,10 +3,10 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { withRouter } from 'react-router-dom';
 
-import { scrollToTop } from '../../utils/functions';
-import { axiosWithAuth } from '../../utils/axiosWithAuth.js';
-import { postContext } from '../../contexts/postContext.js';
-import { formatDate } from '../../utils/functions';
+import { scrollToTop } from '../../../utils/functions';
+import { axiosWithAuth } from '../../../utils/axiosWithAuth.js';
+import { postContext } from '../../../contexts/postContext.js';
+import { formatDate } from '../../../utils/functions';
 
 const ProfileIssueCard = ({ post, setUserPosts, history }) => {
     const { setIsEditing, setPostToEdit } = useContext(postContext);

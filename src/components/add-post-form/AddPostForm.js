@@ -5,9 +5,9 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { axiosWithAuth } from '../../utils/axiosWithAuth.js';
 import { scrollToTop } from '../../utils/functions';
 import { postContext } from '../../contexts/postContext.js';
-import ProtectedHeader from '../other/ProtectedHeader.js';
-import ImageUpload from '../other/ImageUpload.js';
-import Footer from '../other/Footer.js';
+import ProtectedHeader from '../other/protected-header/ProtectedHeader.js';
+import ImageUpload from '../other/image-upload/ImageUpload.js';
+import Footer from '../other/footer/Footer.js';
 
 const initialFormState = {
     title: '',

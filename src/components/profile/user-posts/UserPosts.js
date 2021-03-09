@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileIssueCard from './ProfileIssueCard.js';
+import ProfileIssueCard from '../profile-issue-card/ProfileIssueCard.js';
 
 const UserPosts = ({ userPosts, setUserPosts }) => {
     return (

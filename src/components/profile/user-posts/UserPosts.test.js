@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { postContext } from '../../contexts/postContext.js';
+import { postContext } from '../../../contexts/postContext.js';
 import UserPosts from './UserPosts';
 
 const mockData = [{ id: 1, title: 'test post' }];
