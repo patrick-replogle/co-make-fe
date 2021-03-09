@@ -6,7 +6,7 @@ import Footer from '../other/Footer.js';
 
 const AboutPage = () => {
     return (
-        <>
+        <div className="pageContainer">
             <AuthHeader />
             <div className="aboutPageContainer">
                 <div>
@@ -27,7 +27,7 @@ const AboutPage = () => {
                 </div>
             </div>
             <Footer />
-        </>
+        </div>
     );
 };
 

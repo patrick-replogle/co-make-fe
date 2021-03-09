@@ -60,7 +60,7 @@ const IssueCard = (props) => {
         );
     } else {
         return (
-            <>
+            <div className="pageContainer">
                 <ProtectedHeader />
                 <div className="issueCardContainer">
                     <div className="card">
@@ -125,7 +125,7 @@ const IssueCard = (props) => {
                     </div>
                 </div>
                 <Footer />
-            </>
+            </div>
         );
     }
 };

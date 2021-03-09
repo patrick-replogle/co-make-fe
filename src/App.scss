@@ -51,6 +51,14 @@ p {
     margin: 0 auto;
 }
 
+.pageContainer {
+    min-height: 100vh;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 80px;
+}
+
 /* errors */
 
 .errors {
@@ -965,15 +973,15 @@ p {
 /* footer */
 
 .footer {
-    display: block;
-    margin-top: 40px;
+    position: absolute;
+    bottom: 0;
+    margin-top: 60px;
     background: #e01f3d;
     color: white;
     align-items: center;
     display: flex;
     height: 70px;
     justify-content: center;
-    position: absolute;
     left: 0;
     right: 0;
     z-index: 150;

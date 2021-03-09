@@ -92,7 +92,7 @@ const AddPostForm = () => {
         }
     };
     return (
-        <div style={{ position: 'relative' }}>
+        <div className="pageContainer">
             <ProtectedHeader />
             <div className="addFormContainer">
                 {isEditing ? (
