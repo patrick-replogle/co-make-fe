@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import { axiosWithAuth } from '../../utils/axiosWithAuth.js';
-import { userContext } from '../../contexts/userContext.js';
-import { updatedUser } from '../../utils/functions';
-import ProtectedHeader from '../other/ProtectedHeader.js';
-import ImageUpload from '../other/ImageUpload.js';
-import Footer from '../other/Footer.js';
+import { axiosWithAuth } from '../../../utils/axiosWithAuth.js';
+import { userContext } from '../../../contexts/userContext.js';
+import { updatedUser } from '../../../utils/functions';
+import ProtectedHeader from '../../other/protected-header/ProtectedHeader.js';
+import ImageUpload from '../../other/image-upload/ImageUpload.js';
+import Footer from '../../other/footer/Footer.js';
 
 const initialUserState = {
     username: '',
@@ -93,7 +93,7 @@ const UserForm = (props) => {
         );
     } else {
         return (
-            <div>
+            <div div className="pageContainer">
                 <ProtectedHeader />
                 <div className="profileForm">
                     <h1 style={{ color: '#e01f3d' }}>Update Profile</h1>

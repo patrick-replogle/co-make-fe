@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import { postContext } from '../../contexts/postContext.js';
+import { axiosWithAuth } from '../../../utils/axiosWithAuth';
+import { postContext } from '../../../contexts/postContext.js';
 
 const AddComment = ({ postId, setComments }) => {
     const [input, setInput] = useState({ text: '' });

@@ -1,19 +1,12 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
-
 import { Icon } from '@iconify/react';
 import githubFilled from '@iconify/icons-ant-design/github-filled';
 import portfolioIcon from '@iconify/icons-bytesize/portfolio';
 import linkedinFilled from '@iconify/icons-ant-design/linkedin-filled';
 
 const Footer = () => {
-    const { pathname } = useLocation();
-
     return (
-        <div
-            className="footer"
-            style={{ bottom: pathname === '/login' ? 0 : '' }}
-        >
+        <div className="footer">
             <a
                 href="https://github.com/patrick-replogle/co-make-fe"
                 target="blank"

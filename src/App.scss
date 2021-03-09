@@ -72,6 +72,7 @@ p {
 }
 
 /* loading spinner */
+
 .loading {
     position: fixed;
     width: 500px;
@@ -83,6 +84,7 @@ p {
 }
 
 /* welcome page */
+
 .welcomePageMain {
     display: flex;
     align-items: center;
@@ -170,7 +172,8 @@ p {
     }
 }
 
-/* authentication header  */
+/* authentication header */
+
 .authHeader {
     display: flex;
     align-items: center;
@@ -252,6 +255,7 @@ p {
 }
 
 /* login */
+
 .authContainer {
     width: 100%;
     display: flex;
@@ -335,6 +339,7 @@ p {
 }
 
 /* UserDashboard styles */
+
 .profileContainer {
     display: flex;
     flex-direction: column;
@@ -432,6 +437,7 @@ p {
 }
 
 /* UserPosts styles */
+
 .postListContainer {
     display: flex;
     flex-direction: column;
@@ -450,6 +456,7 @@ p {
 }
 
 /* profile issue card */
+
 .profileIssueCard {
     display: flex;
     flex-direction: column;
@@ -478,6 +485,7 @@ p {
 }
 
 /* issue link*/
+
 .issueLink {
     display: flex;
     flex-direction: column;
@@ -535,6 +543,7 @@ p {
 }
 
 /* add form style */
+
 .addFormContainer {
     display: flex;
     flex-direction: column;
@@ -622,6 +631,7 @@ p {
 }
 
 /* profile form styles */
+
 .profileForm {
     display: flex;
     flex-direction: column;
@@ -686,6 +696,7 @@ p {
 }
 
 /* search bar component */
+
 .searchBarContainer {
     display: flex;
     align-items: center;
@@ -748,6 +759,7 @@ p {
 }
 
 /* main dashboard */
+
 .dashboardPostContainer {
     display: flex;
     flex-wrap: wrap;
@@ -759,6 +771,7 @@ p {
 }
 
 /* issue card styles */
+
 .issueCardContainer {
     display: flex;
     flex-direction: column;
@@ -819,7 +832,7 @@ p {
     }
 }
 
-/* */
+/* comments */
 
 .commentsContainer {
     display: flex;
@@ -893,6 +906,7 @@ p {
 }
 
 /* imageupload component styles */
+
 .imageUploadContainer {
     display: flex;
     flex-direction: column;

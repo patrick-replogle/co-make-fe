@@ -3,8 +3,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import { axiosWithAuth } from '../../utils/axiosWithAuth.js';
-import { postContext } from '../../contexts/postContext.js';
+import { axiosWithAuth } from '../../../utils/axiosWithAuth.js';
+import { postContext } from '../../../contexts/postContext.js';
 
 const SearchBar = (props) => {
     const [searchBy, setSearchBy] = useState({ value: 'city' });

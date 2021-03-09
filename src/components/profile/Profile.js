@@ -4,9 +4,9 @@ import { withRouter, Link } from 'react-router-dom';
 
 import { axiosWithAuth } from '../../utils/axiosWithAuth.js';
 import { userContext } from '../../contexts/userContext.js';
-import UserPosts from './UserPosts.js';
-import ProtectedHeader from '../other/ProtectedHeader.js';
-import Footer from '../other/Footer.js';
+import UserPosts from './user-posts/UserPosts.js';
+import ProtectedHeader from '../other/protected-header/ProtectedHeader.js';
+import Footer from '../other/footer/Footer.js';
 
 const Profile = () => {
     const { user, setUser } = useContext(userContext);

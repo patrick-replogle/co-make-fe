@@ -4,10 +4,10 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { postContext } from '../../contexts/postContext.js';
 import { axiosWithAuth } from '../../utils/axiosWithAuth.js';
 
-import IssueLink from './IssueLink.js';
-import SearchBar from './SearchBar.js';
-import ProtectedHeader from '../other/ProtectedHeader.js';
-import Footer from '../other/Footer.js';
+import IssueLink from './issue-link/IssueLink.js';
+import SearchBar from './search-bar/SearchBar.js';
+import ProtectedHeader from '../other/protected-header/ProtectedHeader.js';
+import Footer from '../other/footer/Footer.js';
 
 const Dashboard = () => {
     const [isLoading, setIsLoading] = useState(false);

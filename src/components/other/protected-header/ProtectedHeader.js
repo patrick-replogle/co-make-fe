@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 
-import BurgerMenu from './BurgerMenu';
+import BurgerMenu from '../burger-menu/BurgerMenu';
 
 const DashboardHeader = (props) => {
     const { pathname } = useLocation();

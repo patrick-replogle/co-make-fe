@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 
-import Comment from './Comment';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import Comment from './comment/Comment';
+import { axiosWithAuth } from '../../../utils/axiosWithAuth';
 
-const IssueComments = ({ postId, comments, setComments }) => {
+const Comments = ({ postId, comments, setComments }) => {
     useEffect(() => {
         fetchComments();
         // eslint-disable-next-line
@@ -47,4 +47,4 @@ const IssueComments = ({ postId, comments, setComments }) => {
     );
 };
 
-export default IssueComments;
+export default Comments;

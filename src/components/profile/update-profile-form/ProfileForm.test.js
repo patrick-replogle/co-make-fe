@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { userContext } from '../../contexts/userContext.js';
-import UserForm from './UserForm';
+import { userContext } from '../../../contexts/userContext.js';
+import UserForm from './ProfileForm';
 
 test('Userform component renders', () => {
     const wrapper = render(

@@ -1,8 +1,8 @@
 import React from 'react';
-import Planting from '../../img/planting.jpg';
+import Planting from '../../../img/planting.jpg';
 
-import AuthHeader from './AuthHeader.js';
-import Footer from '../other/Footer.js';
+import AuthHeader from '../../other/auth-header/AuthHeader.js';
+import Footer from '../../other/footer/Footer.js';
 
 const AboutPage = () => {
     return (

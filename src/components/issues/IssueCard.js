@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 
-import ProtectedHeader from '../other/ProtectedHeader.js';
+import ProtectedHeader from '../other/protected-header/ProtectedHeader.js';
 import { axiosWithAuth } from '../../utils/axiosWithAuth.js';
 import { formatDate } from '../../utils/functions';
-import IssueComments from './IssueComments.js';
-import AddComment from './AddComment.js';
+import IssueComments from './comments/Comments.js';
+import AddComment from './add-comment/AddComment.js';
 import volunteering from '../../img/volunteering.jpg';
-import Footer from '../other/Footer.js';
+import Footer from '../other/footer/Footer.js';
 
 const IssueCard = (props) => {
     const [issue, setIssue] = useState({});
