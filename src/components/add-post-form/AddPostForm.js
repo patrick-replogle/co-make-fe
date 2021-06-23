@@ -35,7 +35,19 @@ const AddPostForm = () => {
                 setPhoto(postToEdit.photo);
             }
         }
-    }, [isEditing, postToEdit]);
+        // cleanup
+        return () => {
+            setIsEditing(false);
+            setPostToEdit({});
+        };
+    }, [
+        isEditing,
+        postToEdit,
+        setIsEditing,
+        setPhoto,
+        setPostData,
+        setPostToEdit,
+    ]);
 
     const handleChange = (e) => {
         setPostData({
