@@ -4,6 +4,8 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import BurgerMenu from '../burger-menu/BurgerMenu';
 
+import './protectedHeader.styles.scss';
+
 const DashboardHeader = (props) => {
     const { pathname } = useLocation();
 
@@ -14,11 +16,7 @@ const DashboardHeader = (props) => {
                 {pathname === '/dashboard' && (
                     <SearchIcon
                         onClick={() => props.setShowSearch(!props.showSearch)}
-                        style={{
-                            color: 'white',
-                            fontSize: '3.5rem',
-                            cursor: 'pointer',
-                        }}
+                        className="icon"
                     />
                 )}
                 <BurgerMenu />

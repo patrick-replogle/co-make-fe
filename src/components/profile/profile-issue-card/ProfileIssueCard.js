@@ -8,6 +8,8 @@ import { axiosWithAuth } from '../../../utils/axiosWithAuth.js';
 import { postContext } from '../../../contexts/postContext.js';
 import { formatDate } from '../../../utils/functions';
 
+import './profileIssueCard.styles.scss';
+
 const ProfileIssueCard = ({ post, setUserPosts, history }) => {
     const { setIsEditing, setPostToEdit } = useContext(postContext);
     const dateString = formatDate(post.createdAt);
@@ -47,19 +49,11 @@ const ProfileIssueCard = ({ post, setUserPosts, history }) => {
                 <p>{dateString}</p>
                 <div className="profileIssueCardIconContainer">
                     <EditIcon
-                        style={{
-                            fontSize: '2.2rem',
-                            cursor: 'pointer',
-                            marginRight: '4%',
-                        }}
+                        className="icon"
                         onClick={() => handleEdit(post)}
                     />
                     <DeleteIcon
-                        style={{
-                            fontSize: '2.2rem',
-                            cursor: 'pointer',
-                            marginRight: '4%',
-                        }}
+                        className="icon"
                         onClick={() => deletePost(post.id)}
                     />
                 </div>

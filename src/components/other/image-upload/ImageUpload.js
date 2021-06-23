@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { useLocation } from 'react-router-dom';
 
+import './imageUpload.styles.scss';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',

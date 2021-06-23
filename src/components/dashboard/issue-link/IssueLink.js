@@ -6,6 +6,8 @@ import { axiosWithAuth } from '../../../utils/axiosWithAuth';
 import { formatDate } from '../../../utils/functions';
 import volunteering from '../../../img/volunteering.jpg';
 
+import './issueLink.styles.scss';
+
 const IssueLink = ({ post, setPosts }) => {
     const fetchPosts = () => {
         axiosWithAuth()
@@ -46,32 +48,12 @@ const IssueLink = ({ post, setPosts }) => {
                 </p>
                 <p>Created {formatDate(post.createdAt)}</p>
             </Link>
-            <div
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'flex-start',
-                    color: '#565656',
-                    width: '100%',
-                    marginLeft: '10%',
-                }}
-            >
+            <div className="thumbsUpContainer">
                 <ThumbUpIcon
+                    className="icon"
                     onClick={() => upVotePost(post.id)}
-                    style={{
-                        color: '#e01f3d',
-                        fontSize: '2.5rem',
-                        cursor: 'pointer',
-                    }}
                 />
-                <p
-                    style={{
-                        fontSize: '1.6rem',
-                        marginLeft: '3%',
-                    }}
-                >
-                    {post.votes}
-                </p>
+                <p>{post.votes}</p>
             </div>
         </div>
     );

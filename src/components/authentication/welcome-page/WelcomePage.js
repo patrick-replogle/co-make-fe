@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './welcomePage.styles.scss';
+
 const WelcomePage = ({ history }) => {
     return (
         <div className="welcomePageMain">

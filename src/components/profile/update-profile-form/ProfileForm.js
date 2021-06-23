@@ -8,6 +8,8 @@ import ProtectedHeader from '../../other/protected-header/ProtectedHeader.js';
 import ImageUpload from '../../other/image-upload/ImageUpload.js';
 import Footer from '../../other/footer/Footer.js';
 
+import './profileForm.styles.scss';
+
 const initialUserState = {
     username: '',
     email: '',

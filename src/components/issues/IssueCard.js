@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 
 import ProtectedHeader from '../other/protected-header/ProtectedHeader.js';
@@ -9,6 +8,9 @@ import IssueComments from './comments/Comments.js';
 import AddComment from './add-comment/AddComment.js';
 import volunteering from '../../img/volunteering.jpg';
 import Footer from '../other/footer/Footer.js';
+import LoadingSpinner from '../other/loading-spinner/LoadingSpinner.js';
+
+import './issueCard.styles.scss';
 
 const IssueCard = (props) => {
     const [issue, setIssue] = useState({});
@@ -48,23 +50,19 @@ const IssueCard = (props) => {
                 fetchPosts();
             })
             .catch((err) => {
-                console.log('upvote err: ', err.response.data.message);
+                console.log('upvote error: ', err.response.data.message);
             });
     };
 
     if (isLoading) {
-        return (
-            <div className="loading">
-                <CircularProgress color="primary" size="100px" />
-            </div>
-        );
+        return <LoadingSpinner />;
     } else {
         return (
             <div className="pageContainer">
                 <ProtectedHeader />
                 <div className="issueCardContainer">
                     <div className="card">
-                        <div style={{ width: '100%', display: 'flex' }}>
+                        <div>
                             <img
                                 src={
                                     issue.photo !== 'null'
@@ -83,32 +81,12 @@ const IssueCard = (props) => {
                             Created by {issue.authorUsername} on{' '}
                             {formatDate(issue.createdAt)}
                         </p>
-                        <div
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'flex-start',
-                                color: '#565656',
-                                width: '100%',
-                                marginLeft: '3%',
-                            }}
-                        >
+                        <div className="likeContainer">
                             <ThumbUpIcon
                                 onClick={() => upVotePost(issue.id)}
-                                style={{
-                                    color: '#e01f3d',
-                                    fontSize: '2.5rem',
-                                    cursor: 'pointer',
-                                }}
+                                className="icon"
                             />
-                            <p
-                                style={{
-                                    fontSize: '1.6rem',
-                                    marginLeft: '1%',
-                                }}
-                            >
-                                {issue.votes}
-                            </p>
+                            <p>{issue.votes}</p>
                         </div>
                     </div>
                     <div className="commentsContainer">

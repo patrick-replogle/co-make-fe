@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { postContext } from '../../contexts/postContext.js';
 import { axiosWithAuth } from '../../utils/axiosWithAuth.js';
@@ -8,6 +7,9 @@ import IssueLink from './issue-link/IssueLink.js';
 import SearchBar from './search-bar/SearchBar.js';
 import ProtectedHeader from '../other/protected-header/ProtectedHeader.js';
 import Footer from '../other/footer/Footer.js';
+import LoadingSpinner from '../other/loading-spinner/LoadingSpinner.js';
+
+import './dashboard.styles.scss';
 
 const Dashboard = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -30,11 +32,7 @@ const Dashboard = () => {
     }, [setPosts]);
 
     if (isLoading) {
-        return (
-            <div className="loading">
-                <CircularProgress color="primary" size="100px" />
-            </div>
-        );
+        return <LoadingSpinner />;
     } else {
         return (
             <div className="pageContainer">

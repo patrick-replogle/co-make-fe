@@ -6,6 +6,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { axiosWithAuth } from '../../../utils/axiosWithAuth.js';
 import { postContext } from '../../../contexts/postContext.js';
 
+import './searchBar.styles.scss';
+
 const SearchBar = (props) => {
     const [searchBy, setSearchBy] = useState({ value: 'city' });
     const [searchCity, setSearchCity] = useState({ city: '' });

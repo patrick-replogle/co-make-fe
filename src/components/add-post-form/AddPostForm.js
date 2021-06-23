@@ -9,6 +9,8 @@ import ProtectedHeader from '../other/protected-header/ProtectedHeader.js';
 import ImageUpload from '../other/image-upload/ImageUpload.js';
 import Footer from '../other/footer/Footer.js';
 
+import './addPostForm.styles.scss';
+
 const initialFormState = {
     title: '',
     description: '',
@@ -21,9 +23,8 @@ const AddPostForm = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [photo, setPhoto] = useState(null);
     const [error, setError] = useState('');
-    const { isEditing, setIsEditing, postToEdit, setPostToEdit } = useContext(
-        postContext
-    );
+    const { isEditing, setIsEditing, postToEdit, setPostToEdit } =
+        useContext(postContext);
     const { push } = useHistory();
 
     useEffect(() => {
@@ -95,11 +96,7 @@ const AddPostForm = () => {
         <div className="pageContainer">
             <ProtectedHeader />
             <div className="addFormContainer">
-                {isEditing ? (
-                    <h2 style={{ color: '#e01f3d' }}>Edit Your Post</h2>
-                ) : (
-                    <h2 style={{ color: '#e01f3d' }}>Add a New Post</h2>
-                )}
+                {isEditing ? <h2>Edit Your Post</h2> : <h2>Add a New Post</h2>}
 
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="title">Title</label>

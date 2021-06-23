@@ -1,0 +1,32 @@
+.profileIssueCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 2px solid #f2f2f2;
+    width: 100%;
+
+    .profileIssueCardText {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 90%;
+    }
+    .profileIssueCardIconContainer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        font-size: 2rem;
+        width: 50%;
+
+        .icon {
+            font-size: 2.2rem;
+            cursor: pointer;
+            margin-right: 4%;
+        }
+    }
+
+    p {
+        text-align: left;
+        width: 90%;
+    }
+}

@@ -4,6 +4,8 @@ import Planting from '../../../img/planting.jpg';
 import AuthHeader from '../../other/auth-header/AuthHeader.js';
 import Footer from '../../other/footer/Footer.js';
 
+import './aboutPage.styles.scss';
+
 const AboutPage = () => {
     return (
         <div className="pageContainer">

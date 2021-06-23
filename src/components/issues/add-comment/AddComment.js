@@ -3,14 +3,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import { axiosWithAuth } from '../../../utils/axiosWithAuth';
 import { postContext } from '../../../contexts/postContext.js';
 
+import './addComment.styles.scss';
+
 const AddComment = ({ postId, setComments }) => {
     const [input, setInput] = useState({ text: '' });
-    const {
-        isEditing,
-        setIsEditing,
-        commentToEdit,
-        setCommentToEdit,
-    } = useContext(postContext);
+    const { isEditing, setIsEditing, commentToEdit, setCommentToEdit } =
+        useContext(postContext);
 
     useEffect(() => {
         if (isEditing) {

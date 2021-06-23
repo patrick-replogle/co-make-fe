@@ -1,0 +1,30 @@
+.commentCard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        .header {
+            display: flex;
+            margin: 0 3%;
+        }
+
+        .iconContainer {
+            display: flex;
+            margin-right: 3%;
+
+            .icon {
+                font-size: 22px;
+                cursor: pointer;
+            }
+        }
+    }
+}

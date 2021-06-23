@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import Comment from './comment/Comment';
 import { axiosWithAuth } from '../../../utils/axiosWithAuth';
 
+import './comments.styles.scss';
+
 const Comments = ({ postId, comments, setComments }) => {
     useEffect(() => {
         fetchComments();
