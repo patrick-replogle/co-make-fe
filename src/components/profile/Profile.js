@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import { withRouter, Link } from 'react-router-dom';
 
 import { axiosWithAuth } from '../../utils/axiosWithAuth.js';
@@ -7,6 +6,7 @@ import { userContext } from '../../contexts/userContext.js';
 import UserPosts from './user-posts/UserPosts.js';
 import ProtectedHeader from '../other/protected-header/ProtectedHeader.js';
 import Footer from '../other/footer/Footer.js';
+import LoadingSpinner from '../other/loading-spinner/LoadingSpinner.js';
 
 import './profile.styles.scss';
 
@@ -44,11 +44,7 @@ const Profile = () => {
     }, [setUserPosts]);
 
     if (isLoading) {
-        return (
-            <div className="loading">
-                <CircularProgress color="primary" size="100px" />
-            </div>
-        );
+        return <LoadingSpinner />;
     } else {
         return (
             <div className="pageContainer">

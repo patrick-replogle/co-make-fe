@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 
 import ProtectedHeader from '../other/protected-header/ProtectedHeader.js';
@@ -9,6 +8,7 @@ import IssueComments from './comments/Comments.js';
 import AddComment from './add-comment/AddComment.js';
 import volunteering from '../../img/volunteering.jpg';
 import Footer from '../other/footer/Footer.js';
+import LoadingSpinner from '../other/loading-spinner/LoadingSpinner.js';
 
 import './issueCard.styles.scss';
 
@@ -55,11 +55,7 @@ const IssueCard = (props) => {
     };
 
     if (isLoading) {
-        return (
-            <div className="loading">
-                <CircularProgress color="primary" size="100px" />
-            </div>
-        );
+        return <LoadingSpinner />;
     } else {
         return (
             <div className="pageContainer">
