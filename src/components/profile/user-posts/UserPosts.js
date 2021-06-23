@@ -1,6 +1,8 @@
 import React from 'react';
 import ProfileIssueCard from '../profile-issue-card/ProfileIssueCard.js';
 
+import './userPosts.styles.scss';
+
 const UserPosts = ({ userPosts, setUserPosts }) => {
     return (
         <div className="postListContainer">

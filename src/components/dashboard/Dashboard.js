@@ -9,6 +9,8 @@ import SearchBar from './search-bar/SearchBar.js';
 import ProtectedHeader from '../other/protected-header/ProtectedHeader.js';
 import Footer from '../other/footer/Footer.js';
 
+import './dashboard.styles.scss';
+
 const Dashboard = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [searchErr, setSearchErr] = useState('');

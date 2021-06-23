@@ -6,6 +6,8 @@ import { axiosWithAuth } from '../../../utils/axiosWithAuth';
 import { formatDate } from '../../../utils/functions';
 import volunteering from '../../../img/volunteering.jpg';
 
+import './issueLink.styles.scss';
+
 const IssueLink = ({ post, setPosts }) => {
     const fetchPosts = () => {
         axiosWithAuth()

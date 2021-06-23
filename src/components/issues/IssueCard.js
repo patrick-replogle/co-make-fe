@@ -10,6 +10,8 @@ import AddComment from './add-comment/AddComment.js';
 import volunteering from '../../img/volunteering.jpg';
 import Footer from '../other/footer/Footer.js';
 
+import './issueCard.styles.scss';
+
 const IssueCard = (props) => {
     const [issue, setIssue] = useState({});
     const [comments, setComments] = useState([]);

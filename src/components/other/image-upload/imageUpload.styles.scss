@@ -1,0 +1,18 @@
+.imageUploadContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.imgPreview {
+    max-width: 370px;
+    max-height: 120px;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+
+    @media (max-width: 600px) {
+        max-width: 290px;
+    }
+}

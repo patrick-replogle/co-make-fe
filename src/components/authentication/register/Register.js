@@ -8,6 +8,8 @@ import AuthHeader from '../../other/auth-header/AuthHeader.js';
 import ImageUpload from '../../other/image-upload/ImageUpload.js';
 import Footer from '../../other/footer/Footer.js';
 
+import './register.styles.scss';
+
 const initialUser = {
     username: '',
     password: '',

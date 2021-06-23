@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 
+import './authHeader.styles.scss';
+
 const AuthHeader = () => {
     const { push } = useHistory();
     const { pathname } = useLocation();

@@ -8,6 +8,8 @@ import { axiosWithAuth } from '../../../utils/axiosWithAuth.js';
 import AuthHeader from '../../other/auth-header/AuthHeader.js';
 import Footer from '../../other/footer/Footer.js';
 
+import './login.styles.scss';
+
 const validationSchema = Yup.object({
     username: Yup.string().required('username required'),
     password: Yup.string().required('password required'),

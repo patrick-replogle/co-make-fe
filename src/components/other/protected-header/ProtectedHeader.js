@@ -4,6 +4,8 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import BurgerMenu from '../burger-menu/BurgerMenu';
 
+import './protectedHeader.styles.scss';
+
 const DashboardHeader = (props) => {
     const { pathname } = useLocation();
 

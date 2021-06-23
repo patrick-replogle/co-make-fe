@@ -8,6 +8,8 @@ import UserPosts from './user-posts/UserPosts.js';
 import ProtectedHeader from '../other/protected-header/ProtectedHeader.js';
 import Footer from '../other/footer/Footer.js';
 
+import './profile.styles.scss';
+
 const Profile = () => {
     const { user, setUser } = useContext(userContext);
     const [userPosts, setUserPosts] = useState([]);

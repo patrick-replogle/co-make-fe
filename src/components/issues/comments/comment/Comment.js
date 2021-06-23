@@ -6,6 +6,8 @@ import moment from 'moment';
 
 import { postContext } from '../../../../contexts/postContext.js';
 
+import './comment.styles.scss';
+
 const Comment = ({ comment, deleteComment }) => {
     const { setIsEditing, setCommentToEdit } = useContext(postContext);
     const token = localStorage.getItem('coMakeToken');

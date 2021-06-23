@@ -1,0 +1,16 @@
+.postListContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    width: 100%;
+
+    .activePosts {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        border-top: 2px solid #f2f2f2;
+    }
+}
