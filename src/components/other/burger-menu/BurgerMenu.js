@@ -5,6 +5,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useHistory, useLocation, matchPath } from 'react-router-dom';
 
+import './burgerMenu.styles.scss';
+
 const BurgerMenu = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const { push } = useHistory();
@@ -20,7 +22,7 @@ const BurgerMenu = () => {
     };
 
     return (
-        <div style={{ margin: '0 30%' }}>
+        <div className="container">
             <Button
                 aria-controls="simple-menu"
                 aria-haspopup="true"
@@ -31,7 +33,6 @@ const BurgerMenu = () => {
 
             {pathname === '/dashboard' && (
                 <Menu
-                    id="simple-menu"
                     anchorEl={anchorEl}
                     keepMounted
                     open={Boolean(anchorEl)}
@@ -63,7 +64,6 @@ const BurgerMenu = () => {
 
             {pathname === '/addpost' && (
                 <Menu
-                    id="simple-menu"
                     anchorEl={anchorEl}
                     keepMounted
                     open={Boolean(anchorEl)}
@@ -95,7 +95,6 @@ const BurgerMenu = () => {
 
             {matchPath(pathname, { path: '/post/:id' }) && (
                 <Menu
-                    id="simple-menu"
                     anchorEl={anchorEl}
                     keepMounted
                     open={Boolean(anchorEl)}
@@ -133,7 +132,6 @@ const BurgerMenu = () => {
 
             {pathname === '/user/posts' && (
                 <Menu
-                    id="simple-menu"
                     anchorEl={anchorEl}
                     keepMounted
                     open={Boolean(anchorEl)}
@@ -165,7 +163,6 @@ const BurgerMenu = () => {
 
             {pathname === '/profile_form' && (
                 <Menu
-                    id="simple-menu"
                     anchorEl={anchorEl}
                     keepMounted
                     open={Boolean(anchorEl)}

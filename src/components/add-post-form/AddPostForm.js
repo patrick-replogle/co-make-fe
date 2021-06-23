@@ -96,11 +96,7 @@ const AddPostForm = () => {
         <div className="pageContainer">
             <ProtectedHeader />
             <div className="addFormContainer">
-                {isEditing ? (
-                    <h2 style={{ color: '#e01f3d' }}>Edit Your Post</h2>
-                ) : (
-                    <h2 style={{ color: '#e01f3d' }}>Add a New Post</h2>
-                )}
+                {isEditing ? <h2>Edit Your Post</h2> : <h2>Add a New Post</h2>}
 
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="title">Title</label>

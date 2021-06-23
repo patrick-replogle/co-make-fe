@@ -16,11 +16,7 @@ const DashboardHeader = (props) => {
                 {pathname === '/dashboard' && (
                     <SearchIcon
                         onClick={() => props.setShowSearch(!props.showSearch)}
-                        style={{
-                            color: 'white',
-                            fontSize: '3.5rem',
-                            cursor: 'pointer',
-                        }}
+                        className="icon"
                     />
                 )}
                 <BurgerMenu />

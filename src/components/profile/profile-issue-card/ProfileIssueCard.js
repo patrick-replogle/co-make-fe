@@ -49,19 +49,11 @@ const ProfileIssueCard = ({ post, setUserPosts, history }) => {
                 <p>{dateString}</p>
                 <div className="profileIssueCardIconContainer">
                     <EditIcon
-                        style={{
-                            fontSize: '2.2rem',
-                            cursor: 'pointer',
-                            marginRight: '4%',
-                        }}
+                        className="icon"
                         onClick={() => handleEdit(post)}
                     />
                     <DeleteIcon
-                        style={{
-                            fontSize: '2.2rem',
-                            cursor: 'pointer',
-                            marginRight: '4%',
-                        }}
+                        className="icon"
                         onClick={() => deletePost(post.id)}
                     />
                 </div>

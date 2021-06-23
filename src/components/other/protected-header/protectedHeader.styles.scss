@@ -20,5 +20,11 @@
         display: flex;
         align-items: center;
         justify-content: space-evenly;
+
+        .icon {
+            color: white;
+            font-size: 3.5rem;
+            cursor: pointer;
+        }
     }
 }

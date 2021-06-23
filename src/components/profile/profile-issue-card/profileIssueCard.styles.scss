@@ -17,6 +17,12 @@
         justify-content: flex-end;
         font-size: 2rem;
         width: 50%;
+
+        .icon {
+            font-size: 2.2rem;
+            cursor: pointer;
+            margin-right: 4%;
+        }
     }
 
     p {

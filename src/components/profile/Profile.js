@@ -57,19 +57,7 @@ const Profile = () => {
                     <div className="profileCard">
                         <div className="profileCardTopRow">
                             {user.photo !== 'null' ? (
-                                <img
-                                    src={user.photo}
-                                    alt="user avatar"
-                                    style={{
-                                        width: '200px',
-                                        height: '200px',
-                                        overflow: 'hidden',
-                                        borderRadius: '50%',
-                                        marginBottom: '10px',
-                                        maxWidth: '100%',
-                                        objectFit: 'cover',
-                                    }}
-                                />
+                                <img src={user.photo} alt="user avatar" />
                             ) : (
                                 <div className="profileAvatar">
                                     {String(user.first_name).charAt(0)}

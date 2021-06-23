@@ -18,6 +18,8 @@
 
         div {
             width: 100%;
+            display: flex;
+            justify-content: center;
 
             img {
                 width: 95%;
@@ -34,25 +36,23 @@
             margin-left: 20px;
         }
 
-        div {
+        .likeContainer {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
+            justify-content: flex-start;
+            color: #565656;
+            width: 100%;
+            margin-left: 1.5%;
 
-        button {
-            padding: 15px 25px;
-            border-radius: 6px;
-            color: white;
-            background: #e01f3d;
-            margin-left: 20px;
-            border: 2px solid white;
-            font-size: 1.6rem;
-            outline: none;
+            .icon {
+                color: #e01f3d;
+                font-size: 2.5rem;
+                cursor: pointer;
+            }
 
-            &:hover {
-                opacity: 0.7;
+            p {
+                font-size: 1.6rem;
+                margin-left: 1%;
             }
         }
     }

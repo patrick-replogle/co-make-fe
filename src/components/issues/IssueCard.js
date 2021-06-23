@@ -50,7 +50,7 @@ const IssueCard = (props) => {
                 fetchPosts();
             })
             .catch((err) => {
-                console.log('upvote err: ', err.response.data.message);
+                console.log('upvote error: ', err.response.data.message);
             });
     };
 
@@ -66,7 +66,7 @@ const IssueCard = (props) => {
                 <ProtectedHeader />
                 <div className="issueCardContainer">
                     <div className="card">
-                        <div style={{ width: '100%', display: 'flex' }}>
+                        <div>
                             <img
                                 src={
                                     issue.photo !== 'null'
@@ -85,32 +85,12 @@ const IssueCard = (props) => {
                             Created by {issue.authorUsername} on{' '}
                             {formatDate(issue.createdAt)}
                         </p>
-                        <div
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'flex-start',
-                                color: '#565656',
-                                width: '100%',
-                                marginLeft: '3%',
-                            }}
-                        >
+                        <div className="likeContainer">
                             <ThumbUpIcon
                                 onClick={() => upVotePost(issue.id)}
-                                style={{
-                                    color: '#e01f3d',
-                                    fontSize: '2.5rem',
-                                    cursor: 'pointer',
-                                }}
+                                className="icon"
                             />
-                            <p
-                                style={{
-                                    fontSize: '1.6rem',
-                                    marginLeft: '1%',
-                                }}
-                            >
-                                {issue.votes}
-                            </p>
+                            <p>{issue.votes}</p>
                         </div>
                     </div>
                     <div className="commentsContainer">

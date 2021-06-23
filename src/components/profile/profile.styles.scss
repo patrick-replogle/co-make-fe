@@ -26,6 +26,16 @@
             align-items: center;
             margin-bottom: 10px;
 
+            img {
+                width: 200px;
+                height: 200px;
+                overflow: hidden;
+                border-radius: 50%;
+                margin-bottom: 10px;
+                max-width: 100%;
+                object-fit: cover;
+            }
+
             .profileAvatar {
                 display: flex;
                 align-items: center;

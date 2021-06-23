@@ -15,15 +15,8 @@ const Comment = ({ comment, deleteComment }) => {
 
     return (
         <div key={comment.id} className="commentCard">
-            <div
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    width: '100%',
-                }}
-            >
-                <div style={{ display: 'flex', margin: '0 3%' }}>
+            <div className="content">
+                <div className="header">
                     <p style={{ fontWeight: 'bold' }}>
                         {comment.username}&nbsp;
                     </p>
@@ -32,17 +25,14 @@ const Comment = ({ comment, deleteComment }) => {
                     </p>
                 </div>
                 {decodedToken.id === comment.user_id && (
-                    <div style={{ display: 'flex', marginRight: '3%' }}>
+                    <div className="iconContainer">
                         <DeleteIcon
-                            style={{ fontSize: '22px', cursor: 'pointer' }}
+                            className="icon"
                             onClick={() => deleteComment(comment.id)}
                         />
                         <CreateIcon
-                            style={{
-                                fontSize: '22px',
-                                cursor: 'pointer',
-                                marginLeft: '10px',
-                            }}
+                            className="icon"
+                            style={{ marginLeft: '10px' }}
                             onClick={() => {
                                 setCommentToEdit(comment);
                                 setIsEditing(true);
