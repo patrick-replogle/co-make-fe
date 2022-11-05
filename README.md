@@ -12,7 +12,9 @@ Deployed frontend app can be found at: https://co-make-fe.herokuapp.com/
  - Yup 
  - Material UI
  - Heroku
-
+ - Knex js
+ - PostgreSQL
+ 
 ## Project Overview
 CoMake is a social media website aimed at bringing community members together to solve local problems. CoMake provides users with a platfrom to call attention to local issues, volunteer their time or resources, or simply ask for help. 
 
